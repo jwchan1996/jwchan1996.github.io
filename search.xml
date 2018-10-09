@@ -4,5 +4,13 @@
     <title><![CDATA[Hello World]]></title>
     <url>%2F2018%2F09%2F27%2Fhello-world%2F</url>
     <content type="text"></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>Hello World</tag>
+        <tag>Learn</tag>
+        <tag>买了否冷</tag>
+      </tags>
   </entry>
 </search>
