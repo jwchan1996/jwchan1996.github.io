@@ -1765,6 +1765,20 @@ pre .javascript .function {
   height: auto;
   border: 2px solid #333;
   opacity: 1;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  transition: 0.2s all;
+}
+.site-author-image:hover {
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  -webkit-transform: scale(1.1, 1.1);
+  -moz-transform: scale(1.1, 1.1);
+  -ms-transform: scale(1.1, 1.1);
+  -o-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
 }
 .site-author-name {
   margin: 5px 0 0;
@@ -1848,7 +1862,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffff85;
+  background: #5dffff;
 }
 .links-of-blogroll {
   font-size: 13px;
