@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2018-10-15T03:43:13.634Z</updated>
+  <updated>2018-10-15T05:42:16.794Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -17,55 +17,16 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>序/INTRO</title>
+    <title>序 / INTRO</title>
     <link href="https://jwchan1996.github.io/2018/09/27/hello-world/"/>
     <id>https://jwchan1996.github.io/2018/09/27/hello-world/</id>
     <published>2018-09-27T08:51:01.626Z</published>
-    <updated>2018-10-15T03:43:13.634Z</updated>
+    <updated>2018-10-15T05:42:16.794Z</updated>
     
     <summary type="html">
     
-      &lt;div class=&quot;blockqueto&quot;&gt;&lt;br&gt;&lt;p class=&quot;poetry&quot;&gt;生命的幻影&lt;br&gt;穿过狭长的岁月&lt;br&gt;以梦为马 向东向西&lt;br&gt;消失在暮色里&lt;br&gt;—— 改编自《生命幻想曲》顾城&lt;/p&gt;&lt;br&gt;&lt;/div&gt;
-
-&lt;style&gt;
-    .blockqueto{
-        position: relation;
-        text-align: center;
-    }
-    .blockqueto:before{
-        /* top: -20px; */
-        background-image: url(/images/quote-l.svg);
-        border-top: 1px solid #ccc;
-
-        /* position: absolute; */
-        content: &#39; &#39;;
-        display: block;
-        width: 100%;
-        height: 24px;
-        opacity: .2;
-        background-repeat: no-repeat;
-        background-position: 0;
-        background-size: 22px 22px;
-    }
-    .blockqueto:after{
-        bottom: 20px;
-        background-image: url(/images/quote-r.svg);
-        border-bottom: 1px solid #ccc;
-        background-position: 100% 0;
-
-        /* position: absolute; */
-        content: &#39; &#39;;
-        display: block;
-        width: 100%;
-        height: 24px;
-        opacity: .2;
-        background-repeat: no-repeat;
-        background-size: 22px 22px;
-    }
-    .poetry{
-        margin: 0;
-    }
-&lt;/style&gt;
+      &lt;p&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/post/hello-world.css&quot;&gt;&lt;/p&gt;
+&lt;div class=&quot;blockqueto&quot;&gt;&lt;br&gt;&lt;p class=&quot;poetry&quot;&gt;生命的幻影&lt;br&gt;穿过狭长的岁月&lt;br&gt;以梦为马 向东向西&lt;br&gt;消失在暮色里&lt;br&gt;—— 改编自《生命幻想曲》顾城&lt;/p&gt;&lt;br&gt;&lt;/div&gt;
     
     </summary>
     
