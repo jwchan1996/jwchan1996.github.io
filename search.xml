@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hello World]]></title>
+    <title><![CDATA[序/INTRO]]></title>
     <url>%2F2018%2F09%2F27%2Fhello-world%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[生命的幻影穿过狭长的岁月以梦为马 向东向西消失在暮色里—— 改编自《生命幻想曲》顾城 .blockqueto{ position: relation; text-align: center; } .blockqueto:before{ /* top: -20px; */ background-image: url(/images/quote-l.svg); border-top: 1px solid #ccc; /* position: absolute; */ content: ' '; display: block; width: 100%; height: 24px; opacity: .2; background-repeat: no-repeat; background-position: 0; background-size: 22px 22px; } .blockqueto:after{ bottom: 20px; background-image: url(/images/quote-r.svg); border-bottom: 1px solid #ccc; background-position: 100% 0; /* position: absolute; */ content: ' '; display: block; width: 100%; height: 24px; opacity: .2; background-repeat: no-repeat; background-size: 22px 22px; } .poetry{ margin: 0; }]]></content>
       <categories>
         <category>随笔</category>
       </categories>

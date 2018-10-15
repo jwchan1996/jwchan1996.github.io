@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>我爱盐酥鸡</title>
   
-  <subtitle>有树叶飞舞的地方，火就会燃烧</subtitle>
+  <subtitle>以梦为马，向东向西</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2018-10-09T09:10:19.273Z</updated>
+  <updated>2018-10-15T03:43:13.634Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -17,13 +17,55 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
+    <title>序/INTRO</title>
     <link href="https://jwchan1996.github.io/2018/09/27/hello-world/"/>
     <id>https://jwchan1996.github.io/2018/09/27/hello-world/</id>
     <published>2018-09-27T08:51:01.626Z</published>
-    <updated>2018-10-09T09:10:19.273Z</updated>
+    <updated>2018-10-15T03:43:13.634Z</updated>
     
     <summary type="html">
+    
+      &lt;div class=&quot;blockqueto&quot;&gt;&lt;br&gt;&lt;p class=&quot;poetry&quot;&gt;生命的幻影&lt;br&gt;穿过狭长的岁月&lt;br&gt;以梦为马 向东向西&lt;br&gt;消失在暮色里&lt;br&gt;—— 改编自《生命幻想曲》顾城&lt;/p&gt;&lt;br&gt;&lt;/div&gt;
+
+&lt;style&gt;
+    .blockqueto{
+        position: relation;
+        text-align: center;
+    }
+    .blockqueto:before{
+        /* top: -20px; */
+        background-image: url(/images/quote-l.svg);
+        border-top: 1px solid #ccc;
+
+        /* position: absolute; */
+        content: &#39; &#39;;
+        display: block;
+        width: 100%;
+        height: 24px;
+        opacity: .2;
+        background-repeat: no-repeat;
+        background-position: 0;
+        background-size: 22px 22px;
+    }
+    .blockqueto:after{
+        bottom: 20px;
+        background-image: url(/images/quote-r.svg);
+        border-bottom: 1px solid #ccc;
+        background-position: 100% 0;
+
+        /* position: absolute; */
+        content: &#39; &#39;;
+        display: block;
+        width: 100%;
+        height: 24px;
+        opacity: .2;
+        background-repeat: no-repeat;
+        background-size: 22px 22px;
+    }
+    .poetry{
+        margin: 0;
+    }
+&lt;/style&gt;
     
     </summary>
     
