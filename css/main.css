@@ -1866,7 +1866,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #60ffb1;
+  background: #ffffd9;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2615,6 +2615,9 @@ embed {
 }
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
+}
+body {
+  background: #f4f6f6;
 }
 #evanyou {
   position: fixed;
