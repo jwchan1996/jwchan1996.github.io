@@ -1,0 +1,37 @@
+
+.blockqueto{
+    text-align: center;
+}
+.blockqueto:before{
+    top: -20px;
+    background-image: url(/images/quote-l.svg);
+    border-top: 1px solid #ccc;
+
+    /* position: absolute; */
+    content: ' ';
+    display: block;
+    width: 100%;
+    height: 24px;
+    opacity: .2;
+    background-repeat: no-repeat;
+    background-position: 0;
+    background-size: 22px 22px;
+}
+.blockqueto:after{
+    bottom: 20px;
+    background-image: url(/images/quote-r.svg);
+    border-bottom: 1px solid #ccc;
+    background-position: 100% 0;
+
+    /* position: absolute; */
+    content: ' ';
+    display: block;
+    width: 100%;
+    height: 24px;
+    opacity: .2;
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+}
+.poetry{
+    margin: 0;
+}
