@@ -1106,9 +1106,21 @@ pre .javascript .function {
 }
 .header {
   background: transparent;
+/**以下为修改样式，添加背景图**/
+  background-image: url("/images/background_header.png");
+  background-size: cover;
+  background-position: 0 -200px;
+  background-repeat: no-repeat;
+  padding-top: 500px;
 }
 .header-inner {
   position: relative;
+/**以下为修改样式，添加背景颜色**/
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 30px #ddd;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 .headband {
   height: 3px;
@@ -1765,10 +1777,12 @@ pre .javascript .function {
   height: auto;
   border: 2px solid #333;
   opacity: 1;
+/**修改头像边框**/
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   border-radius: 50%;
+/**设置缩放**/
   -webkit-transition: 0.2s all;
   -moz-transition: 0.2s all;
   -ms-transition: 0.2s all;
@@ -1882,7 +1896,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e2a208;
+  background: #ff58ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2533,7 +2547,7 @@ ul.breadcrumb li+li:last-child {
   padding: 40px 40px;
   background: #fff;
   box-shadow: 0 0 30px #ddd;
-  border-radius: 10px;
+  border-radius: 0 0 10px 10px;
 }
 .footer-inner {
   background: #fff;
