@@ -1764,7 +1764,7 @@ pre .javascript .function {
   vertical-align: top;
   height: 2px;
   width: 100%;
-  background: #fff;
+  background: #fff !important;
   margin-top: 3px;
 }
 .sidebar-toggle-line:first-child {
@@ -1897,7 +1897,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #94f624;
+  background: #ff629c;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -1944,11 +1944,11 @@ pre .javascript .function {
   margin-left: 10px;
 }
 .sidebar-nav .sidebar-nav-active {
-  color: #87daff;
-  border-bottom-color: #87daff;
+  color: #ea5055;
+  border-bottom-color: #ea5055;
 }
 .sidebar-nav .sidebar-nav-active:hover {
-  color: #87daff;
+  color: #ea5055;
 }
 .sidebar-panel {
   display: none;
@@ -2007,14 +2007,14 @@ pre .javascript .function {
   display: block;
 }
 .post-toc .nav .active > a {
-  color: #87daff;
-  border-bottom-color: #87daff;
+  color: #fff;
+  border-bottom-color: #fff;
 }
 .post-toc .nav .active-current > a {
-  color: #87daff;
+  color: #fff;
 }
 .post-toc .nav .active-current > a:hover {
-  color: #87daff;
+  color: #fff;
 }
 .footer {
   font-size: 14px;
