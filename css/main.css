@@ -1109,7 +1109,7 @@ pre .javascript .function {
 /**以下为修改样式，添加背景图**/
   background-image: url("/images/background_header.png");
   background-size: cover;
-  background-position: center -200px;
+  background-position: center -100px;
   background-repeat: no-repeat;
   width: 100%;
   padding-top: 500px;
@@ -1897,7 +1897,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff629c;
+  background: #ff46f6;
 }
 .links-of-blogroll {
   font-size: 13px;
