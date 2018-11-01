@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2018-11-01T09:38:41.155Z</updated>
+  <updated>2018-11-01T09:41:59.884Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -21,19 +21,36 @@
     <link href="https://jwchan1996.github.io/2018/11/01/summary_201810/"/>
     <id>https://jwchan1996.github.io/2018/11/01/summary_201810/</id>
     <published>2018-11-01T03:16:57.538Z</published>
-    <updated>2018-11-01T09:38:41.155Z</updated>
+    <updated>2018-11-01T09:41:59.884Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;style&gt;
+      &lt;style&gt;
     img{
         /**设置缩放**/
         -webkit-transition: 0.2s all;
         -moz-transition: 0.2s all;
-        -ms-transition: 0.2s al
-      
+        -ms-transition: 0.2s all;
+        transition: 0.2s all;
+    }
+    img:hover{
+        -webkit-transform: scale(1.02,1.02);
+        -moz-transform: scale(1.02,1.02);
+        -ms-transform: scale(1.02,1.02);
+        transform: scale(1.02,1.02);
+        box-shadow: 5px 5px 30px #999;
+        cursor: pointer;
+    }
+&lt;/style&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;未央十月，清风微似梦&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;十月份于我，是一个慵懒的月份，也是个探索的月份，没有coding的紧迫感，也没有八九月份的热情。
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;01~07号&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p style=&quot;text-indent:2em;&quot;&gt;在经历过对未知领域与技术的了解与实践后，九月末搭建了博客，接着就开启了一个星期的国庆假期，在经过了佛性的几天后，抓着假期的尾巴，去了长隆水上乐园，太阳很猛，水温很凉，全程玩下来整整一个下午，单论玩真的很值，很刺激，过后泡个温泉浴，身心舒畅，回来站上体重秤一秤发现轻了两斤，血亏！(因为博主9月中旬制定了增重计划)，建议需要减肥的同学可以去玩一哈……&lt;/p&gt;
     
     </summary>
     
@@ -49,23 +66,21 @@
     <link href="https://jwchan1996.github.io/2018/10/17/poem_1/"/>
     <id>https://jwchan1996.github.io/2018/10/17/poem_1/</id>
     <published>2018-10-17T08:40:15.470Z</published>
-    <updated>2018-10-19T11:51:39.252Z</updated>
+    <updated>2018-11-01T09:43:07.843Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/post/poem_1.css&quot;&gt;&lt;/p&gt;
 &lt;div class=&quot;blockqueto&quot;&gt;&lt;br&gt;&lt;p class=&quot;poetry&quot;&gt;&lt;br&gt;所遇即所爱&lt;br&gt;幸之所在&lt;br&gt;&lt;/p&gt;&lt;br&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img class=&quot;img_scale&quot; src=&quot;/images/poem_1_01.jpg&quot; style=&quot;margin-top:20px;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
       <category term="诗词" scheme="https://jwchan1996.github.io/categories/%E8%AF%97%E8%AF%8D/"/>
     
     
-      <category term="诗" scheme="https://jwchan1996.github.io/tags/%E8%AF%97/"/>
-    
       <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
+    
+      <category term="诗" scheme="https://jwchan1996.github.io/tags/%E8%AF%97/"/>
     
   </entry>
   
@@ -86,9 +101,9 @@
       <category term="随笔" scheme="https://jwchan1996.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
-    
       <category term="Hello World" scheme="https://jwchan1996.github.io/tags/Hello-World/"/>
+    
+      <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
     
       <category term="买了否冷" scheme="https://jwchan1996.github.io/tags/%E4%B9%B0%E4%BA%86%E5%90%A6%E5%86%B7/"/>
     
