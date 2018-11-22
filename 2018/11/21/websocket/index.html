@@ -115,13 +115,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="我爱盐酥鸡">
-<meta property="og:url" content="https://jwchan1996.github.io/tags/Learn/index.html">
+  <meta name="description" content="心跳重连缘由websocket是前后端交互的长连接，前后端也都可能因为一些情况导致连接失效并且相互之间没有反馈提醒。因此为了保证连接的可持续性和稳定性，websocket心跳重连就应运而生。在使用原生websocket的时候，如果设备网络断开，不会触发websocket的任何事件函数，前端程序无法得知当前连接已经断开。这个时候如果调用websocket.send方法，浏览器就会发现消息发不出去，便">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初探和实现websocket心跳重连">
+<meta property="og:url" content="https://jwchan1996.github.io/2018/11/21/websocket/index.html">
 <meta property="og:site_name" content="我爱盐酥鸡">
+<meta property="og:description" content="心跳重连缘由websocket是前后端交互的长连接，前后端也都可能因为一些情况导致连接失效并且相互之间没有反馈提醒。因此为了保证连接的可持续性和稳定性，websocket心跳重连就应运而生。在使用原生websocket的时候，如果设备网络断开，不会触发websocket的任何事件函数，前端程序无法得知当前连接已经断开。这个时候如果调用websocket.send方法，浏览器就会发现消息发不出去，便">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-21T09:36:57.287Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我爱盐酥鸡">
+<meta name="twitter:title" content="初探和实现websocket心跳重连">
+<meta name="twitter:description" content="心跳重连缘由websocket是前后端交互的长连接，前后端也都可能因为一些情况导致连接失效并且相互之间没有反馈提醒。因此为了保证连接的可持续性和稳定性，websocket心跳重连就应运而生。在使用原生websocket的时候，如果设备网络断开，不会触发websocket的任何事件函数，前端程序无法得知当前连接已经断开。这个时候如果调用websocket.send方法，浏览器就会发现消息发不出去，便">
 
 
 
@@ -130,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="https://jwchan1996.github.io/tags/Learn/"/>
+  <link rel="canonical" href="https://jwchan1996.github.io/2018/11/21/websocket/"/>
 
 
 
@@ -140,7 +145,7 @@
   };
 </script>
 
-  <title>标签: Learn | 我爱盐酥鸡</title>
+  <title>初探和实现websocket心跳重连 | 我爱盐酥鸡</title>
   
 
 
@@ -191,7 +196,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband">
       <a href="https://github.com/jwchan1996" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/images/forkMeInGithub.png" alt="Fork me on GitHub"></a>
     </div>
@@ -320,7 +325,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签<span class="badge">6</span></a>
   </li>
@@ -348,28 +353,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -418,86 +401,249 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>Learn<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jwchan1996.github.io/2018/11/21/websocket/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JwChan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar_grey.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我爱盐酥鸡">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/10/17/poem_1/" itemprop="url">
-              
-                <span itemprop="name">诗 / Poem</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">初探和实现websocket心跳重连
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-17T16:40:15+08:00"
-              content="2018-10-17" >
-          10-17
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-21 16:04:02 / 修改时间：17:36:57" itemprop="dateCreated datePublished" datetime="2018-11-21T16:04:02+08:00">2018-11-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+            </span>
+            <span id="busuanzi_value_page_pv"></span>次阅读
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h2 id="心跳重连缘由"><a href="#心跳重连缘由" class="headerlink" title="心跳重连缘由"></a>心跳重连缘由</h2><p style="text-indent:2em;">websocket是前后端交互的长连接，前后端也都可能因为一些情况导致连接失效并且相互之间没有反馈提醒。因此为了保证连接的可持续性和稳定性，websocket心跳重连就应运而生。</p><p style="text-indent:2em;">在使用原生websocket的时候，如果设备网络断开，不会触发websocket的任何事件函数，前端程序无法得知当前连接已经断开。这个时候如果调用websocket.send方法，浏览器就会发现消息发不出去，便会立刻或者一定短时间后（不同浏览器或者浏览器版本可能表现不同）触发onclose函数。</p><p style="text-indent:2em;">后端websocket服务也可能出现异常，连接断开后前端也并没有收到通知，因此需要<span style="color:red;">前端定时发送心跳消息</span>ping，<span style="color:red;">后端收到</span>ping类型的消息，<span style="color:red;">立马返回</span>pong消息，告知前端连接正常。如果一定时间没收到pong消息，就说明连接不正常，前端便会执行重连。<a id="more"></a></p><p style="text-indent:2em;">为了解决以上两个问题，以前端作为主动方，定时发送ping消息，用于检测网络和前后端连接问题。一旦发现异常，前端持续执行重连逻辑，直到重连成功。</p>
 
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/27/hello-world/" itemprop="url">
-              
-                <span itemprop="name">序 / INTRO</span>
-              
-            </a>
-        
-      </h3>
+<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h2><p>在websocket实例化的时候，我们会绑定一些事件：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(url);</span><br><span class="line">ws.onclose = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//something</span></span><br><span class="line">&#125;;</span><br><span class="line">ws.onerror = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//something</span></span><br><span class="line">&#125;;</span><br><span class="line">        </span><br><span class="line">ws.onopen = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="comment">//something</span></span><br><span class="line">&#125;;</span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">   <span class="comment">//something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果希望websocket连接一直保持，我们会在close或者error上绑定重新连接方法。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ws.onclose = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    reconnect();</span><br><span class="line">&#125;;</span><br><span class="line">ws.onerror = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    reconnect();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>这样一般正常情况下失去连接时，触发onclose方法，我们就能执行重连了。</p>
+<p>那么针对断网的情况的心跳重连，怎么实现呢。<br>简单的实现：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> heartCheck = &#123;</span><br><span class="line">    timeout: <span class="number">60000</span>,<span class="comment">//60ms</span></span><br><span class="line">    timeoutObj: <span class="literal">null</span>,</span><br><span class="line">    reset: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        clearTimeout(<span class="keyword">this</span>.timeoutObj);</span><br><span class="line">　　　　 <span class="keyword">this</span>.start();</span><br><span class="line">    &#125;,</span><br><span class="line">    start: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.timeoutObj = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            ws.send(<span class="string">"HeartBeat"</span>);</span><br><span class="line">        &#125;, <span class="keyword">this</span>.timeout)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ws.onopen = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">   heartCheck.start();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">    heartCheck.reset();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如上代码，heartCheck 的 reset和start方法主要用来<span style="color:red;">控制心跳的定时</span>。</p>
+<h4 id="什么条件下执行心跳："><a href="#什么条件下执行心跳：" class="headerlink" title="什么条件下执行心跳："></a>什么条件下执行心跳：</h4><p style="text-indent:2em;">当onopen也就是连接上时，我们便开始start计时，如果在定时时间范围内，<span style="color:red;">onmessage</span>获取到了后端的消息，我们就<span style="color:red;">重置倒计时</span>，距离上次从后端获取到消息超过60秒之后，执行心跳检测，看是不是断连了，这个检测时间可以自己根据自身情况设定。</p>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-27T16:51:01+08:00"
-              content="2018-09-27" >
-          09-27
-        </time>
-      </div>
+<h4 id="判断前端ws断开-断网但不限于断网的情况）："><a href="#判断前端ws断开-断网但不限于断网的情况）：" class="headerlink" title="判断前端ws断开(断网但不限于断网的情况）："></a>判断前端ws断开(断网但不限于断网的情况）：</h4><p style="text-indent:2em;">当心跳检测send方法执行之后，如果当前websocket是断开状态(或者说断网了)，发送超时之后，浏览器的ws会自动触发onclose方法，重连也执行了（onclose方法体绑定了重连事件），如果当前一直是断网状态，重连会2秒（时间是自己代码设置的）执行一次直到网络正常后连接成功。<br></p><p style="text-indent:2em;">如此一来，我们判断<span style="color:red;">前端主动断开</span>ws的心跳检测就实现了。为什么说是<span style="color:red;">前端主动断开</span>，因为当前这种情况主要是通过前端ws的事件来判断的，后面说后端主动断开的情况。</p><p></p>
 
-    </header>
-  </article>
+<p>在测试websocket超时时间，又发现了一些新的问题</p>
+<ol>
+<li>在chrome中，如果心跳检测 也就是websocket实例执行send之后，15秒内没发送到另一接收端，onclose便会执行。那么超时时间是15秒。</li>
+<li>Firefox在断网7秒之后，直接执行onclose。说明在Firefox中不需要心跳检测便能自动onclose。</li>
+<li>同一代码， reconnect方法 在chrome 执行了一次，Firefox执行了两次。当然我们在几处地方（代码逻辑处和websocket事件处）绑定了reconnect()，<br>所以保险起见，我们还是给reconnect()方法<span style="color:red;">加上一个锁，保证只执行一次</span></li>
+</ol>
+<p>目前来看不同的浏览器，有不同的机制，无论浏览器websocket自身会不会在断网情况下执行onclose，加上心跳重连后，已经能保证onclose的正常触发。</p>
+<h4 id="判断后端断开："><a href="#判断后端断开：" class="headerlink" title="判断后端断开："></a>判断后端断开：</h4><p style="text-indent:2em;">如果后端因为一些情况断开了ws，是可控情况下的话，会下发一个断连的消息通知，之后才会断开，我们便会重连。</p><p></p><p style="text-indent:2em;">如果因为一些异常断开了连接，我们是不会感应到的，所以如果我们发送了心跳一定时间之后，后端既没有返回心跳响应消息，前端又没有收到任何其他消息的话，我们就能断定后端主动断开了。</p><p style="text-indent:2em;">一点<span style="color:red;">特别重要</span>的发送心跳到后端，后端收到消息之后必须返回消息，否则超过60秒之后会判定后端主动断开了。再改造下代码:</p>
 
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> heartCheck = &#123;</span><br><span class="line">    timeout: <span class="number">60000</span>,<span class="comment">//60ms</span></span><br><span class="line">    timeoutObj: <span class="literal">null</span>,</span><br><span class="line">    serverTimeoutObj: <span class="literal">null</span>,</span><br><span class="line">    reset: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        clearTimeout(<span class="keyword">this</span>.timeoutObj);</span><br><span class="line">        clearTimeout(<span class="keyword">this</span>.serverTimeoutObj);</span><br><span class="line">　　　　 <span class="keyword">this</span>.start();</span><br><span class="line">    &#125;,</span><br><span class="line">    start: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">this</span>.timeoutObj = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            ws.send(<span class="string">"HeartBeat"</span>);</span><br><span class="line">            self.serverTimeoutObj = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                ws.close();<span class="comment">//如果onclose会执行reconnect，执行ws.close()就行了.如果直接执行reconnect 会触发onclose导致重连两次</span></span><br><span class="line">            &#125;, self.timeout)</span><br><span class="line">        &#125;, <span class="keyword">this</span>.timeout)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ws.onopen = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">   heartCheck.start();</span><br><span class="line">&#125;;</span><br><span class="line">ws.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">    heartCheck.reset();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ws.onclose = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    reconnect();</span><br><span class="line">&#125;;</span><br><span class="line">ws.onerror = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    reconnect();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>PS：</p>
+<p style="text-indent:2em;">因为目前这种方式会一直重连如果没连接上或者断连的话，如果有两个设备同时登陆并且会踢另一端下线，一定要发送一个踢下线的消息类型，这边接收到这种类型的消息，逻辑判断后就不再执行reconnect，否则会出现一只相互挤下线的死循环。</p>
+
+<blockquote>
+<p>此篇博文转自<span style="color:blue;"><a href="https://www.cnblogs.com/1wen/p/5808276.html" target="_blank" rel="noopener">@子暮大诗人</a></span>，代码已封装为库<span style="color:blue;"><a href="https://github.com/zimv/websocket-heartbeat-js" target="_blank" rel="noopener">websocket-heartbeat-js</a></span></p>
+</blockquote>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag"><i class="fa fa-tag"></i> JS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/01/summary_201810/" rel="next" title="10月份 / Summary">
+                <i class="fa fa-chevron-left"></i> 10月份 / Summary
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -518,8 +664,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -636,6 +791,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#心跳重连缘由"><span class="nav-text">心跳重连缘由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何实现"><span class="nav-text">如何实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么条件下执行心跳："><span class="nav-text">什么条件下执行心跳：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#判断前端ws断开-断网但不限于断网的情况）："><span class="nav-text">判断前端ws断开(断网但不限于断网的情况）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#判断后端断开："><span class="nav-text">判断后端断开：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -832,6 +1003,9 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
 
   
 

@@ -178,6 +178,10 @@
   </style>
 </noscript>
 
+
+  <!--引入动画css-->
+  <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One" rel="stylesheet">
+  <link rel="stylesheet" href="/css/animation_header.css">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -241,7 +245,20 @@
       i()
     </script>
 
+    <!--动画-->
+      <p id="offscreen-text" class="offscreen-text"></p>
+      <p id="text" class="text"></p>
+      <svg id="svg"> </svg>
+      <input type="text" class="input", id="input" />
+      <script src='/js/animation_header/CSSPlugin.min.js'></script> 
+      <script src='/js/animation_header/EasePack.min.js'></script> 
+      <script src='/js/animation_header/TweenLite.min.js'></script> 
+      <script src="/js/animation_header/index.js"></script>
+    <!--动画-->
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+
+      
+
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -289,7 +306,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">3</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">4</span></a>
   </li>
         
         
@@ -297,7 +314,7 @@
           
           <li class="menu-item menu-item-categories menu-item-active">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类<span class="badge">3</span></a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类<span class="badge">4</span></a>
   </li>
         
         
@@ -305,7 +322,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签<span class="badge">5</span></a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签<span class="badge">6</span></a>
   </li>
         
         
@@ -494,7 +511,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -513,7 +530,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -536,7 +555,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -616,7 +637,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">2k</span>
+    <span title="站点总字数">6k</span>
   
 
   
@@ -627,7 +648,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">2 分钟</span>
+    <span title="站点阅读时长">5 分钟</span>
   
 </div>
 

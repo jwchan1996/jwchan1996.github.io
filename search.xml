@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[初探和实现websocket心跳重连]]></title>
+    <url>%2F2018%2F11%2F21%2Fwebsocket%2F</url>
+    <content type="text"><![CDATA[心跳重连缘由websocket是前后端交互的长连接，前后端也都可能因为一些情况导致连接失效并且相互之间没有反馈提醒。因此为了保证连接的可持续性和稳定性，websocket心跳重连就应运而生。在使用原生websocket的时候，如果设备网络断开，不会触发websocket的任何事件函数，前端程序无法得知当前连接已经断开。这个时候如果调用websocket.send方法，浏览器就会发现消息发不出去，便会立刻或者一定短时间后（不同浏览器或者浏览器版本可能表现不同）触发onclose函数。后端websocket服务也可能出现异常，连接断开后前端也并没有收到通知，因此需要前端定时发送心跳消息ping，后端收到ping类型的消息，立马返回pong消息，告知前端连接正常。如果一定时间没收到pong消息，就说明连接不正常，前端便会执行重连。为了解决以上两个问题，以前端作为主动方，定时发送ping消息，用于检测网络和前后端连接问题。一旦发现异常，前端持续执行重连逻辑，直到重连成功。 如何实现在websocket实例化的时候，我们会绑定一些事件：1234567891011121314var ws = new WebSocket(url);ws.onclose = function () &#123; //something&#125;;ws.onerror = function () &#123; //something&#125;; ws.onopen = function () &#123; //something&#125;;ws.onmessage = function (event) &#123; //something&#125; 如果希望websocket连接一直保持，我们会在close或者error上绑定重新连接方法。123456ws.onclose = function () &#123; reconnect();&#125;;ws.onerror = function () &#123; reconnect();&#125;; 这样一般正常情况下失去连接时，触发onclose方法，我们就能执行重连了。 那么针对断网的情况的心跳重连，怎么实现呢。简单的实现：123456789101112131415161718192021var heartCheck = &#123; timeout: 60000,//60ms timeoutObj: null, reset: function()&#123; clearTimeout(this.timeoutObj); this.start(); &#125;, start: function()&#123; this.timeoutObj = setTimeout(function()&#123; ws.send("HeartBeat"); &#125;, this.timeout) &#125;&#125;ws.onopen = function () &#123; heartCheck.start();&#125;;ws.onmessage = function (event) &#123; heartCheck.reset();&#125; 如上代码，heartCheck 的 reset和start方法主要用来控制心跳的定时。 什么条件下执行心跳：当onopen也就是连接上时，我们便开始start计时，如果在定时时间范围内，onmessage获取到了后端的消息，我们就重置倒计时，距离上次从后端获取到消息超过60秒之后，执行心跳检测，看是不是断连了，这个检测时间可以自己根据自身情况设定。 判断前端ws断开(断网但不限于断网的情况）：当心跳检测send方法执行之后，如果当前websocket是断开状态(或者说断网了)，发送超时之后，浏览器的ws会自动触发onclose方法，重连也执行了（onclose方法体绑定了重连事件），如果当前一直是断网状态，重连会2秒（时间是自己代码设置的）执行一次直到网络正常后连接成功。如此一来，我们判断前端主动断开ws的心跳检测就实现了。为什么说是前端主动断开，因为当前这种情况主要是通过前端ws的事件来判断的，后面说后端主动断开的情况。 在测试websocket超时时间，又发现了一些新的问题 在chrome中，如果心跳检测 也就是websocket实例执行send之后，15秒内没发送到另一接收端，onclose便会执行。那么超时时间是15秒。 Firefox在断网7秒之后，直接执行onclose。说明在Firefox中不需要心跳检测便能自动onclose。 同一代码， reconnect方法 在chrome 执行了一次，Firefox执行了两次。当然我们在几处地方（代码逻辑处和websocket事件处）绑定了reconnect()，所以保险起见，我们还是给reconnect()方法加上一个锁，保证只执行一次 目前来看不同的浏览器，有不同的机制，无论浏览器websocket自身会不会在断网情况下执行onclose，加上心跳重连后，已经能保证onclose的正常触发。 判断后端断开：如果后端因为一些情况断开了ws，是可控情况下的话，会下发一个断连的消息通知，之后才会断开，我们便会重连。如果因为一些异常断开了连接，我们是不会感应到的，所以如果我们发送了心跳一定时间之后，后端既没有返回心跳响应消息，前端又没有收到任何其他消息的话，我们就能断定后端主动断开了。一点特别重要的发送心跳到后端，后端收到消息之后必须返回消息，否则超过60秒之后会判定后端主动断开了。再改造下代码: 123456789101112131415161718192021222324252627282930313233var heartCheck = &#123; timeout: 60000,//60ms timeoutObj: null, serverTimeoutObj: null, reset: function()&#123; clearTimeout(this.timeoutObj); clearTimeout(this.serverTimeoutObj); this.start(); &#125;, start: function()&#123; var self = this; this.timeoutObj = setTimeout(function()&#123; ws.send("HeartBeat"); self.serverTimeoutObj = setTimeout(function()&#123; ws.close();//如果onclose会执行reconnect，执行ws.close()就行了.如果直接执行reconnect 会触发onclose导致重连两次 &#125;, self.timeout) &#125;, this.timeout) &#125;,&#125;ws.onopen = function () &#123; heartCheck.start();&#125;;ws.onmessage = function (event) &#123; heartCheck.reset();&#125;ws.onclose = function () &#123; reconnect();&#125;;ws.onerror = function () &#123; reconnect();&#125;; PS： 因为目前这种方式会一直重连如果没连接上或者断连的话，如果有两个设备同时登陆并且会踢另一端下线，一定要发送一个踢下线的消息类型，这边接收到这种类型的消息，逻辑判断后就不再执行reconnect，否则会出现一只相互挤下线的死循环。 此篇博文转自@子暮大诗人，代码已封装为库websocket-heartbeat-js]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[10月份 / Summary]]></title>
     <url>%2F2018%2F11%2F01%2Fsummary_201810%2F</url>
     <content type="text"><![CDATA[#summary_201810_01, #summary_201810_02, #summary_201810_03, #summary_201810_04, #summary_201810_05, #summary_201810_06{ /**设置缩放**/ -webkit-transition: 0.2s all; -moz-transition: 0.2s all; -ms-transition: 0.2s all; transition: 0.2s all; } #summary_201810_01:hover, #summary_201810_02:hover, #summary_201810_03:hover, #summary_201810_04:hover, #summary_201810_05:hover, #summary_201810_06:hover{ -webkit-transform: scale(1.02,1.02); -moz-transform: scale(1.02,1.02); -ms-transform: scale(1.02,1.02); transform: scale(1.02,1.02); box-shadow: 5px 5px 30px #999; cursor: pointer; } 未央十月，清风微似梦 十月份于我，是一个慵懒的月份，也是个探索的月份，没有coding的紧迫感，也没有八九月份的热情。 01~07号 在经历过对未知领域与技术的了解与实践后，九月末搭建了博客，接着就开启了一个星期的国庆假期，在经过了佛性的几天后，抓着假期的尾巴，去了长隆水上乐园，太阳很猛，水温很凉，全程玩下来整整一个下午，单论玩真的很值，很刺激，过后泡个温泉浴，身心舒畅，回来站上体重秤一秤发现轻了两斤，血亏！(因为博主9月中旬制定了增重计划)，建议需要减肥的同学可以去玩一哈…… 急驰竞赛 08~14号 十一假期回来，继续捣鼓博客网站。在观摩了许多大佬的网站之后，开始了对自己博客的美化之路。除此之外，拜读了许多大佬的文章之后，感叹于他们对技术的执着，其中很大部分都还是高中生，或者大多数是ACG爱好者，大概是“用爱发电”吧。这个星期主要是捣鼓Hexo、收集资源以及观摩大佬博客，达到自惭形愧以自我鞭笞。 周末回去了大学城，在中心湖周围逛了一下，端庄地坐在草地上，喝着益禾堂烤奶，看着岛外的各个家庭一家几口的在这边野餐露营，放着风筝，孩子打闹嬉戏，也是一片和谐有爱… 中心湖草地 15~21号 本周继续研究Hexo，开始着手发表文章，完成“关于”页面的编写，也是在本周，在收集资源的过程中，从吐槽站的群里发现了个大佬，后面发现了clicli.us，技术宅是真的改变世界，我不由得去思考二次元文化对他们的影响（或许真的有丶东西？喜欢二次元的不一定是大佬，但大佬很多都是二次元爱好者？）。于是，一是因为自己喜欢动漫，虽然没有每部番都追，但是追的番都会追完，二是为了给博客找素材，我也开始进入ACG的圈子一探究竟…… 周六部门团建，帽峰山之旅。帽峰山之貌，山坡陡峭，沟谷深幽，地形多变，群山漭漭，鸟语花香，幽静怡人。遂登顶开黑，组队互殴，甚是快哉。 周日在科学中心巨幕影院看了《无双》，真真假假，真是”钞”级大片。 流水账的视觉…… 山湖 登顶 开黑 22~31号 本周刚好是博主增重计划的第一个周期，目标一个月增重十斤，你猜怎么着？当然是……完成目标！哇，三分锻炼七分吃，这七分有丶费钱。啊啊啊啊啊，本周主要是对下一个项目进行需求分析与界面设计，还有就是对上个APP项目进行优化和debug。 以前对于移动端设计简直小白，很多都还是web的思维模式，也是因为对移动端设计页面的不了解，后面见多了，会类比，什么样的界面更加美观，什么样的操作有更好的用户体验，这些东西还需要慢慢学习……当然，现在对于界面样式调试的熟练度比半年前进步了，可以也愿意去尝试新属性带来的效果……写代码还是得靠经验啊，踩的坑多了，研究过了对知识点的掌握才会更深刻。代码可以隔一段时间去review一下，你会发现以前写的代码思维跟你现在写代码的思维的区别。对以前糟糕的代码进行重构，减少代码间的耦合性，预留扩展功能，维护起来就会减少很多不必要的麻烦！ 展望 话说写文章真的很费劲，emmmm……要花很多心思……但，十一月，注定是奋斗的月份,我要打鸡血了！！！！Boooooommmmmm~冲鸭！]]></content>
@@ -19,8 +30,8 @@
         <category>诗词</category>
       </categories>
       <tags>
-        <tag>诗</tag>
         <tag>Learn</tag>
+        <tag>诗</tag>
       </tags>
   </entry>
   <entry>
@@ -31,8 +42,8 @@
         <category>随笔</category>
       </categories>
       <tags>
-        <tag>Learn</tag>
         <tag>Hello World</tag>
+        <tag>Learn</tag>
         <tag>买了否冷</tag>
       </tags>
   </entry>

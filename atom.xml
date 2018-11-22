@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2018-11-02T02:08:38.228Z</updated>
+  <updated>2018-11-21T09:36:57.287Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初探和实现websocket心跳重连</title>
+    <link href="https://jwchan1996.github.io/2018/11/21/websocket/"/>
+    <id>https://jwchan1996.github.io/2018/11/21/websocket/</id>
+    <published>2018-11-21T08:04:02.672Z</published>
+    <updated>2018-11-21T09:36:57.287Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;心跳重连缘由&quot;&gt;&lt;a href=&quot;#心跳重连缘由&quot; class=&quot;headerlink&quot; title=&quot;心跳重连缘由&quot;&gt;&lt;/a&gt;心跳重连缘由&lt;/h2&gt;&lt;p style=&quot;text-indent:2em;&quot;&gt;websocket是前后端交互的长连接，前后端也都可能因为一些情况导致连接失效并且相互之间没有反馈提醒。因此为了保证连接的可持续性和稳定性，websocket心跳重连就应运而生。&lt;/p&gt;&lt;p style=&quot;text-indent:2em;&quot;&gt;在使用原生websocket的时候，如果设备网络断开，不会触发websocket的任何事件函数，前端程序无法得知当前连接已经断开。这个时候如果调用websocket.send方法，浏览器就会发现消息发不出去，便会立刻或者一定短时间后（不同浏览器或者浏览器版本可能表现不同）触发onclose函数。&lt;/p&gt;&lt;p style=&quot;text-indent:2em;&quot;&gt;后端websocket服务也可能出现异常，连接断开后前端也并没有收到通知，因此需要&lt;span style=&quot;color:red;&quot;&gt;前端定时发送心跳消息&lt;/span&gt;ping，&lt;span style=&quot;color:red;&quot;&gt;后端收到&lt;/span&gt;ping类型的消息，&lt;span style=&quot;color:red;&quot;&gt;立马返回&lt;/span&gt;pong消息，告知前端连接正常。如果一定时间没收到pong消息，就说明连接不正常，前端便会执行重连。
+    
+    </summary>
+    
+      <category term="前端" scheme="https://jwchan1996.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="JS" scheme="https://jwchan1996.github.io/tags/JS/"/>
+    
+  </entry>
   
   <entry>
     <title>10月份 / Summary</title>
@@ -88,9 +108,9 @@
       <category term="诗词" scheme="https://jwchan1996.github.io/categories/%E8%AF%97%E8%AF%8D/"/>
     
     
-      <category term="诗" scheme="https://jwchan1996.github.io/tags/%E8%AF%97/"/>
-    
       <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
+    
+      <category term="诗" scheme="https://jwchan1996.github.io/tags/%E8%AF%97/"/>
     
   </entry>
   
@@ -111,9 +131,9 @@
       <category term="随笔" scheme="https://jwchan1996.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
-    
       <category term="Hello World" scheme="https://jwchan1996.github.io/tags/Hello-World/"/>
+    
+      <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
     
       <category term="买了否冷" scheme="https://jwchan1996.github.io/tags/%E4%B9%B0%E4%BA%86%E5%90%A6%E5%86%B7/"/>
     
