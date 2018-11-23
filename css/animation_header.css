@@ -17,6 +17,7 @@ svg {
 }
 
 .input {
+  display: none;
   position: absolute;
   z-index: 1;
   top: 20px;

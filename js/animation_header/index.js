@@ -44,17 +44,17 @@ var height = window.innerHeight;
 var textSize = 0;
 var textCenter = 0;
 var letters = [];
-var prompt = ['H', 'e', 'l', 'l', 'o', ' ', 'F', 'r', 'i', 'e', 'n', 'd'];
+var prompt = ['H', 'e', 'l', 'l', 'o', ' ', 'F', 'r', 'i', 'e', 'n', 'd','s'];
 var runPrompt = true;
 
 //定义字符串数组数组
 var prompts = [
   ['W','e','lcome!'],
-  ['欢迎','来到我的博客'],
-  ['这里是JWCHAN记录生活的地方'],
-  ['记录学习笔记、','好玩的东西','以及心血来潮的随笔'],
-  ['乾杯',' []~（￣▽￣）~*'],
-  ['J','W','C','H','A','N','‘','S',' ','B','L','O','G']
+  ['欢迎','来到我的','博客'],
+  ['这里是','JWCHAN','记录生活的地方'],
+  ['记录学习笔记、','好玩的东西','以及心血来潮','的随笔'],
+  ['乾杯',' []~（￣▽','￣）~*'],
+  ['J','W','C','H','A','N',"'",'S',' ','B','L','O','G']
 ]
 
 var resizePage = function resizePage() {
