@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[11月份 / Summary]]></title>
+    <url>%2F2018%2F12%2F01%2Fsummary_201811%2F</url>
+    <content type="text"><![CDATA[#summary_201811_01, #summary_201811_02, #summary_201811_03, #summary_201811_04, #summary_201811_05, #summary_201811_06, #summary_201811_07, #summary_201811_08, #summary_201811_09{ /**设置缩放**/ -webkit-transition: 0.2s all; -moz-transition: 0.2s all; -ms-transition: 0.2s all; transition: 0.2s all; } #summary_201811_01:hover, #summary_201811_02:hover, #summary_201811_03:hover, #summary_201811_04:hover, #summary_201811_05:hover, #summary_201811_06:hover, #summary_201811_07:hover, #summary_201811_08:hover, #summary_201811_09:hover{ -webkit-transform: scale(1.02,1.02); -moz-transform: scale(1.02,1.02); -ms-transform: scale(1.02,1.02); transform: scale(1.02,1.02); box-shadow: 5px 5px 30px #999; cursor: pointer; } 雉青十一，渐入佳境 十一月份，是梳理的月份，是持续学习与渴望coding的。 关于产品 解决了用户需求，实现了产品目标对用户和公司来说是个好产品。而对于产品本身，应该从设计实现的每个细节角度来评判其是不是个好产品。每个功能是不是以最优的用户体验和技术实现方式来完成的。这个考验的是产品、设计、开发人员的功底，协作程度、责任心等各个方面。功能设计方面：是否在协调用户体验和产品目标上找到最佳的平衡点？是否在最合适的场合为用户呈现了他需要的功能和帮助？是否考虑到了用户所以的使用场景？视觉设计方面：画面布局是否美观？颜色、字体是否恰到好处？动效设计是否流畅？用户体验方面：操作流程是否简单易理解？功能的使用是否存在技术门槛？是否考虑到了每个细节上对用户的引导？技术架构实现方面：技术选型是否合理？正常异常分支是否都考虑到位？测试是否全面？性能是否过关？是否考虑到了多平台、多机型的适配？从专业的产品设计和技术视角评判一款产品。每个功能都是完美的操作体验，每个页面都是最美的视觉效果，以最优的代码实现，最低的故障率，最快的响应速度呈现给用户，才是好产品。举个例子，印象笔记这款产品，无论是移动端还是PC端、Mac端，其产品设计实现都非常完美。画面美观、设计独特、交互体验好、运行流畅、就连付费功能展示的时机也是恰到好处，不会让用户厌烦。从产品设计角度来说，印象笔记是款好产品。 (⊙o⊙)…所以如何开发出一款好的产品，作为开发人员，无论是功能交互还是UI设计，还是要修一下的。除了看交互设计书，最重要的就是上手体验了，所以接下来上手了一些小而美、做的精致的APP，看一下别人是怎么设计界面，怎么做功能交互的。一言、MOZIK、留白、落网 这几个算是小而美精致，掘金、慕课网、SegmentFault、人人都是产品经理 这些也是优美。 01~10号 11月份开始，首先开始的是对用户界面的设计，因为设计狮的空缺，只能自己上了。趁着当当搞满减活动，买了几本UI设计跟产品交互的书。这段时间也比较关注产品设计，所以一些设计网站和产品社区也经常逛，比如站酷、我是PM这些，提供了灵感以及开阔眼界和思路。色彩的应用有了点头绪，对于色彩的选择真的很重要： 接下来是接口设计还有维护以前的项目。 包括优化了UI界面以及用户操作，修复隐藏的bug。其中，websocket得到了健壮性的保证。 11~20号 用了四年的笔记本，终于，我重装了系统，如获新生。之前可是打个字，搜狗输入法都卡个很久，更别说打开浏览器，打开编译器，打开虚拟机。其中最主要让我下定决心重装的原因是Photoshop因为内存不够打不开，图都P不了，忍无可忍，终于对它下手了，虽然重装软件配置环境什么的很多。然后，经过一周的资料搜索（工作内容）以及讨论会议。在PPAP群里偶然提起了Flutter之后，我决定花点精力去了解这个东西，之前是知道这个东西的，但是没有深入了解。首先是环境的搭建，刚开始按着教程搭，开发编辑器一个是vscode，另一个是Android Studio。因为刚开始嫌Android Studio太重，所以以为不用装，就出现命令运行不通过。提醒Android Studio未安装，装了之后，又出现其他问题。后面配置好了环境，终于可以跑起来了，60FPS极致丝滑： 很鸡冻有木有(๑&gt;؂&lt;๑） 21~30号 上周的讨论依然没有结果，大方向这些东西没定好（工作内容），接下来继续分析（册子）。发挥想象力，APP项目UI主题色与结构改变之后的界面： 再一次证明了色彩的重要性(๑&gt;؂&lt;๑）。 因为自己计划着手微信小程序项目，PPAP之前是有一个产品雏形的，一直没落实，也没想好底层逻辑，也没进展，后面我就想把这个带起来，就牵了个头，安排任务给他们（虽然技术成长需要时间），算是有了个开始吧，虽然现阶段文档不齐全，技术暂时还对不上。也是为了实践计划，在码云上搭建了项目仓库，开始协作开发。也是由于PPAP年轻人技术不同步,包括前端后端，以及产品逻辑不完善，暂时也没个法子。现在就是搭个项目作为DEMO来作为pratice: 也就差不多这样子啦(๑&gt;؂&lt;๑），12月份也是个需要奋斗的月份，接下来把miniprogram过掉，就可以LU一遍webpack4了，后面就要研究一下Flutter了，期待12月23号的 Google DevFest 2018广州国际嘉年华~]]></content>
+      <categories>
+        <category>生活与工作</category>
+      </categories>
+      <tags>
+        <tag>总结</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[初探和实现websocket心跳重连]]></title>
     <url>%2F2018%2F11%2F21%2Fwebsocket%2F</url>
     <content type="text"><![CDATA[心跳重连缘由websocket是前后端交互的长连接，前后端也都可能因为一些情况导致连接失效并且相互之间没有反馈提醒。因此为了保证连接的可持续性和稳定性，websocket心跳重连就应运而生。在使用原生websocket的时候，如果设备网络断开，不会触发websocket的任何事件函数，前端程序无法得知当前连接已经断开。这个时候如果调用websocket.send方法，浏览器就会发现消息发不出去，便会立刻或者一定短时间后（不同浏览器或者浏览器版本可能表现不同）触发onclose函数。后端websocket服务也可能出现异常，连接断开后前端也并没有收到通知，因此需要前端定时发送心跳消息ping，后端收到ping类型的消息，立马返回pong消息，告知前端连接正常。如果一定时间没收到pong消息，就说明连接不正常，前端便会执行重连。为了解决以上两个问题，以前端作为主动方，定时发送ping消息，用于检测网络和前后端连接问题。一旦发现异常，前端持续执行重连逻辑，直到重连成功。 如何实现在websocket实例化的时候，我们会绑定一些事件：1234567891011121314var ws = new WebSocket(url);ws.onclose = function () &#123; //something&#125;;ws.onerror = function () &#123; //something&#125;; ws.onopen = function () &#123; //something&#125;;ws.onmessage = function (event) &#123; //something&#125; 如果希望websocket连接一直保持，我们会在close或者error上绑定重新连接方法。123456ws.onclose = function () &#123; reconnect();&#125;;ws.onerror = function () &#123; reconnect();&#125;; 这样一般正常情况下失去连接时，触发onclose方法，我们就能执行重连了。 那么针对断网的情况的心跳重连，怎么实现呢。简单的实现：123456789101112131415161718192021var heartCheck = &#123; timeout: 60000,//60ms timeoutObj: null, reset: function()&#123; clearTimeout(this.timeoutObj); this.start(); &#125;, start: function()&#123; this.timeoutObj = setTimeout(function()&#123; ws.send("HeartBeat"); &#125;, this.timeout) &#125;&#125;ws.onopen = function () &#123; heartCheck.start();&#125;;ws.onmessage = function (event) &#123; heartCheck.reset();&#125; 如上代码，heartCheck 的 reset和start方法主要用来控制心跳的定时。 什么条件下执行心跳：当onopen也就是连接上时，我们便开始start计时，如果在定时时间范围内，onmessage获取到了后端的消息，我们就重置倒计时，距离上次从后端获取到消息超过60秒之后，执行心跳检测，看是不是断连了，这个检测时间可以自己根据自身情况设定。 判断前端ws断开(断网但不限于断网的情况）：当心跳检测send方法执行之后，如果当前websocket是断开状态(或者说断网了)，发送超时之后，浏览器的ws会自动触发onclose方法，重连也执行了（onclose方法体绑定了重连事件），如果当前一直是断网状态，重连会2秒（时间是自己代码设置的）执行一次直到网络正常后连接成功。如此一来，我们判断前端主动断开ws的心跳检测就实现了。为什么说是前端主动断开，因为当前这种情况主要是通过前端ws的事件来判断的，后面说后端主动断开的情况。 在测试websocket超时时间，又发现了一些新的问题 在chrome中，如果心跳检测 也就是websocket实例执行send之后，15秒内没发送到另一接收端，onclose便会执行。那么超时时间是15秒。 Firefox在断网7秒之后，直接执行onclose。说明在Firefox中不需要心跳检测便能自动onclose。 同一代码， reconnect方法 在chrome 执行了一次，Firefox执行了两次。当然我们在几处地方（代码逻辑处和websocket事件处）绑定了reconnect()，所以保险起见，我们还是给reconnect()方法加上一个锁，保证只执行一次 目前来看不同的浏览器，有不同的机制，无论浏览器websocket自身会不会在断网情况下执行onclose，加上心跳重连后，已经能保证onclose的正常触发。 判断后端断开：如果后端因为一些情况断开了ws，是可控情况下的话，会下发一个断连的消息通知，之后才会断开，我们便会重连。如果因为一些异常断开了连接，我们是不会感应到的，所以如果我们发送了心跳一定时间之后，后端既没有返回心跳响应消息，前端又没有收到任何其他消息的话，我们就能断定后端主动断开了。一点特别重要的发送心跳到后端，后端收到消息之后必须返回消息，否则超过60秒之后会判定后端主动断开了。再改造下代码: 123456789101112131415161718192021222324252627282930313233var heartCheck = &#123; timeout: 60000,//60ms timeoutObj: null, serverTimeoutObj: null, reset: function()&#123; clearTimeout(this.timeoutObj); clearTimeout(this.serverTimeoutObj); this.start(); &#125;, start: function()&#123; var self = this; this.timeoutObj = setTimeout(function()&#123; ws.send("HeartBeat"); self.serverTimeoutObj = setTimeout(function()&#123; ws.close();//如果onclose会执行reconnect，执行ws.close()就行了.如果直接执行reconnect 会触发onclose导致重连两次 &#125;, self.timeout) &#125;, this.timeout) &#125;,&#125;ws.onopen = function () &#123; heartCheck.start();&#125;;ws.onmessage = function (event) &#123; heartCheck.reset();&#125;ws.onclose = function () &#123; reconnect();&#125;;ws.onerror = function () &#123; reconnect();&#125;; PS： 因为目前这种方式会一直重连如果没连接上或者断连的话，如果有两个设备同时登陆并且会踢另一端下线，一定要发送一个踢下线的消息类型，这边接收到这种类型的消息，逻辑判断后就不再执行reconnect，否则会出现一只相互挤下线的死循环。 此篇博文转自@子暮大诗人，代码已封装为库websocket-heartbeat-js]]></content>
@@ -30,8 +41,8 @@
         <category>诗词</category>
       </categories>
       <tags>
-        <tag>Learn</tag>
         <tag>诗</tag>
+        <tag>Learn</tag>
       </tags>
   </entry>
   <entry>
@@ -42,8 +53,8 @@
         <category>随笔</category>
       </categories>
       <tags>
-        <tag>Hello World</tag>
         <tag>Learn</tag>
+        <tag>Hello World</tag>
         <tag>买了否冷</tag>
       </tags>
   </entry>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2018-11-21T09:36:57.287Z</updated>
+  <updated>2018-12-01T11:46:07.836Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>11月份 / Summary</title>
+    <link href="https://jwchan1996.github.io/2018/12/01/summary_201811/"/>
+    <id>https://jwchan1996.github.io/2018/12/01/summary_201811/</id>
+    <published>2018-12-01T07:59:10.434Z</published>
+    <updated>2018-12-01T11:46:07.836Z</updated>
+    
+    <summary type="html">
+    
+      &lt;style&gt;
+    #summary_201811_01,
+    #summary_201811_02,
+    #summary_201811_03,
+    #summary_201811_04,
+    #summary_201811_05,
+    #summary_201811_06,
+    #summary_201811_07,
+    #summary_201811_08,
+    #summary_201811_09{
+        /**设置缩放**/
+        -webkit-transition: 0.2s all;
+        -moz-transition: 0.2s all;
+        -ms-transition: 0.2s all;
+        transition: 0.2s all;
+    }
+    #summary_201811_01:hover,
+    #summary_201811_02:hover,
+    #summary_201811_03:hover,
+    #summary_201811_04:hover,
+    #summary_201811_05:hover,
+    #summary_201811_06:hover,
+    #summary_201811_07:hover,
+    #summary_201811_08:hover,
+    #summary_201811_09:hover{
+        -webkit-transform: scale(1.02,1.02);
+        -moz-transform: scale(1.02,1.02);
+        -ms-transform: scale(1.02,1.02);
+        transform: scale(1.02,1.02);
+        box-shadow: 5px 5px 30px #999;
+        cursor: pointer;
+    }
+&lt;/style&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;雉青十一，渐入佳境&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;十一月份，是梳理的月份，是持续学习与渴望coding的。
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;关于产品&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p style=&quot;text-indent:2em;&quot;&gt;解决了用户需求，实现了产品目标对用户和公司来说是个好产品。而对于产品本身，应该从设计实现的每个细节角度来评判其是不是个好产品。每个功能是不是以最优的用户体验和技术实现方式来完成的。这个考验的是产品、设计、开发人员的功底，协作程度、责任心等各个方面。&lt;/p&gt;&lt;span style=&quot;color:red;&quot;&gt;功能设计&lt;/span&gt;方面：是否在协调用户体验和产品目标上找到最佳的平衡点？是否在最合适的场合为用户呈现了他需要的功能和帮助？是否考虑到了用户所以的使用场景？&lt;br&gt;&lt;span style=&quot;color:red;&quot;&gt;视觉设计&lt;/span&gt;方面：画面布局是否美观？颜色、字体是否恰到好处？动效设计是否流畅？&lt;br&gt;&lt;span style=&quot;color:red;&quot;&gt;用户体验&lt;/span&gt;方面：操作流程是否简单易理解？功能的使用是否存在技术门槛？是否考虑到了每个细节上对用户的引导？&lt;br&gt;&lt;span style=&quot;color:red;&quot;&gt;技术架构&lt;/span&gt;实现方面：技术选型是否合理？正常异常分支是否都考虑到位？测试是否全面？性能是否过关？是否考虑到了多平台、多机型的适配？&lt;br&gt;
+    
+    </summary>
+    
+      <category term="生活与工作" scheme="https://jwchan1996.github.io/categories/%E7%94%9F%E6%B4%BB%E4%B8%8E%E5%B7%A5%E4%BD%9C/"/>
+    
+    
+      <category term="总结" scheme="https://jwchan1996.github.io/tags/%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
   
   <entry>
     <title>初探和实现websocket心跳重连</title>
@@ -108,9 +169,9 @@
       <category term="诗词" scheme="https://jwchan1996.github.io/categories/%E8%AF%97%E8%AF%8D/"/>
     
     
-      <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
-    
       <category term="诗" scheme="https://jwchan1996.github.io/tags/%E8%AF%97/"/>
+    
+      <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
     
   </entry>
   
@@ -131,9 +192,9 @@
       <category term="随笔" scheme="https://jwchan1996.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="Hello World" scheme="https://jwchan1996.github.io/tags/Hello-World/"/>
-    
       <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
+    
+      <category term="Hello World" scheme="https://jwchan1996.github.io/tags/Hello-World/"/>
     
       <category term="买了否冷" scheme="https://jwchan1996.github.io/tags/%E4%B9%B0%E4%BA%86%E5%90%A6%E5%86%B7/"/>
     

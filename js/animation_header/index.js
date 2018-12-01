@@ -44,18 +44,19 @@ var height = window.innerHeight;
 var textSize = 0;
 var textCenter = 0;
 var letters = [];
-var prompt = ['H', 'e', 'l', 'l', 'o', ' ', 'F', 'r', 'i', 'e', 'n', 'd','s'];
+// var prompt = ['H', 'e', 'l', 'l', 'o', ' ', 'F', 'r', 'i', 'e', 'n', 'd','s'];
+var prompt = ['J','W','C','H','A','N',"'",'S',' ','B','L','O','G'];
 var runPrompt = true;
 
 //定义字符串数组数组
-var prompts = [
-  ['W','e','lcome!'],
-  ['欢迎','来到我的','博客'],
-  ['这里是','JWCHAN','记录生活的地方'],
-  ['记录学习笔记、','好玩的东西','以及心血来潮','的随笔'],
-  ['乾杯',' []~（￣▽','￣）~*'],
-  ['J','W','C','H','A','N',"'",'S',' ','B','L','O','G']
-]
+// var prompts = [
+//   ['W','e','lcome!'],
+//   ['欢迎','来到我的','博客'],
+//   ['这里是','JWCHAN','记录生活的地方'],
+//   ['记录学习笔记、','好玩的东西','以及心血来潮','的随笔'],
+//   ['乾杯',' []~（￣▽','￣）~*'],
+//   ['J','W','C','H','A','N',"'",'S',' ','B','L','O','G']
+// ]
 
 var resizePage = function resizePage() {
   width = window.innerWidth;
@@ -222,15 +223,15 @@ var addPrompt = function addPrompt(i) {
   }, 200);
 };
 
-var addPrompts = function addPrompts(i,arr) {
-  setTimeout(function () {
-    if (arr[i]) {
-      input.value = input.value + arr[i];
-      onInputChange();
-      addPrompts((i + 1),arr);
-    }
-  }, 200);
-};
+// var addPrompts = function addPrompts(i,arr) {
+//   setTimeout(function () {
+//     if (arr[i]) {
+//       input.value = input.value + arr[i];
+//       onInputChange();
+//       addPrompts((i + 1),arr);
+//     }
+//   }, 200);
+// };
 
 resizePage();
 window.addEventListener('resize', resizePage);
@@ -238,28 +239,28 @@ input.addEventListener('keyup', keyup);
 input.focus();
 addPrompt(0);
 
-setTimeout(function(){
-  prompt = "";
-  input.value="";
-  addPrompts(0,prompts[0]);
-},4000);
-setTimeout(function(){
-  input.value="";
-  addPrompts(0,prompts[1]);
-},6000);
-setTimeout(function(){
-  input.value="";
-  addPrompts(0,prompts[2]);
-},8000);
-setTimeout(function(){
-  input.value="";
-  addPrompts(0,prompts[3]);
-},10000);
-setTimeout(function(){
-  input.value="";
-  addPrompts(0,prompts[4]);
-},12000);
-setTimeout(function(){
-  input.value="";
-  addPrompts(0,prompts[5]);
-},13500);
+// setTimeout(function(){
+//   prompt = "";
+//   input.value="";
+//   addPrompts(0,prompts[0]);
+// },4000);
+// setTimeout(function(){
+//   input.value="";
+//   addPrompts(0,prompts[1]);
+// },6000);
+// setTimeout(function(){
+//   input.value="";
+//   addPrompts(0,prompts[2]);
+// },8000);
+// setTimeout(function(){
+//   input.value="";
+//   addPrompts(0,prompts[3]);
+// },10000);
+// setTimeout(function(){
+//   input.value="";
+//   addPrompts(0,prompts[4]);
+// },12000);
+// setTimeout(function(){
+//   input.value="";
+//   addPrompts(0,prompts[5]);
+// },13500);
