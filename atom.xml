@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2018-12-20T02:44:53.400Z</updated>
+  <updated>2018-12-20T11:48:33.204Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://jwchan1996.github.io/2018/12/20/git_command/"/>
     <id>https://jwchan1996.github.io/2018/12/20/git_command/</id>
     <published>2018-12-20T01:52:38.682Z</published>
-    <updated>2018-12-20T02:44:53.400Z</updated>
+    <updated>2018-12-20T11:48:33.204Z</updated>
     
     <summary type="html">
     
@@ -46,8 +46,8 @@
 &lt;blockquote&gt;
 &lt;p&gt;前置条件: 在 github 上新建仓库，本地与远端已实现身份认证&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&quot;第一步-建立-git-仓库-本地&quot;&gt;&lt;a href=&quot;#第一步-建立-git-仓库-本地&quot; class=&quot;headerlink&quot; title=&quot;第一步: 建立 git 仓库(本地)&quot;&gt;&lt;/a&gt;第一步: 建立 git 仓库(本地)&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git init&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;第二步-将项目所有文件添加到待上传列表中&quot;&gt;&lt;a href=&quot;#第二步-将项目所有文件添加到待上传列表中&quot; class=&quot;headerlink&quot; title=&quot;第二步: 将项目所有文件添加到待上传列表中&quot;&gt;&lt;/a&gt;第二步: 将项目所有文件添加到待上传列表中&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git add .&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;第一步-建立-git-仓库-本地&quot;&gt;&lt;a href=&quot;#第一步-建立-git-仓库-本地&quot; class=&quot;headerlink&quot; title=&quot;第一步: 建立 git 仓库(本地)&quot;&gt;&lt;/a&gt;第一步: 建立 git 仓库(本地)&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git init&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;第二步-将项目所有文件添加到待上传列表中&quot;&gt;&lt;a href=&quot;#第二步-将项目所有文件添加到待上传列表中&quot; class=&quot;headerlink&quot; title=&quot;第二步: 将项目所有文件添加到待上传列表中&quot;&gt;&lt;/a&gt;第二步: 将项目所有文件添加到待上传列表中&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git add .&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
