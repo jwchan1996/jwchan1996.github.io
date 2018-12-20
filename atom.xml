@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2018-12-01T11:46:07.836Z</updated>
+  <updated>2018-12-20T02:44:53.400Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -17,11 +17,53 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Git 实现代码托管</title>
+    <link href="https://jwchan1996.github.io/2018/12/20/git_command/"/>
+    <id>https://jwchan1996.github.io/2018/12/20/git_command/</id>
+    <published>2018-12-20T01:52:38.682Z</published>
+    <updated>2018-12-20T02:44:53.400Z</updated>
+    
+    <summary type="html">
+    
+      &lt;style&gt;
+    #git_command{
+        /**设置缩放**/
+        -webkit-transition: 0.2s all;
+        -moz-transition: 0.2s all;
+        -ms-transition: 0.2s all;
+        transition: 0.2s all;
+    }
+    #git_command:hover{
+        -webkit-transform: scale(1.02,1.02);
+        -moz-transform: scale(1.02,1.02);
+        -ms-transform: scale(1.02,1.02);
+        transform: scale(1.02,1.02);
+        box-shadow: 5px 5px 30px #999;
+        cursor: pointer;
+    }
+&lt;/style&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;前置条件: 在 github 上新建仓库，本地与远端已实现身份认证&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;第一步-建立-git-仓库-本地&quot;&gt;&lt;a href=&quot;#第一步-建立-git-仓库-本地&quot; class=&quot;headerlink&quot; title=&quot;第一步: 建立 git 仓库(本地)&quot;&gt;&lt;/a&gt;第一步: 建立 git 仓库(本地)&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git init&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;第二步-将项目所有文件添加到待上传列表中&quot;&gt;&lt;a href=&quot;#第二步-将项目所有文件添加到待上传列表中&quot; class=&quot;headerlink&quot; title=&quot;第二步: 将项目所有文件添加到待上传列表中&quot;&gt;&lt;/a&gt;第二步: 将项目所有文件添加到待上传列表中&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git add .&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Git" scheme="https://jwchan1996.github.io/categories/Git/"/>
+    
+    
+      <category term="git" scheme="https://jwchan1996.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
     <title>11月份 / Summary</title>
     <link href="https://jwchan1996.github.io/2018/12/01/summary_201811/"/>
     <id>https://jwchan1996.github.io/2018/12/01/summary_201811/</id>
     <published>2018-12-01T07:59:10.434Z</published>
-    <updated>2018-12-01T11:46:07.836Z</updated>
+    <updated>2018-12-20T02:44:14.185Z</updated>
     
     <summary type="html">
     
@@ -66,7 +108,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;关于产品&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p style=&quot;text-indent:2em;&quot;&gt;解决了用户需求，实现了产品目标对用户和公司来说是个好产品。而对于产品本身，应该从设计实现的每个细节角度来评判其是不是个好产品。每个功能是不是以最优的用户体验和技术实现方式来完成的。这个考验的是产品、设计、开发人员的功底，协作程度、责任心等各个方面。&lt;/p&gt;&lt;span style=&quot;color:red;&quot;&gt;功能设计&lt;/span&gt;方面：是否在协调用户体验和产品目标上找到最佳的平衡点？是否在最合适的场合为用户呈现了他需要的功能和帮助？是否考虑到了用户所以的使用场景？&lt;br&gt;&lt;span style=&quot;color:red;&quot;&gt;视觉设计&lt;/span&gt;方面：画面布局是否美观？颜色、字体是否恰到好处？动效设计是否流畅？&lt;br&gt;&lt;span style=&quot;color:red;&quot;&gt;用户体验&lt;/span&gt;方面：操作流程是否简单易理解？功能的使用是否存在技术门槛？是否考虑到了每个细节上对用户的引导？&lt;br&gt;&lt;span style=&quot;color:red;&quot;&gt;技术架构&lt;/span&gt;实现方面：技术选型是否合理？正常异常分支是否都考虑到位？测试是否全面？性能是否过关？是否考虑到了多平台、多机型的适配？&lt;br&gt;
+&lt;p style=&quot;text-indent:2em;&quot;&gt;解决了用户需求，实现了产品目标对用户和公司来说是个好产品。而对于产品本身，应该从设计实现的每个细节角度来评判其是不是个好产品。每个功能是不是以最优的用户体验和技术实现方式来完成的。这个考验的是产品、设计、开发人员的功底，协作程度、责任心等各个方面。&lt;/p&gt;&lt;span style=&quot;color:red;&quot;&gt;功能设计&lt;/span&gt;方面：是否在协调用户体验和产品目标上找到最佳的平衡点？是否在最合适的场合为用户呈现了他需要的功能和帮助？是否考虑到了用户所以的使用场景？&lt;br&gt;
     
     </summary>
     
