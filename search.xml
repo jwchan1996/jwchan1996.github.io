@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Git 实现代码托管]]></title>
     <url>%2F2018%2F12%2F20%2Fgit_command%2F</url>
-    <content type="text"><![CDATA[#git_command{ /**设置缩放**/ -webkit-transition: 0.2s all; -moz-transition: 0.2s all; -ms-transition: 0.2s all; transition: 0.2s all; } #git_command:hover{ -webkit-transform: scale(1.02,1.02); -moz-transform: scale(1.02,1.02); -ms-transform: scale(1.02,1.02); transform: scale(1.02,1.02); box-shadow: 5px 5px 30px #999; cursor: pointer; } 前置条件: 在 github 上新建仓库，本地与远端已实现身份认证 第一步: 建立 git 仓库(本地)1git init 第二步: 将项目所有文件添加到待上传列表中1git add . 第三步: 将 add 的文件 commit 到本地仓库(并添加注释)1git commit -m &quot;注释语句&quot; 第四步: 将本地仓库关联到 github 远程仓库1git remote add origin https://github.com/jwchan1996/pizza-app.git #仓库地址 第五步: 将代码上传到 github 远程仓库(推送)1git push -u origin master 附: 多人协作每次同步代码需要先将代码拉下来(拉取) 1git pull -rebase origin master 然后再将本地仓库代码上传1git push -u origin master 至此，github 代码托管就完成啦(๑&gt;؂&lt;๑）]]></content>
+    <content type="text"><![CDATA[#git_command{ /**设置缩放**/ -webkit-transition: 0.2s all; -moz-transition: 0.2s all; -ms-transition: 0.2s all; transition: 0.2s all; } #git_command:hover{ -webkit-transform: scale(1.02,1.02); -moz-transform: scale(1.02,1.02); -ms-transform: scale(1.02,1.02); transform: scale(1.02,1.02); box-shadow: 5px 5px 30px #999; cursor: pointer; } 前置条件: 在 github 上新建仓库，本地与远端已实现身份认证 🔶 第一步: 建立 git 仓库(本地)1git init 🔶 第二步: 将项目所有文件添加到待上传列表中1git add . 🔶 第三步: 将 add 的文件 commit 到本地仓库(并添加注释)1git commit -m &quot;注释语句&quot; 🔶 第四步: 将本地仓库关联到 github 远程仓库1git remote add origin https://github.com/jwchan1996/pizza-app.git #仓库地址 🔶 第五步: 将代码上传到 github 远程仓库(推送)12# 使用 -u 代表指定默认主机，这样以后就可以不加任何参数使用 git pull 与 git pushgit push -u origin master 🌖 注意: 多人协作每次同步代码需要先将代码拉下来(拉取) 👉 首先将代码提交到本地仓库12git add .git commit -m &quot;注释语句&quot; 👉 将远程代码拉取下来1git pull origin master 👉 然后再将本地仓库代码上传1git push origin master 至此，github 代码托管就完成啦(๑&gt;؂&lt;๑） 🌘 附: Git基本常用命令12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061mkdir XX #创建一个空目录 XX指目录名pwd #显示当前目录的路径。git init #把当前的目录变成可以管理的git仓库，生成隐藏.git文件。git add XX #把xx文件添加到暂存区去。git commit –m “XX” #提交文件 –m 后面的是注释。git status #查看仓库状态git diff XX #查看XX文件修改了那些内容git log #查看历史记录git reset --hard HEAD^ 或者 git reset --hard HEAD~ #回退到上一个版本git reset –hard HEAD~100 #回退到100个版本cat XX #查看XX文件内容git reflog #查看历史记录的版本号idgit checkout -- XX #把XX文件在工作区的修改全部撤销。git rm XX #删除XX文件git remote add origin https://github.com/jwchan1996/pizza-app.git #关联一个远程库git push –u(第一次要用-u 以后不需要) origin master #把当前master分支推送到远程库git clone https://github.com/jwchan1996/pizza-app.git #从远程库中克隆git checkout –b dev #创建dev分支 并切换到dev分支上git branch #查看当前所有的分支git checkout master #切换回master分支git merge dev #在当前的分支上合并dev分支git branch –d dev #删除dev分支git branch name #创建分支git stash #把当前的工作隐藏起来 等以后恢复现场后继续工作git stash list #查看所有被隐藏的文件列表git stash apply #恢复被隐藏的文件，但是内容不删除git stash drop #删除文件git stash pop #恢复文件的同时 也删除文件git remote #查看远程库的信息git remote –v #查看远程库的详细信息git push origin master #Git会把master分支推送到远程库对应的远程分支上 完毕！]]></content>
       <categories>
         <category>Git</category>
       </categories>
@@ -52,8 +52,8 @@
         <category>诗词</category>
       </categories>
       <tags>
-        <tag>Learn</tag>
         <tag>诗</tag>
+        <tag>Learn</tag>
       </tags>
   </entry>
   <entry>
@@ -64,8 +64,8 @@
         <category>随笔</category>
       </categories>
       <tags>
-        <tag>Hello World</tag>
         <tag>Learn</tag>
+        <tag>Hello World</tag>
         <tag>买了否冷</tag>
       </tags>
   </entry>
