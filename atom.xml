@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2018-12-22T03:57:46.569Z</updated>
+  <updated>2018-12-25T12:52:52.007Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于 axios post 请求的坑</title>
+    <link href="https://jwchan1996.github.io/2018/12/25/axios_post/"/>
+    <id>https://jwchan1996.github.io/2018/12/25/axios_post/</id>
+    <published>2018-12-25T11:47:14.481Z</published>
+    <updated>2018-12-25T12:52:52.007Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Axios&quot;&gt;&lt;a href=&quot;#Axios&quot; class=&quot;headerlink&quot; title=&quot;Axios&quot;&gt;&lt;/a&gt;Axios&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;踩坑&quot;&gt;&lt;a href=&quot;#踩坑&quot; class=&quot;headerlink&quot; title=&quot;踩坑&quot;&gt;&lt;/a&gt;踩坑&lt;/h1&gt;&lt;p&gt;按照 axios 官网例子使用 axios.post 发起请求传递 json，后台接受到的数据为空&lt;br&gt;浏览器报错，然后使用 restlet 请求却可以正常返回数据&lt;br&gt;
+    
+    </summary>
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/tags/vue/"/>
+    
+      <category term="axios" scheme="https://jwchan1996.github.io/tags/axios/"/>
+    
+  </entry>
   
   <entry>
     <title>Git 实现代码托管</title>
