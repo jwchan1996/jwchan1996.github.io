@@ -19,14 +19,14 @@
     transform: scale(1.02,1.02); */
     box-shadow: 0 0 30px #999;
     /* animation */
-    animation: avatar 20s ease-in-out 1;
+    animation: avatar 50s ease-in-out 1;
 }
 @keyframes avatar{
     0%{
         transform: rotate(0) scale(1)
     }
     100%{
-        transform: rotate(144000deg) scale(5)
+        transform: rotate(432000deg) scale(6)
     }
 }
 .img_cap{
