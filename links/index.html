@@ -121,7 +121,7 @@
 <meta property="og:image" content="https://secure.gravatar.com/avatar/b7f56e9db1e5a08163a5925dfa9f90b3?s=55&r=G&d=">
 <meta property="og:image" content="https://jwchan.cn/images/avatar.jpg">
 <meta property="og:image" content="https://www.timelessq.com/public/images/avatar.jpg">
-<meta property="og:updated_time" content="2018-12-20T11:43:20.875Z">
+<meta property="og:updated_time" content="2018-12-28T02:20:55.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我爱盐酥鸡">
 <meta name="twitter:description" content=".container-links{         display: flex;         flex-direction: row;         align-items: center;         flex-wrap: wrap;         padding: 0;         margin: 0;     }     .container-links-item{">
@@ -469,9 +469,9 @@
     }
     .container-links-item{
         width: 50%;
-        display: flex;
+        /* display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: center; */
         border-radius: 5px;
         cursor: pointer;
         text-decoration: none;
@@ -487,22 +487,42 @@
         border-width: 0 !important;
         border-radius: 50%;
         margin: 0 !important;
-        padding: 20px !important;
+        padding: 14px 14px !important;
+        float: left;
+    }
+    .links-item-avatar:hover{
+        animation: avatar 50s ease-in-out 1;
     }
     .links-item-about{
         position: relative;
+        margin-top: 10px;
+        margin-left: 88px;
+        padding-right: 10px;
     }
     .links-item-username{
         margin: 0;
         color: #515151;
-        padding-top: 10px; 
+        /* padding-top: 10px;  */
+        padding-bottom: 6px; 
+        font-size: 16px;
         display: block;
         font-weight: bold;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .links-item-intro{
         margin: 0;
         font-size: 14px;
         color: #515151;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    @media screen and (max-width: 440px) {
+        .main-inner{
+            padding: 40px 0 100px;
+        }
     }
 </style>
 

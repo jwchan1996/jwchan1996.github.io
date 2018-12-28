@@ -1933,7 +1933,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #75b466;
+  background: #29c993;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2580,10 +2580,15 @@ ul.breadcrumb li+li:last-child {
   }
 }
 .main-inner {
-  padding: 40px 80px;
+  padding: 40px 80px 100px;
   background: #fff;
   box-shadow: 0 0 30px #ddd;
   border-radius: 0 0 10px 10px;
+}
+@media screen and (max-width: 440px) {
+  .main-inner {
+    padding: 40px 20px 100px;
+  }
 }
 .footer-inner {
   background: #fff;
@@ -2693,4 +2698,7 @@ body {
   left: 0;
   z-index: -2;
   opacity: 1;
+}
+.posts-expand {
+  padding-top: 0;
 }
