@@ -6,15 +6,35 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2018-12-26T01:17:45.561Z</updated>
+  <updated>2018-12-29T01:12:53.596Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
-    <name>JwChan</name>
+    <name>Jwchan</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>v-bind 动态拼接参数</title>
+    <link href="https://jwchan1996.github.io/2018/12/29/vue_v-bind/"/>
+    <id>https://jwchan1996.github.io/2018/12/29/vue_v-bind/</id>
+    <published>2018-12-29T00:47:14.655Z</published>
+    <updated>2018-12-29T01:12:53.596Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;#场景&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688;&quot;&gt;#&lt;/span&gt;场景&lt;/h3&gt;&lt;p&gt;在业务开发中常常&lt;br&gt;需要对元素属性进行动态绑定&lt;br&gt;比如 &lt;code&gt;v-for&lt;/code&gt; 下遍历 &lt;code&gt;img&lt;/code&gt; 绑定 &lt;code&gt;src&lt;/code&gt; 地址&lt;br&gt;传统方法用的是拼接 &lt;code&gt;dom&lt;/code&gt; 元素字符串，再把字符串&lt;br&gt;插入到文档流里，对于使用 &lt;code&gt;vue&lt;/code&gt;，我们不必再频繁地处理 &lt;code&gt;dom&lt;/code&gt;&lt;br&gt;我们可以使用 &lt;code&gt;v-bind&lt;/code&gt; 来处理它们：只需要通过表达式计算出字符串结果即可。不过，字符串拼接麻烦且易错，需要处理妥当。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>关于 axios post 请求的坑</title>
@@ -236,9 +256,9 @@
       <category term="诗词" scheme="https://jwchan1996.github.io/categories/%E8%AF%97%E8%AF%8D/"/>
     
     
-      <category term="诗" scheme="https://jwchan1996.github.io/tags/%E8%AF%97/"/>
-    
       <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
+    
+      <category term="诗" scheme="https://jwchan1996.github.io/tags/%E8%AF%97/"/>
     
   </entry>
   
@@ -259,9 +279,9 @@
       <category term="随笔" scheme="https://jwchan1996.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
-    
       <category term="Hello World" scheme="https://jwchan1996.github.io/tags/Hello-World/"/>
+    
+      <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
     
       <category term="买了否冷" scheme="https://jwchan1996.github.io/tags/%E4%B9%B0%E4%BA%86%E5%90%A6%E5%86%B7/"/>
     
