@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Google DevFest 2018]]></title>
+    <url>%2F2019%2F01%2F02%2FGDG2018%2F</url>
+    <content type="text"><![CDATA[#GDG2018_01, #GDG2018_02, #GDG2018_03, #GDG2018_04, #GDG2018_05, #GDG2018_06, #GDG2018_07, #GDG2018_08, #GDG2018_09, #GDG2018_10{ border: 0 !important; /**设置缩放**/ -webkit-transition: 0.2s all; -moz-transition: 0.2s all; -ms-transition: 0.2s all; transition: 0.2s all; } #GDG2018_01:hover, #GDG2018_02:hover, #GDG2018_03:hover, #GDG2018_04:hover, #GDG2018_05:hover, #GDG2018_06:hover, #GDG2018_07:hover, #GDG2018_08:hover, #GDG2018_09:hover, #GDG2018_10:hover{ -webkit-transform: scale(1.02,1.02); -moz-transform: scale(1.02,1.02); -ms-transform: scale(1.02,1.02); transform: scale(1.02,1.02); box-shadow: 5px 5px 30px #999; cursor: pointer; } #什么是 GDGGDG 是 Google Developer Groups (谷歌开发者社区)的缩写，也是现在项目的正式名称。GDG 是谷歌开发者部门发起的开发者社区全球项目，是面向对 Google 和开源、开放技术感兴趣的公益性开发者社区，内容涵盖 Web、Android 和其它 Google API 等。目前在全球已有500多个 GDG 社区，中国已有超过 20个 GDG 社区。GDG 主要面向开发者、设计师、创业者、大学生等软件从业人员，是一个开放和自由的社区。 #关于活动12月23号的 Google DevFest 2018广州国际嘉年华，是我第一次去参加的开发者大会，因为之前有关注 Flutter 技术，所以在得到 GDG 在广州举办活动的消息后，就赶紧报了个名，主要关注 Flutter 技术相关，当然，大会议程上的其他相关分享也是相当令人激动的。当天还有现场的 code lab，有 Flutter 和 Tensorflow 这两个，现场编程交流，代码实验室，完美诠释talk is cheap，show me your code。这次来的主要目的是拓展视野，了解前沿技术。本文作个记录，希望下一年可以参加 code lab？]]></content>
+      <categories>
+        <category>活动</category>
+      </categories>
+      <tags>
+        <tag>Google</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[v-bind 动态拼接参数]]></title>
     <url>%2F2018%2F12%2F29%2Fvue_v-bind%2F</url>
     <content type="text"><![CDATA[#场景在业务开发中常常需要对元素属性进行动态绑定比如 v-for 下遍历 img 绑定 src 地址传统方法用的是拼接 dom 元素字符串，再把字符串插入到文档流里，对于使用 vue，我们不必再频繁地处理 dom我们可以使用 v-bind 来处理它们：只需要通过表达式计算出字符串结果即可。不过，字符串拼接麻烦且易错，需要处理妥当。 #示例动态拼接，以 v-for 为例： &lt;div id=&quot;app&quot;&gt; &lt;div v-for=&quot;(item,index) in items&quot; :key=&quot;index&quot;&gt; &lt;img :src=&quot;&apos;http://image.baidu.com&apos;+item.thumbnail&quot; alt=&quot;图片&quot;&gt; &lt;/div&gt; &lt;a :href=&quot;&apos;http://user.baidu.com?uid=&apos;+uid&quot;&gt;跳转用户界面的链接&lt;/a&gt; &lt;a v-bind:href=&quot;url&quot;&gt;github&lt;/a&gt; &lt;/div&gt; &lt;script&gt; new vue({ el: &apos;#app&apos;, data: { items: [{ name: &apos;baidu&apos;, thumbnail: &apos;/public/123456.jpg&apos; }, { name: &apos;github&apos;, thumbnail: &apos;/public/234567.jpg&apos; }], uid: 123, url: &apos;https://github.com&apos; } }) &lt;/dcript&gt; 🍳 以上示例是动态拼接字符串的正确方式: 是 v-bind 的缩写，指令可以接一个&quot;参数&quot;，这个&quot;参数&quot;在指令后面以冒号表示，如 &lt;a v-bind:href=&quot;url&quot;&gt;github&lt;/a&gt; 的 url 就是参数，与 vue 实例数据绑定。 🍭 谨记：v-bind 属性内必须为合法的 JavaScript 表达式无论是拼接字符串还是三目运算表达式，返回的都是合法 JavaScript 表达式返回的结果。v-bind 表达式结果的类型除了字符串之外，还可以是对象或数组。 🐯 点击查看 @v-bind 更多特性与用法 yo ~ .img_v-bind{ margin-top: 40px !important; transition: 0.2s all; } .img_v-bind:hover{ transform: scale(1.02,1.02); box-shadow: 5px 5px 30px #999; cursor: pointer; }]]></content>
@@ -75,8 +86,8 @@
         <category>诗词</category>
       </categories>
       <tags>
-        <tag>Learn</tag>
         <tag>诗</tag>
+        <tag>Learn</tag>
       </tags>
   </entry>
   <entry>
@@ -87,8 +98,8 @@
         <category>随笔</category>
       </categories>
       <tags>
-        <tag>Hello World</tag>
         <tag>Learn</tag>
+        <tag>Hello World</tag>
         <tag>买了否冷</tag>
       </tags>
   </entry>

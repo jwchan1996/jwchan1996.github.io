@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2018-12-29T01:12:53.596Z</updated>
+  <updated>2019-01-02T01:55:35.542Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Google DevFest 2018</title>
+    <link href="https://jwchan1996.github.io/2019/01/02/GDG2018/"/>
+    <id>https://jwchan1996.github.io/2019/01/02/GDG2018/</id>
+    <published>2019-01-02T01:40:35.100Z</published>
+    <updated>2019-01-02T01:55:35.542Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;style&gt;
+    #GDG2018_01,
+    #GDG2018_02,
+    #GDG2018_03,
+    #GDG2018_04,
+    #GDG2018_05,
+    #GDG2018_06,
+    #GDG2018_07,
+    #GDG2018_
+      
+    
+    </summary>
+    
+      <category term="活动" scheme="https://jwchan1996.github.io/categories/%E6%B4%BB%E5%8A%A8/"/>
+    
+    
+      <category term="Google" scheme="https://jwchan1996.github.io/tags/Google/"/>
+    
+  </entry>
   
   <entry>
     <title>v-bind 动态拼接参数</title>
@@ -256,9 +287,9 @@
       <category term="诗词" scheme="https://jwchan1996.github.io/categories/%E8%AF%97%E8%AF%8D/"/>
     
     
-      <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
-    
       <category term="诗" scheme="https://jwchan1996.github.io/tags/%E8%AF%97/"/>
+    
+      <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
     
   </entry>
   
@@ -279,9 +310,9 @@
       <category term="随笔" scheme="https://jwchan1996.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="Hello World" scheme="https://jwchan1996.github.io/tags/Hello-World/"/>
-    
       <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
+    
+      <category term="Hello World" scheme="https://jwchan1996.github.io/tags/Hello-World/"/>
     
       <category term="买了否冷" scheme="https://jwchan1996.github.io/tags/%E4%B9%B0%E4%BA%86%E5%90%A6%E5%86%B7/"/>
     
