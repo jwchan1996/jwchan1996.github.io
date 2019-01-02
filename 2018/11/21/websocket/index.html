@@ -304,7 +304,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">9</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">10</span></a>
   </li>
         
         
@@ -389,7 +389,13 @@
 
 
 
-</div>
+
+
+<script>
+    //对头部背景图片进行替换
+    var imagesArr = ["header.png","header02.png","header03.png","header04.png","header05.png","header06.png","header07.png","header08.png"]
+    document.querySelector(".header").style.backgroundImage = "url(/images/background_"+imagesArr[Math.floor(Math.random()*8)]+")"
+</script></div>
     </header>
 
     
@@ -698,7 +704,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -854,7 +860,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">16k</span>
+    <span title="站点总字数">23k</span>
   
 
   
@@ -865,7 +871,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">15 分钟</span>
+    <span title="站点阅读时长">21 分钟</span>
   
 </div>
 
@@ -1667,6 +1673,7 @@
             lrcType: 2,
             fixed: true,
             order: 'random',
+            listFolded: true,
             //音乐数据json数组
             audio: [{
                 name: 'いつも何度でも',

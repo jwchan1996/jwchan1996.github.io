@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-01-02T01:57:45.133Z</updated>
+  <updated>2019-01-02T06:36:27.552Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue 实现 data 数据与视图更新</title>
+    <link href="https://jwchan1996.github.io/2019/01/02/vue_data_update/"/>
+    <id>https://jwchan1996.github.io/2019/01/02/vue_data_update/</id>
+    <published>2019-01-02T06:05:09.081Z</published>
+    <updated>2019-01-02T06:36:27.552Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;#场景&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688;&quot;&gt;#&lt;/span&gt;场景&lt;/h3&gt;&lt;p&gt;&lt;code&gt;vue&lt;/code&gt; 数据 &lt;code&gt;data&lt;/code&gt; 更新了，但是视图没有更新&lt;br&gt;其中缘由在于对 &lt;code&gt;vue&lt;/code&gt; 的响应式原理的理解&lt;/p&gt;
+&lt;h3 id=&quot;追踪变化&quot;&gt;&lt;a href=&quot;#追踪变化&quot; class=&quot;headerlink&quot; title=&quot;#追踪变化&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688;&quot;&gt;#&lt;/span&gt;追踪变化&lt;/h3&gt;&lt;p&gt;把一个普通的 &lt;code&gt;JavaScript&lt;/code&gt; 对象传给 &lt;code&gt;Vue&lt;/code&gt; 实例的 data 选项，&lt;code&gt;Vue&lt;/code&gt; 将遍历此对象所有的属性，并使用 &lt;code&gt;Object.defineProperty&lt;/code&gt; 把这些属性全部转为 &lt;code&gt;getter/setter&lt;/code&gt;。&lt;br&gt;这些 &lt;code&gt;getter/setter&lt;/code&gt; 对用户来说是不可见的，但是在内部它们让 &lt;code&gt;Vue&lt;/code&gt; 追踪依赖，在属性被访问和修改时通知变化。
+    
+    </summary>
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>Google DevFest 2018</title>
