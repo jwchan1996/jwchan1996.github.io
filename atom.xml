@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-01-02T01:55:35.542Z</updated>
+  <updated>2019-01-02T01:57:45.133Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -21,13 +21,11 @@
     <link href="https://jwchan1996.github.io/2019/01/02/GDG2018/"/>
     <id>https://jwchan1996.github.io/2019/01/02/GDG2018/</id>
     <published>2019-01-02T01:40:35.100Z</published>
-    <updated>2019-01-02T01:55:35.542Z</updated>
+    <updated>2019-01-02T01:57:45.133Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;style&gt;
+      &lt;style&gt;
     #GDG2018_01,
     #GDG2018_02,
     #GDG2018_03,
@@ -35,8 +33,37 @@
     #GDG2018_05,
     #GDG2018_06,
     #GDG2018_07,
-    #GDG2018_
-      
+    #GDG2018_08,
+    #GDG2018_09,
+    #GDG2018_10{
+        border: 0 !important;
+        /**设置缩放**/
+        -webkit-transition: 0.2s all;
+        -moz-transition: 0.2s all;
+        -ms-transition: 0.2s all;
+        transition: 0.2s all;
+    }
+    #GDG2018_01:hover,
+    #GDG2018_02:hover,
+    #GDG2018_03:hover,
+    #GDG2018_04:hover,
+    #GDG2018_05:hover,
+    #GDG2018_06:hover,
+    #GDG2018_07:hover,
+    #GDG2018_08:hover,
+    #GDG2018_09:hover,
+    #GDG2018_10:hover{
+        -webkit-transform: scale(1.02,1.02);
+        -moz-transform: scale(1.02,1.02);
+        -ms-transform: scale(1.02,1.02);
+        transform: scale(1.02,1.02);
+        box-shadow: 5px 5px 30px #999;
+        cursor: pointer;
+    }
+&lt;/style&gt;
+
+&lt;p&gt;&lt;img id=&quot;GDG2018_01&quot; src=&quot;http://chinagdg.org/wp-content/uploads/2015/07/logo_lockup_gdg_horizontal-e1539944886259-600x247.png&quot;&gt;  &lt;/p&gt;
+&lt;h3 id=&quot;什么是-GDG&quot;&gt;&lt;a href=&quot;#什么是-GDG&quot; class=&quot;headerlink&quot; title=&quot;#什么是 GDG&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688;&quot;&gt;#&lt;/span&gt;什么是 GDG&lt;/h3&gt;&lt;p&gt;&lt;code&gt;GDG&lt;/code&gt; 是 &lt;code&gt;Google Developer Groups&lt;/code&gt; (谷歌开发者社区)的缩写，也是现在项目的正式名称。&lt;code&gt;GDG&lt;/code&gt; 是谷歌开发者部门发起的开发者社区全球项目，是面向对 &lt;code&gt;Google&lt;/code&gt; 和开源、开放技术感兴趣的公益性开发者社区，内容涵盖 &lt;code&gt;Web&lt;/code&gt;、&lt;code&gt;Android&lt;/code&gt; 和其它 &lt;code&gt;Google API&lt;/code&gt; 等。目前在全球已有500多个 &lt;code&gt;GDG&lt;/code&gt; 社区，中国已有超过 20个 &lt;code&gt;GDG&lt;/code&gt; 社区。&lt;code&gt;GDG&lt;/code&gt; 主要面向开发者、设计师、创业者、大学生等软件从业人员，是一个开放和自由的社区。&lt;br&gt;
     
     </summary>
     
@@ -287,9 +314,9 @@
       <category term="诗词" scheme="https://jwchan1996.github.io/categories/%E8%AF%97%E8%AF%8D/"/>
     
     
-      <category term="诗" scheme="https://jwchan1996.github.io/tags/%E8%AF%97/"/>
-    
       <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
+    
+      <category term="诗" scheme="https://jwchan1996.github.io/tags/%E8%AF%97/"/>
     
   </entry>
   
@@ -310,9 +337,9 @@
       <category term="随笔" scheme="https://jwchan1996.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
-    
       <category term="Hello World" scheme="https://jwchan1996.github.io/tags/Hello-World/"/>
+    
+      <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
     
       <category term="买了否冷" scheme="https://jwchan1996.github.io/tags/%E4%B9%B0%E4%BA%86%E5%90%A6%E5%86%B7/"/>
     
