@@ -34,7 +34,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[关于 axios post 请求的坑]]></title>
+    <title><![CDATA[关于 Axios Post 请求的坑]]></title>
     <url>%2F2018%2F12%2F25%2Faxios_post%2F</url>
     <content type="text"><![CDATA[Axios Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。 踩坑按照 axios 官网例子使用 axios.post 发起请求传递 json，后台接受到的数据为空浏览器报错，然后使用 restlet 请求却可以正常返回数据经过一波操作之后，最后发现是因为 axios 的默认提交方式是 application/json 这种而后台接口的处理的是常见的 post 编码 application/x-www-form-urlencoded 这种后台接收到的是经过序列化后的 json 字符串，所以没办法读取值出来所以，问题找出来了，就可以解决问题了 解决既然我们知道 axios post 方法默认使用 application/json 格式编码数据，那么解决方案就有两种，一是后台改变接收参数的方法，另一种则是将 axios post 方法的编码格式修改为 application/x-www-form-urlencoded，这样就不需要后台做什么修改了。 第一种 后台解析对接收到的参数进行解析，生成 json 对象再对 json 对象进行处理以 php 为例123$content = $GLOBALS[&quot;HTTP_RAW_POST_DATA&quot;]; #获取原始数据$re = json_decode($content); #生成json对象...... 这种方法最为简便，不过……如果接口已经写好了，且接口很多，要改的话，还是要花点时间…… 第二种 前端处理数据在查阅文档之后，发现 axios 允许在向服务器发送前，修改请求数据增加 transformRequest 方法参数：1234567891011121314&#123; url: &apos;/user&apos;, // url 是用于请求的服务器 URL method: &apos;post&apos;, // method 是创建请求时使用的方法,默认是 get // `transformRequest` 允许在向服务器发送前，修改请求数据 // 只能用在 &apos;PUT&apos;, &apos;POST&apos; 和 &apos;PATCH&apos; 这几个请求方法 // 后面数组中的函数必须返回一个字符串，或 ArrayBuffer，或 Stream transformRequest: [function (data) &#123; // 对 data 进行任意转换处理 return data; &#125;],], 下面是处理代码：12345678910&#123; //对提交的数据格式进行转换 transformRequest: [function (data) &#123; let ret = &apos;&apos; for (let it in data) &#123; ret += encodeURIComponent(it) + &apos;=&apos; + encodeURIComponent(data[it]) + &apos;&amp;&apos; &#125; return ret &#125;],&#125; 完整代码是：123456789101112131415161718axios(&#123; method: &apos;post&apos;, url: &apos;https://api.github.com/user&apos;, #接口地址，仅参考 data: &#123; action: &quot;getUserMessage&quot;, userId: 100 &#125;, //对提交的数据格式进行转换（post方法的坑） transformRequest: [function (data) &#123; let ret = &apos;&apos; for (let it in data) &#123; ret += encodeURIComponent(it) + &apos;=&apos; + encodeURIComponent(data[it]) + &apos;&amp;&apos; &#125; return ret &#125;]&#125;).then( response =&gt; &#123; console.log(response.data)&#125;) 🎄然后就可以正常获取数据了~最后，圣诞节快乐🎅~ 附：当参数是 JSON 字符串时，默认的 Content-Type 是 application/x-www-form-urlencoded12345678910axios.post(&apos;/user&apos;, JSON.stringify(&#123; firstName: &apos;Fred&apos;, lastName: &apos;Flintstone&apos; &#125;)) .then(function (response) &#123; console.log(response); &#125;) .catch(function (error) &#123; console.log(error);&#125;); 此时传递的参数是 Form Data 格式 key : value1&#123;&quot;firstName&quot;:&quot;Fred&quot;,&quot;lastName&quot;:&quot;Flintstone&quot;&#125;: 如上。这是一个无效的数据，key为 {&quot;firstName&quot;:&quot;Fred&quot;,&quot;lastName&quot;:&quot;Flintstone&quot;}，value 为空。 🎅🎅🎅🎅🎅🎅🎅🎅🎅🎅🎅🎅🎅🎅🎅🎅🎅🎅🎅🎅🎅🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄]]></content>
       <categories>
@@ -97,8 +97,8 @@
         <category>诗词</category>
       </categories>
       <tags>
-        <tag>Learn</tag>
         <tag>诗</tag>
+        <tag>Learn</tag>
       </tags>
   </entry>
   <entry>
@@ -109,8 +109,8 @@
         <category>随笔</category>
       </categories>
       <tags>
-        <tag>Hello World</tag>
         <tag>Learn</tag>
+        <tag>Hello World</tag>
         <tag>买了否冷</tag>
       </tags>
   </entry>
