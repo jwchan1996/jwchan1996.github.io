@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-01-02T06:36:27.552Z</updated>
+  <updated>2019-01-06T04:05:29.331Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hover 伪类改变另一个元素的样式</title>
+    <link href="https://jwchan1996.github.io/2019/01/06/css_hover/"/>
+    <id>https://jwchan1996.github.io/2019/01/06/css_hover/</id>
+    <published>2019-01-06T03:47:14.007Z</published>
+    <updated>2019-01-06T04:05:29.331Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;功能&quot;&gt;&lt;a href=&quot;#功能&quot; class=&quot;headerlink&quot; title=&quot;#功能&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688;&quot;&gt;#&lt;/span&gt;功能&lt;/h3&gt;&lt;p&gt;使用 &lt;code&gt;css&lt;/code&gt; 的 &lt;code&gt;hover&lt;/code&gt; 伪类改变另一个元素的样式&lt;br&gt;比如本博客友链页面，鼠标悬停 a 标签，实现子元素 img 标签进行旋转动画&lt;br&gt;使用 js 触发动态添加属性可以实现，但最简便的办法是 css hover&lt;br&gt;举个栗子：  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;鼠标悬停在 &lt;code&gt;A&lt;/code&gt; 元素时，改变 &lt;code&gt;B&lt;/code&gt; 元素样式  &lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="https://jwchan1996.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="css" scheme="https://jwchan1996.github.io/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>vue 实现 data 数据与视图更新</title>
@@ -323,7 +346,7 @@
     <link href="https://jwchan1996.github.io/2018/10/17/poem_1/"/>
     <id>https://jwchan1996.github.io/2018/10/17/poem_1/</id>
     <published>2018-10-17T08:40:15.470Z</published>
-    <updated>2018-11-01T09:43:07.843Z</updated>
+    <updated>2019-01-06T04:04:29.359Z</updated>
     
     <summary type="html">
     
@@ -337,8 +360,6 @@
     
       <category term="诗" scheme="https://jwchan1996.github.io/tags/%E8%AF%97/"/>
     
-      <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
-    
   </entry>
   
   <entry>
@@ -346,7 +367,7 @@
     <link href="https://jwchan1996.github.io/2018/09/27/hello-world/"/>
     <id>https://jwchan1996.github.io/2018/09/27/hello-world/</id>
     <published>2018-09-27T08:51:01.626Z</published>
-    <updated>2018-10-15T09:02:55.178Z</updated>
+    <updated>2019-01-06T04:04:16.358Z</updated>
     
     <summary type="html">
     
@@ -358,11 +379,7 @@
       <category term="随笔" scheme="https://jwchan1996.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="Learn" scheme="https://jwchan1996.github.io/tags/Learn/"/>
-    
       <category term="Hello World" scheme="https://jwchan1996.github.io/tags/Hello-World/"/>
-    
-      <category term="买了否冷" scheme="https://jwchan1996.github.io/tags/%E4%B9%B0%E4%BA%86%E5%90%A6%E5%86%B7/"/>
     
   </entry>
   

@@ -115,17 +115,17 @@
 <meta property="og:site_name" content="我爱盐酥鸡">
 <meta property="og:description" content=".container-links{         display: flex;         flex-direction: row;         align-items: center;         flex-wrap: wrap;         padding: 0;         margin: 0;     }     .container-links-item{">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://www.beixibaobao.com/images/blog.jpg">
+<meta property="og:image" content="https://blog.beixibaobao.com/wp-content/uploads/2019/01/logo.jpg">
 <meta property="og:image" content="http://www.i1mc.cn/logo.jpg">
 <meta property="og:image" content="http://sweetsmoe.cn-sh2.ufileos.com/blog.gif">
 <meta property="og:image" content="https://secure.gravatar.com/avatar/b7f56e9db1e5a08163a5925dfa9f90b3?s=55&r=G&d=">
 <meta property="og:image" content="https://jwchan.cn/images/avatar.jpg">
 <meta property="og:image" content="https://www.timelessq.com/public/images/avatar.jpg">
-<meta property="og:updated_time" content="2018-12-28T02:20:55.949Z">
+<meta property="og:updated_time" content="2019-01-06T03:26:54.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我爱盐酥鸡">
 <meta name="twitter:description" content=".container-links{         display: flex;         flex-direction: row;         align-items: center;         flex-wrap: wrap;         padding: 0;         margin: 0;     }     .container-links-item{">
-<meta name="twitter:image" content="https://www.beixibaobao.com/images/blog.jpg">
+<meta name="twitter:image" content="https://blog.beixibaobao.com/wp-content/uploads/2019/01/logo.jpg">
 
 
 
@@ -310,7 +310,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">10</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">11</span></a>
   </li>
         
         
@@ -326,7 +326,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签<span class="badge">10</span></a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签<span class="badge">9</span></a>
   </li>
         
         
@@ -420,13 +420,7 @@
 
 
 
-
-
-<script>
-    //对头部背景图片进行替换
-    var imagesArr = ["header.png","header02.png","header03.png","header04.png","header05.png","header06.png","header07.png","header08.png"]
-    document.querySelector(".header").style.backgroundImage = "url(/images/background_"+imagesArr[Math.floor(Math.random()*8)]+")"
-</script></div>
+</div>
     </header>
 
     
@@ -474,17 +468,30 @@
         margin: 0;
     }
     .container-links-item{
-        width: 50%;
+        width: 33%;
         /* display: flex;
         flex-direction: row;
         align-items: center; */
-        border-radius: 5px;
+        border-radius: 10px;
         cursor: pointer;
         text-decoration: none;
         border-width: 0 !important;
+        margin: 10px 0;
+        border: 1px solid #fff !important;
+    }
+    @media screen and (max-width: 1400px) {
+        .container-links-item{
+            width: 49%;
+        }
+    }
+    @media screen and (max-width: 600px) {
+        .container-links-item{
+            width: 99%;
+        }
     }
     .container-links-item:hover{
         background-color: #f1f1f1;
+        border: 1px solid #009688 !important;
     }
     .links-item-avatar{
         width: 60px;
@@ -496,7 +503,7 @@
         padding: 14px 14px !important;
         float: left;
     }
-    .links-item-avatar:hover{
+    .container-links-item:hover .links-item-avatar{
         animation: avatar 50s ease-in-out 1;
     }
     .links-item-about{
@@ -532,9 +539,12 @@
     }
 </style>
 
-<div style="text-align:center;"><p style="font-size:24px;font-weight:700;">胖友</p></div><br><div class="container-links"><br>    <a class="container-links-item" href="https://beixibaobao.com" target="_blank"><div class="links-item-img"><img class="links-item-avatar" src="https://www.beixibaobao.com/images/blog.jpg" alt=""></div><div class="links-item-about"><p class="links-item-username">北熙宝宝</p><p class="links-item-intro">一个热爱二次元的孩子~</p></div></a><br>    <a class="container-links-item" href="https://www.i1mc.cn" target="_blank"><div class="links-item-img"><img class="links-item-avatar" src="http://www.i1mc.cn/logo.jpg" alt=""></div><div class="links-item-about"><p class="links-item-username">By文卓 Blog</p><p class="links-item-intro">喜欢瞎折腾</p></div></a><br>    <a class="container-links-item" href="http://www.sweetsmoe.com/" target="_blank"><div class="links-item-img"><img class="links-item-avatar" src="http://sweetsmoe.cn-sh2.ufileos.com/blog.gif" alt=""></div><div class="links-item-about"><p class="links-item-username">甜小萌</p><p class="links-item-intro">甜甜哒~萌萌哒~ε๑⍥๑з</p></div></a><br>    <a class="container-links-item" href="https://www.ghosin.com/" target="_blank"><div class="links-item-img"><img class="links-item-avatar" src="https://secure.gravatar.com/avatar/b7f56e9db1e5a08163a5925dfa9f90b3?s=55&r=G&d=" alt=""></div><div class="links-item-about"><p class="links-item-username">Ghosin</p><p class="links-item-intro">我好弱啊</p></div></a><br>    <a class="container-links-item" href="https://jwchan.cn/" target="_blank"><div class="links-item-img"><img class="links-item-avatar" src="https://jwchan.cn/images/avatar.jpg" alt=""></div><div class="links-item-about"><p class="links-item-username">我爱盐酥鸡</p><p class="links-item-intro">真的很想要一只小肥柴~</p></div></a><br>    <a class="container-links-item" href="https://www.timelessq.com/" target="_blank"><div class="links-item-img"><img class="links-item-avatar" src="https://www.timelessq.com/public/images/avatar.jpg" alt=""></div><div class="links-item-about"><p class="links-item-username">Timeless&apos;s博客</p><p class="links-item-intro">专注于web开发、ACG~</p></div></a><br></div>
+<div style="text-align:center;"><p style="font-size:24px;font-weight:700;">友人帐</p></div><br><div class="container-links"><br>    <a class="container-links-item" href="https://blog.beixibaobao.com" target="_blank" title="一个努力奋斗的赶上时代的二次元酱"><div class="links-item-img"><img class="links-item-avatar" src="https://blog.beixibaobao.com/wp-content/uploads/2019/01/logo.jpg" alt=""></div><div class="links-item-about"><p class="links-item-username">北熙宝宝</p><p class="links-item-intro">一个努力奋斗的赶上时代的二次元酱</p></div></a><br>    <a class="container-links-item" href="https://www.i1mc.cn" target="_blank" title="喜欢瞎折腾"><div class="links-item-img"><img class="links-item-avatar" src="http://www.i1mc.cn/logo.jpg" alt=""></div><div class="links-item-about"><p class="links-item-username">By文卓 Blog</p><p class="links-item-intro">喜欢瞎折腾</p></div></a><br>    <a class="container-links-item" href="http://www.sweetsmoe.com/" target="_blank" title="甜甜哒~萌萌哒~ε๑⍥๑з"><div class="links-item-img"><img class="links-item-avatar" src="http://sweetsmoe.cn-sh2.ufileos.com/blog.gif" alt=""></div><div class="links-item-about"><p class="links-item-username">甜小萌</p><p class="links-item-intro">甜甜哒~萌萌哒~ε๑⍥๑з</p></div></a><br>    <a class="container-links-item" href="https://www.ghosin.com/" target="_blank" title="我好弱啊"><div class="links-item-img"><img class="links-item-avatar" src="https://secure.gravatar.com/avatar/b7f56e9db1e5a08163a5925dfa9f90b3?s=55&r=G&d=" alt=""></div><div class="links-item-about"><p class="links-item-username">Ghosin</p><p class="links-item-intro">我好弱啊</p></div></a><br>    <a class="container-links-item" href="https://jwchan.cn/" target="_blank" title="真的很想要一只小肥柴耶~"><div class="links-item-img"><img class="links-item-avatar" src="https://jwchan.cn/images/avatar.jpg" alt=""></div><div class="links-item-about"><p class="links-item-username">我爱盐酥鸡</p><p class="links-item-intro">真的很想要一只小肥柴耶~</p></div></a><br>    <a class="container-links-item" href="https://www.timelessq.com/" target="_blank" title="专注于web开发、ACG~"><div class="links-item-img"><img class="links-item-avatar" src="https://www.timelessq.com/public/images/avatar.jpg" alt=""></div><div class="links-item-about"><p class="links-item-username">Timeless&apos;s博客</p><p class="links-item-intro">专注于web开发、ACG~</p></div></a><br></div>
 
 <script src="/js/links/sakura.js"></script>
+<script>
+    document.title = "友链 | 我爱盐酥鸡"
+</script>
         
       </div>
       
@@ -597,7 +607,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -655,9 +665,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -722,7 +730,7 @@
     </main>
 
     <footer id="footer" class="footer">
-      <div class="footer-inner">
+      <div class="footer-inner" style="background-color:#F4F6F6;">
         <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-fas fa-heartbeat"></i>
@@ -737,7 +745,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">23k</span>
+    <span title="站点总字数">24k</span>
   
 
   
@@ -1317,9 +1325,10 @@
     }
     /* 调整歌词总高度 */
     .aplayer-lrc{
-        height: 74px !important;
+        height: 54px !important;
         background-color: rgba(0,0,0,0) !important;
         z-index: 99999 !important;
+        bottom: 0 !important;
     }
     /* 正在排队的歌词 */
     .aplayer-lrc p{
@@ -1328,7 +1337,7 @@
     /* 正在唱歌的歌词 */
     .aplayer-lrc p.aplayer-lrc-current{
         color: #009688 !important;
-        font-size: 24px;
+        font-size: 20px;
         padding: 10px 0 !important;
         /* line-height: 30px !important; */
     }
