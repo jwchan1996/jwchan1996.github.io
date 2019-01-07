@@ -1933,7 +1933,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff9ac9;
+  background: #245982;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2587,11 +2587,16 @@ ul.breadcrumb li+li:last-child {
 }
 @media screen and (max-width: 440px) {
   .main-inner {
-    padding: 40px 20px 100px;
+    padding: 40px 20px 20px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .main-inner {
+    padding: 40px 20px 0;
   }
 }
 .footer-inner {
-  background: #fff;
+  background: #333;
 }
 embed {
   display: block;
