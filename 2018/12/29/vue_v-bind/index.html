@@ -117,7 +117,7 @@
 <meta property="og:description" content="#场景在业务开发中常常需要对元素属性进行动态绑定比如 v-for 下遍历 img 绑定 src 地址传统方法用的是拼接 dom 元素字符串，再把字符串插入到文档流里，对于使用 vue，我们不必再频繁地处理 dom我们可以使用 v-bind 来处理它们：只需要通过表达式计算出字符串结果即可。不过，字符串拼接麻烦且易错，需要处理妥当。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://jwchan1996.github.io/images/vue_v-bind.jpg">
-<meta property="og:updated_time" content="2018-12-29T01:12:53.596Z">
+<meta property="og:updated_time" content="2019-01-06T07:59:05.943Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="v-bind 动态拼接参数">
 <meta name="twitter:description" content="#场景在业务开发中常常需要对元素属性进行动态绑定比如 v-for 下遍历 img 绑定 src 地址传统方法用的是拼接 dom 元素字符串，再把字符串插入到文档流里，对于使用 vue，我们不必再频繁地处理 dom我们可以使用 v-bind 来处理它们：只需要通过表达式计算出字符串结果即可。不过，字符串拼接麻烦且易错，需要处理妥当。">
@@ -397,7 +397,7 @@
     
 
 
-    <main id="main" class="main">
+    <main id="main" class="main" style="padding-bottom:50px;">
       <div class="main-inner">
         <div class="content-wrap">
           
@@ -462,12 +462,24 @@
                 
               
 
-              <time title="创建时间：2018-12-29 08:47:14 / 修改时间：09:12:53" itemprop="dateCreated datePublished" datetime="2018-12-29T08:47:14+08:00">2018-12-29</time>
+              <time title="创建时间：2018-12-29 08:47:14" itemprop="dateCreated datePublished" datetime="2018-12-29T08:47:14+08:00">2018-12-29</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-06 15:59:05" itemprop="dateModified" datetime="2019-01-06T15:59:05+08:00">2019-01-06</time>
               
             
           </span>
@@ -520,7 +532,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.6k</span>
+                <span title="本文字数">1.4k</span>
               
 
               
@@ -556,36 +568,37 @@
       
         <h3 id="场景"><a href="#场景" class="headerlink" title="#场景"></a><span style="color:#009688;">#</span>场景</h3><p>在业务开发中常常<br>需要对元素属性进行动态绑定<br>比如 <code>v-for</code> 下遍历 <code>img</code> 绑定 <code>src</code> 地址<br>传统方法用的是拼接 <code>dom</code> 元素字符串，再把字符串<br>插入到文档流里，对于使用 <code>vue</code>，我们不必再频繁地处理 <code>dom</code><br>我们可以使用 <code>v-bind</code> 来处理它们：只需要通过表达式计算出字符串结果即可。不过，字符串拼接麻烦且易错，需要处理妥当。<br><a id="more"></a>  </p>
 <h3 id="示例"><a href="#示例" class="headerlink" title="#示例"></a><span style="color:#009688;">#</span>示例</h3><p>动态拼接，以 <code>v-for</code> 为例：  </p>
-<pre><code>&lt;div id=&quot;app&quot;&gt;
+<pre><code class="HTML"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span>
 
-    &lt;div v-for=&quot;(item,index) in items&quot; :key=&quot;index&quot;&gt;
-        &lt;img :src=&quot;&apos;http://image.baidu.com&apos;+item.thumbnail&quot; alt=&quot;图片&quot;&gt;
-    &lt;/div&gt;
+    <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"(item,index) in items"</span> <span class="attr">:key</span>=<span class="string">"index"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">"'http://image.baidu.com'+item.thumbnail"</span> <span class="attr">alt</span>=<span class="string">"图片"</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
 
-    &lt;a :href=&quot;&apos;http://user.baidu.com?uid=&apos;+uid&quot;&gt;跳转用户界面的链接&lt;/a&gt;
+    <span class="tag">&lt;<span class="name">a</span> <span class="attr">:href</span>=<span class="string">"'http://user.baidu.com?uid='+uid"</span>&gt;</span>跳转用户界面的链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
 
-    &lt;a v-bind:href=&quot;url&quot;&gt;github&lt;/a&gt;
+    <span class="tag">&lt;<span class="name">a</span> <span class="attr">v-bind:href</span>=<span class="string">"url"</span>&gt;</span>github<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
 
-&lt;/div&gt;
+<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
 
-&lt;script&gt;
-    new vue({
-        el: &apos;#app&apos;,
-        data: {
-            items: [{
-                name: &apos;baidu&apos;,
-                thumbnail: &apos;/public/123456.jpg&apos;
-            },
-            {
-                name: &apos;github&apos;,
-                thumbnail: &apos;/public/234567.jpg&apos;
-            }],
-            uid: 123,
-            url: &apos;https://github.com&apos;
-        }
-    })
-&lt;/dcript&gt;
-</code></pre><p>🍳 以上示例是动态拼接字符串的正确方式<br><code>:</code> 是 <code>v-bind</code> 的缩写，指令可以接一个&quot;参数&quot;，这个&quot;参数&quot;在指令后面以冒号表示，如 <code>&lt;a v-bind:href=&quot;url&quot;&gt;github&lt;/a&gt;</code> 的 <code>url</code> 就是参数，与 vue 实例数据绑定。</p>
+<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span>
+<span class="javascript">    <span class="keyword">new</span> vue({</span>
+<span class="javascript">        el: <span class="string">'#app'</span>,</span>
+<span class="undefined">        data: {</span>
+<span class="undefined">            items: [{</span>
+<span class="javascript">                name: <span class="string">'baidu'</span>,</span>
+<span class="javascript">                thumbnail: <span class="string">'/public/123456.jpg'</span></span>
+<span class="undefined">            },</span>
+<span class="undefined">            {</span>
+<span class="javascript">                name: <span class="string">'github'</span>,</span>
+<span class="javascript">                thumbnail: <span class="string">'/public/234567.jpg'</span></span>
+<span class="undefined">            }],</span>
+<span class="undefined">            uid: 123,</span>
+<span class="javascript">            url: <span class="string">'https://github.com'</span></span>
+<span class="undefined">        }</span>
+<span class="undefined">    })</span>
+<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+</code></pre>
+<p>🍳 以上示例是动态拼接字符串的正确方式<br><code>:</code> 是 <code>v-bind</code> 的缩写，指令可以接一个&quot;参数&quot;，这个&quot;参数&quot;在指令后面以冒号表示，如 <code>&lt;a v-bind:href=&quot;url&quot;&gt;github&lt;/a&gt;</code> 的 <code>url</code> 就是参数，与 vue 实例数据绑定。</p>
 <p>🍭 谨记：<code>v-bind</code> 属性内必须为合法的 <code>JavaScript</code> 表达式<br>无论是拼接字符串还是三目运算表达式，返回的都是合法 <code>JavaScript</code> 表达式返回的结果。<code>v-bind</code> 表达式结果的类型除了字符串之外，还可以是对象或数组。</p>
 <p>🐯 点击查看 <a href="https://cn.vuejs.org/v2/guide/syntax.html#%E6%8C%87%E4%BB%A4" target="_blank" rel="noopener"><span style="color:#009688;"> @<code>v-bind</code></span></a> 更多特性与用法 yo ~</p>
 <p><img class="img_v-bind" src="/images/vue_v-bind.jpg"></p>
@@ -855,10 +868,249 @@
 
         
       </div>
+      <!--增加底部裙子图片-->
+      <style>
+        @media screen and (max-width: 1050px) {
+            #footer-petticoat{
+                display: none;
+            }
+            .main{
+                /*裙子图片隐藏了，所以内边距恢复原来*/
+                padding-bottom: 150px !important;
+            }
+        }
+      </style>
+      <img id="footer-petticoat" src="/images/footer.png">
     </main>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner" style="background-color:#F4F6F6;">
+    <footer id="footer" class="footer" style="z-index:-10;background-color:#333;">
+      <div class="footer-inner">
+        <!--添加运行天数-->
+        <style>
+            #my-face{
+                animation: my-face 5s infinite ease-in-out;
+                display: inline-block;
+            }
+            @keyframes my-face{
+                2% {
+                    -webkit-transform: translateY(1.5px) rotate(1.5deg);
+                    transform: translateY(1.5px) rotate(1.5deg);
+                }
+                4% {
+                    -webkit-transform: translateY(-1.5px) rotate(-.5deg);
+                    transform: translateY(-1.5px) rotate(-.5deg);
+                }
+                6% {
+                    -webkit-transform: translateY(1.5px) rotate(-1.5deg);
+                    transform: translateY(1.5px) rotate(-1.5deg);
+                }
+                8% {
+                    -webkit-transform: translateY(-1.5px) rotate(-1.5deg);
+                    transform: translateY(-1.5px) rotate(-1.5deg);
+                }
+                10% {
+                    -webkit-transform: translateY(2.5px) rotate(1.5deg);
+                    transform: translateY(2.5px) rotate(1.5deg);
+                }
+                12% {
+                    -webkit-transform: translateY(-.5px) rotate(1.5deg);
+                    transform: translateY(-.5px) rotate(1.5deg);
+                }
+                14% {
+                    -webkit-transform: translateY(-1.5px) rotate(1.5deg);
+                    transform: translateY(-1.5px) rotate(1.5deg);
+                }
+                16% {
+                    -webkit-transform: translateY(-.5px) rotate(-1.5deg);
+                    transform: translateY(-.5px) rotate(-1.5deg);
+                }
+                18% {
+                    -webkit-transform: translateY(.5px) rotate(-1.5deg);
+                    transform: translateY(.5px) rotate(-1.5deg);
+                }
+                20% {
+                    -webkit-transform: translateY(-1.5px) rotate(2.5deg);
+                    transform: translateY(-1.5px) rotate(2.5deg);
+                }
+                22% {
+                    -webkit-transform: translateY(.5px) rotate(-1.5deg);
+                    transform: translateY(.5px) rotate(-1.5deg);
+                }
+                24% {
+                    -webkit-transform: translateY(1.5px) rotate(1.5deg);
+                    transform: translateY(1.5px) rotate(1.5deg);
+                }
+                26% {
+                    -webkit-transform: translateY(.5px) rotate(.5deg);
+                    transform: translateY(.5px) rotate(.5deg);
+                }
+                28% {
+                    -webkit-transform: translateY(.5px) rotate(1.5deg);
+                    transform: translateY(.5px) rotate(1.5deg);
+                }
+                30% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                32% {
+                    -webkit-transform: translateY(1.5px) rotate(-.5deg);
+                    transform: translateY(1.5px) rotate(-.5deg);
+                }
+                34% {
+                    -webkit-transform: translateY(1.5px) rotate(-.5deg);
+                    transform: translateY(1.5px) rotate(-.5deg);
+                }
+                36% {
+                    -webkit-transform: translateY(-1.5px) rotate(2.5deg);
+                    transform: translateY(-1.5px) rotate(2.5deg);
+                }
+                38% {
+                    -webkit-transform: translateY(1.5px) rotate(-1.5deg);
+                    transform: translateY(1.5px) rotate(-1.5deg);
+                }
+                40% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                42% {
+                    -webkit-transform: translateY(2.5px) rotate(-1.5deg);
+                    transform: translateY(2.5px) rotate(-1.5deg);
+                }
+                44% {
+                    -webkit-transform: translateY(1.5px) rotate(.5deg);
+                    transform: translateY(1.5px) rotate(.5deg);
+                }
+                46% {
+                    -webkit-transform: translateY(-1.5px) rotate(2.5deg);
+                    transform: translateY(-1.5px) rotate(2.5deg);
+                }
+                48% {
+                    -webkit-transform: translateY(-.5px) rotate(.5deg);
+                    transform: translateY(-.5px) rotate(.5deg);
+                }
+                50% {
+                    -webkit-transform: translateY(.5px) rotate(.5deg);
+                    transform: translateY(.5px) rotate(.5deg);
+                }
+                52% {
+                    -webkit-transform: translateY(2.5px) rotate(2.5deg);
+                    transform: translateY(2.5px) rotate(2.5deg);
+                }
+                54% {
+                    -webkit-transform: translateY(-1.5px) rotate(1.5deg);
+                    transform: translateY(-1.5px) rotate(1.5deg);
+                }
+                56% {
+                    -webkit-transform: translateY(2.5px) rotate(2.5deg);
+                    transform: translateY(2.5px) rotate(2.5deg);
+                }
+                58% {
+                    -webkit-transform: translateY(.5px) rotate(2.5deg);
+                    transform: translateY(.5px) rotate(2.5deg);
+                }
+                60% {
+                    -webkit-transform: translateY(2.5px) rotate(2.5deg);
+                    transform: translateY(2.5px) rotate(2.5deg);
+                }
+                62% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                64% {
+                    -webkit-transform: translateY(-.5px) rotate(1.5deg);
+                    transform: translateY(-.5px) rotate(1.5deg);
+                }
+                66% {
+                    -webkit-transform: translateY(1.5px) rotate(-.5deg);
+                    transform: translateY(1.5px) rotate(-.5deg);
+                }
+                68% {
+                    -webkit-transform: translateY(-1.5px) rotate(-.5deg);
+                    transform: translateY(-1.5px) rotate(-.5deg);
+                }
+                70% {
+                    -webkit-transform: translateY(1.5px) rotate(.5deg);
+                    transform: translateY(1.5px) rotate(.5deg);
+                }
+                72% {
+                    -webkit-transform: translateY(2.5px) rotate(1.5deg);
+                    transform: translateY(2.5px) rotate(1.5deg);
+                }
+                74% {
+                    -webkit-transform: translateY(-.5px) rotate(.5deg);
+                    transform: translateY(-.5px) rotate(.5deg);
+                }
+                76% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                78% {
+                    -webkit-transform: translateY(-.5px) rotate(1.5deg);
+                    transform: translateY(-.5px) rotate(1.5deg);
+                }
+                80% {
+                    -webkit-transform: translateY(1.5px) rotate(1.5deg);
+                    transform: translateY(1.5px) rotate(1.5deg);
+                }
+                82% {
+                    -webkit-transform: translateY(-.5px) rotate(.5deg);
+                    transform: translateY(-.5px) rotate(.5deg);
+                }
+                84% {
+                    -webkit-transform: translateY(1.5px) rotate(2.5deg);
+                    transform: translateY(1.5px) rotate(2.5deg);
+                }
+                86% {
+                    -webkit-transform: translateY(-1.5px) rotate(-1.5deg);
+                    transform: translateY(-1.5px) rotate(-1.5deg);
+                }
+                88% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                90% {
+                    -webkit-transform: translateY(2.5px) rotate(-.5deg);
+                    transform: translateY(2.5px) rotate(-.5deg);
+                }
+                92% {
+                    -webkit-transform: translateY(.5px) rotate(-.5deg);
+                    transform: translateY(.5px) rotate(-.5deg);
+                }
+                94% {
+                    -webkit-transform: translateY(2.5px) rotate(.5deg);
+                    transform: translateY(2.5px) rotate(.5deg);
+                }
+                96% {
+                    -webkit-transform: translateY(-.5px) rotate(1.5deg);
+                    transform: translateY(-.5px) rotate(1.5deg);
+                }
+                98% {
+                    -webkit-transform: translateY(-1.5px) rotate(-.5deg);
+                    transform: translateY(-1.5px) rotate(-.5deg);
+                }
+                0%, 100% {
+                    -webkit-transform: translate(0) rotate(0);
+                    transform: translate(0) rotate(0);
+                }
+            }
+        </style>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><span id="my-face">(●'◡'●)ﾉ♥</span>
+        <script>
+            var now = new Date(); 
+            function createtime() { 
+                var grt= new Date("09/30/2018 12:00:00");//此处修改你的建站时间或者网站上线时间 
+                now.setTime(now.getTime()+250); 
+                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                document.getElementById("timeDate").innerHTML = "本站已萌萌哒运行 "+dnum+" 天 "; 
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒了"; 
+            } 
+            setInterval("createtime()",250);
+        </script>
         <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-fas fa-heartbeat"></i>
@@ -873,7 +1125,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">24k</span>
+    <span title="站点总字数">23k</span>
   
 
   
@@ -935,24 +1187,6 @@
 
 
         
-        <!--添加运行天数-->
-        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-        <script>
-            var now = new Date(); 
-            function createtime() { 
-                var grt= new Date("09/30/2018 12:00:00");//此处修改你的建站时间或者网站上线时间 
-                now.setTime(now.getTime()+250); 
-                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
-                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-                document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 "; 
-                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
-            } 
-            setInterval("createtime()",250);
-        </script>
       </div>
     </footer>
 
@@ -1415,6 +1649,67 @@
   
 
 
+<!--添加萌物返回顶部功能-->
+<style>
+    #kotori{
+        position: fixed;
+        bottom: -10px;
+        left: -10px;
+        height: 70px;
+        width: 70px;
+        cursor: pointer;
+        transition: 0.2s all;
+        display: none;
+    }
+    #kotori:hover{
+        transform: translate(10px,-10px)
+    }
+</style>
+<img id="kotori" src="/images/kotori.png">
+<script>
+    kotoriScrollToTop();
+    //返回顶部函数
+    function kotoriScrollToTop(){
+        var obtn = document.getElementById('kotori');  //获取回到顶部按钮的ID
+        var clientHeight = document.documentElement.clientHeight;   //获取可视区域的高度
+        var timer = null; //定义一个定时器
+        var isTop = true; //定义一个布尔值，用于判断是否到达顶部
+
+        window.onscroll = function(){         //滚动条滚动事件
+            //获取滚动条的滚动高度
+            var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+            if(osTop >= clientHeight){  //如果滚动高度大于可视区域高度，则显示回到顶部按钮
+                obtn.style.display = 'block';
+            }else{         //否则隐藏
+                obtn.style.display = 'none';
+            }
+
+            //主要用于判断当 点击回到顶部按钮后 滚动条在回滚过程中，若手动滚动滚动条，则清除定时器
+            if(!isTop){
+
+                clearInterval(timer);
+            }
+            isTop = false;
+
+        }
+
+        obtn.onclick = function(){    //回到顶部按钮点击事件
+            //设置一个定时器
+            timer = setInterval(function(){
+                //获取滚动条的滚动高度
+                var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+                //用于设置速度差，产生缓动的效果
+                var speed = Math.floor(-osTop / 10);
+                document.documentElement.scrollTop = document.body.scrollTop = osTop + speed;
+                isTop =true;  //用于阻止滚动事件清除定时器
+                if(osTop == 0){
+                    clearInterval(timer);
+                }
+            },2);
+        }
+    }
+</script>
+
 <!--aplayer-->
 <link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
 <style>
@@ -1741,5 +2036,5 @@
         }
 
     </script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"position":"left","width":100,"height":200,"hOffset":20,"vOffset":-100},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":1},"log":false,"tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"position":"left","width":100,"height":200,"hOffset":60,"vOffset":-100},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":1},"log":false,"tagMode":false});</script></body>
 </html>

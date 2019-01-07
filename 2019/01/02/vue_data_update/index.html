@@ -118,7 +118,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://cn.vuejs.org/images/data.png">
 <meta property="og:image" content="https://jwchan1996.github.io/images/vue_data_update.jpg">
-<meta property="og:updated_time" content="2019-01-02T06:36:27.552Z">
+<meta property="og:updated_time" content="2019-01-06T08:01:31.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue 实现 data 数据与视图更新">
 <meta name="twitter:description" content="#场景vue 数据 data 更新了，但是视图没有更新其中缘由在于对 vue 的响应式原理的理解 #追踪变化把一个普通的 JavaScript 对象传给 Vue 实例的 data 选项，Vue 将遍历此对象所有的属性，并使用 Object.defineProperty 把这些属性全部转为 getter/setter。这些 getter/setter 对用户来说是不可见的，但是在内部它们让 Vue">
@@ -398,7 +398,7 @@
     
 
 
-    <main id="main" class="main">
+    <main id="main" class="main" style="padding-bottom:50px;">
       <div class="main-inner">
         <div class="content-wrap">
           
@@ -463,12 +463,24 @@
                 
               
 
-              <time title="创建时间：2019-01-02 14:05:09 / 修改时间：14:36:27" itemprop="dateCreated datePublished" datetime="2019-01-02T14:05:09+08:00">2019-01-02</time>
+              <time title="创建时间：2019-01-02 14:05:09" itemprop="dateCreated datePublished" datetime="2019-01-02T14:05:09+08:00">2019-01-02</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-06 16:01:31" itemprop="dateModified" datetime="2019-01-06T16:01:31+08:00">2019-01-06</time>
               
             
           </span>
@@ -521,7 +533,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">6.8k</span>
+                <span title="本文字数">6.4k</span>
               
 
               
@@ -557,8 +569,8 @@
       
         <h3 id="场景"><a href="#场景" class="headerlink" title="#场景"></a><span style="color:#009688;">#</span>场景</h3><p><code>vue</code> 数据 <code>data</code> 更新了，但是视图没有更新<br>其中缘由在于对 <code>vue</code> 的响应式原理的理解</p>
 <h3 id="追踪变化"><a href="#追踪变化" class="headerlink" title="#追踪变化"></a><span style="color:#009688;">#</span>追踪变化</h3><p>把一个普通的 <code>JavaScript</code> 对象传给 <code>Vue</code> 实例的 data 选项，<code>Vue</code> 将遍历此对象所有的属性，并使用 <code>Object.defineProperty</code> 把这些属性全部转为 <code>getter/setter</code>。<br>这些 <code>getter/setter</code> 对用户来说是不可见的，但是在内部它们让 <code>Vue</code> 追踪依赖，在属性被访问和修改时通知变化。<a id="more"></a><br>每个组件实例都有相应的 <code>watcher</code> 实例对象，它会在组件渲染的过程中把属性记录为依赖，之后当依赖项的 <code>setter</code> 被调用时，会通知 <code>watcher</code> 重新计算，从而致使它关联的组件得以更新。<br><img style="border:0 !important;" src="https://cn.vuejs.org/images/data.png">  </p>
-<h3 id="声明响应性属性"><a href="#声明响应性属性" class="headerlink" title="#声明响应性属性"></a><span style="color:#009688;">#</span>声明响应性属性</h3><p>在 <code>Vue</code> 中，一般只有在 <code>data</code> 选项中声明的属性（或者是属性的属性）才是具有响应特性的。如果需要在 <code>data</code> 选项之外对已有属性添加具有响应特性的属性，需要用到 <code>Vue</code> 的 <code>set</code> 方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    a: &#123;              //a就是根级属性，不可动态添加</span><br><span class="line">      b: 0          //b就是属性的属性，可以动态添加</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p><code>Vue</code> 不允许动态添加根级响应式属性，必须在初始化实例前声明根级响应式属性，哪怕只是一个空值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    // 声明 message 为一个空值字符串</span><br><span class="line">    message: &apos;&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  template: &apos;&lt;div&gt;&#123;&#123; message &#125;&#125;&lt;/div&gt;&apos;</span><br><span class="line">&#125;)</span><br><span class="line">// 之后设置 `message`</span><br><span class="line">vm.message = &apos;Hello!&apos;</span><br></pre></td></tr></table></figure></p>
+<h3 id="声明响应性属性"><a href="#声明响应性属性" class="headerlink" title="#声明响应性属性"></a><span style="color:#009688;">#</span>声明响应性属性</h3><p>在 <code>Vue</code> 中，一般只有在 <code>data</code> 选项中声明的属性（或者是属性的属性）才是具有响应特性的。如果需要在 <code>data</code> 选项之外对已有属性添加具有响应特性的属性，需要用到 <code>Vue</code> 的 <code>set</code> 方法。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    a: &#123;              <span class="comment">//a就是根级属性，不可动态添加</span></span><br><span class="line">      b: <span class="number">0</span>          <span class="comment">//b就是属性的属性，可以动态添加</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><code>Vue</code> 不允许动态添加根级响应式属性，必须在初始化实例前声明根级响应式属性，哪怕只是一个空值：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    <span class="comment">// 声明 message 为一个空值字符串</span></span><br><span class="line">    message: <span class="string">''</span></span><br><span class="line">  &#125;,</span><br><span class="line">  template: <span class="string">'&lt;div&gt;&#123;&#123; message &#125;&#125;&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 之后设置 `message`</span></span><br><span class="line">vm.message = <span class="string">'Hello!'</span></span><br></pre></td></tr></table></figure></p>
 <p>何为响应特性？就是当我们更改 <code>data</code> 中的值的时候，<code>HTML</code> 与之绑定的部分会随之更新的特性。 </p>
 <h3 id="数组更新检测"><a href="#数组更新检测" class="headerlink" title="#数组更新检测"></a><span style="color:#009688;">#</span>数组更新检测</h3><p>🍳 <span style="color:#009688;">#</span>变异方法替换数组  </p>
 <p><code>Vue</code> 包含一组观察数组的变异方法，所以它们也将会触发视图更新。这些方法如下：</p>
@@ -573,7 +585,7 @@
 </ul>
 <p>打开控制台，然后用 <code>items</code> 数组调用变异方法：<code>example1.items.push({ message: &#39;Baz&#39; })</code> 。  </p>
 <p>🍳 <span style="color:#009688;">#</span>非变异方法替换数组  </p>
-<p>变异方法 (mutation method)，顾名思义，会改变被这些方法调用的原始数组。相比之下，也有非变异 (non-mutating method) 方法，例如：<code>filter()</code>, <code>concat()</code> 和 <code>slice()</code> 。这些不会改变原始数组，但总是返回一个新数组。当使用非变异方法时，可以用新数组替换旧数组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">example1.items = example1.items.filter(function (item) &#123;</span><br><span class="line">  return item.message.match(/Foo/)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>变异方法 (mutation method)，顾名思义，会改变被这些方法调用的原始数组。相比之下，也有非变异 (non-mutating method) 方法，例如：<code>filter()</code>, <code>concat()</code> 和 <code>slice()</code> 。这些不会改变原始数组，但总是返回一个新数组。当使用非变异方法时，可以用新数组替换旧数组：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">example1.items = example1.items.filter(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.message.match(<span class="regexp">/Foo/</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>你可能认为这将导致 <code>Vue</code> 丢弃现有 <code>DOM</code> 并重新渲染整个列表。幸运的是，事实并非如此。<code>Vue</code> 为了使得 <code>DOM</code> 元素得到最大范围的重用而实现了一些智能的、启发式的方法，所以用一个含有相同元素的数组去替换原来的数组是非常高效的操作。  </p>
 <p>🍳 <span style="color:#009688;">#</span>注意事项  </p>
 <p>由于 <code>JavaScript</code> 的限制，<code>Vue</code> 不能检测以下变动的数组：  </p>
@@ -581,20 +593,20 @@
 <li>当你利用索引直接设置一个项时，例如：<code>vm.items[indexOfItem] = newValue</code></li>
 <li>当你修改数组的长度时，例如：<code>vm.items.length = newLength</code> </li>
 </ol>
-<p>举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    items: [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.items[1] = &apos;x&apos; // 不是响应性的</span><br><span class="line">vm.items.length = 2 // 不是响应性的</span><br></pre></td></tr></table></figure></p>
-<p>为了解决第一类问题，以下两种方式都可以实现和 <code>vm.items[indexOfItem] = newValue</code> 相同的效果，同时也将触发状态更新：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// Vue.set</span><br><span class="line">Vue.set(vm.items, indexOfItem, newValue)</span><br></pre></td></tr></table></figure></p>
-<p>你也可以使用 <code>vm.$set</code> 实例方法，该方法是全局方法 <code>Vue.set</code> 的一个别名：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.$set(vm.items, indexOfItem, newValue)</span><br></pre></td></tr></table></figure></p>
-<p>为了解决第二类问题，你可以使用 <code>splice</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.items.splice(newLength)</span><br></pre></td></tr></table></figure></p>
-<h3 id="对象更新检测"><a href="#对象更新检测" class="headerlink" title="#对象更新检测"></a><span style="color:#009688;">#</span>对象更新检测</h3><p>还是由于 <code>JavaScript</code> 的限制，<code>Vue</code> 不能检测对象属性的添加或删除：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    a: 1</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">// `vm.a` 现在是响应式的</span><br><span class="line"></span><br><span class="line">vm.b = 2</span><br><span class="line">// `vm.b` 不是响应式的</span><br></pre></td></tr></table></figure></p>
-<p>你可以添加一个新的 <code>age</code> 属性到嵌套的 <code>userProfile</code> 对象：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.set(vm.userProfile, &apos;age&apos;, 27)</span><br></pre></td></tr></table></figure></p>
-<p>你还可以使用 <code>vm.$set</code> 实例方法，它只是全局 <code>Vue.set</code> 的别名：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.$set(vm.userProfile, &apos;age&apos;, 27)</span><br></pre></td></tr></table></figure></p>
-<p>有时你可能需要为已有对象赋予多个新属性，比如使用 <code>Object.assign()</code> 或 <code>_.extend()</code>。在这种情况下，你应该用两个对象的属性创建一个新的对象。所以，如果你想添加新的响应式属性，不要像这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Object.assign(vm.userProfile, &#123;</span><br><span class="line">  age: 27,</span><br><span class="line">  favoriteColor: &apos;Vue Green&apos;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>你应该这样做：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vm.userProfile = Object.assign(&#123;&#125;, vm.userProfile, &#123;</span><br><span class="line">  age: 27,</span><br><span class="line">  favoriteColor: &apos;Vue Green&apos;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<h3 id="数据响应式的几个例子"><a href="#数据响应式的几个例子" class="headerlink" title="#数据响应式的几个例子"></a><span style="color:#009688;">#</span>数据响应式的几个例子</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  data:&#123;</span><br><span class="line">    a:1</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// `vm.a` 是响应的</span><br><span class="line"></span><br><span class="line">vm.b = 2</span><br><span class="line">// `vm.b` 是非响应的</span><br></pre></td></tr></table></figure>
-<p><code>a</code> 就是在 <code>data</code> 中声明的具有响应特性的属性，而 <code>b</code> 就不是。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    a: &#123;</span><br><span class="line">      a1:&apos;&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    change：function()&#123;</span><br><span class="line">      this.a.a1 = &quot;text1&quot;    //a1就是响应式的</span><br><span class="line">      this.a.a2 = &quot;text2&quot;    //a2就不是响应式的</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p><code>a2</code> 虽然不是响应式的，但它却是可以在 <code>HTML</code> 部分被渲染更新出来。这里就是一个比较容易掉进去的坑。由于 <code>Vue</code> 是异步执行 <code>DOM</code> 更新，虽然更新的动作是由 <code>this.a.a1 = &quot;text1&quot;</code> 触发，可动作的完成是在 <code>this.a.a2 = &quot;text2&quot;</code> 之后，下面有详细解析。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    a: &#123;</span><br><span class="line">      a1:&apos;&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    change: function () &#123;</span><br><span class="line">      this.a.a1 = &quot;text1&quot;    //a1就是响应式的</span><br><span class="line">      this.a.a2 = &quot;text2&quot;    //a2就不是响应式的</span><br><span class="line">      var that = this;</span><br><span class="line">      setTimeout(function () &#123;</span><br><span class="line">        that.a.a3 = &apos;new text&apos;; //这里与a2是相同的，区别在于这里的a3并不会被渲染到DOM中</span><br><span class="line">        that.$set(that.a, &apos;a4&apos;, &apos;new text&apos;);    //这是正确的添加属性的方法</span><br><span class="line">        that.a = &#123;                              //这种写法与a2不同，a5可以被更新到DOM中</span><br><span class="line">          a5: &apos;hahaha&apos;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;, 300);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<h3 id="异步更新带来的数据响应式误解"><a href="#异步更新带来的数据响应式误解" class="headerlink" title="#异步更新带来的数据响应式误解"></a><span style="color:#009688;">#</span>异步更新带来的数据响应式误解</h3><p>异步数据的处理基本是一定会遇到的，处理不好就会遇到数据不更新的问题，但有一种情况是在未正确处理的情况下也能正常更新，这就会造成一种误解，详情如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">    el: &apos;#app&apos;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        dataObj: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    ready: function () &#123;</span><br><span class="line">        var self = this;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 异步请求模拟</span><br><span class="line">         */</span><br><span class="line">        setTimeout(function () &#123;</span><br><span class="line">            self.dataObj = &#123;&#125;; </span><br><span class="line">            self.dataObj[&apos;text&apos;] = &apos;new text&apos;;</span><br><span class="line">        &#125;, 3000);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>上面的代码非常简单，我们都知道 <code>vue</code> 中在 <code>data</code> 里面声明的数据才具有响应式的特性，所以我们一开始在 <code>data</code> 中声明了一个 <code>dataObj</code> 空对象，然后在异步请求中执行了两行代码，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self.dataObj = &#123;&#125;; </span><br><span class="line">self.dataObj[&apos;text&apos;] = &apos;new text&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>举个栗子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    items: [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.items[<span class="number">1</span>] = <span class="string">'x'</span> <span class="comment">// 不是响应性的</span></span><br><span class="line">vm.items.length = <span class="number">2</span> <span class="comment">// 不是响应性的</span></span><br></pre></td></tr></table></figure></p>
+<p>为了解决第一类问题，以下两种方式都可以实现和 <code>vm.items[indexOfItem] = newValue</code> 相同的效果，同时也将触发状态更新：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Vue.set</span></span><br><span class="line">Vue.set(vm.items, indexOfItem, newValue)</span><br></pre></td></tr></table></figure></p>
+<p>你也可以使用 <code>vm.$set</code> 实例方法，该方法是全局方法 <code>Vue.set</code> 的一个别名：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.$set(vm.items, indexOfItem, newValue)</span><br></pre></td></tr></table></figure></p>
+<p>为了解决第二类问题，你可以使用 <code>splice</code>：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.items.splice(newLength)</span><br></pre></td></tr></table></figure></p>
+<h3 id="对象更新检测"><a href="#对象更新检测" class="headerlink" title="#对象更新检测"></a><span style="color:#009688;">#</span>对象更新检测</h3><p>还是由于 <code>JavaScript</code> 的限制，<code>Vue</code> 不能检测对象属性的添加或删除：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    a: <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// `vm.a` 现在是响应式的</span></span><br><span class="line"></span><br><span class="line">vm.b = <span class="number">2</span></span><br><span class="line"><span class="comment">// `vm.b` 不是响应式的</span></span><br></pre></td></tr></table></figure></p>
+<p>你可以添加一个新的 <code>age</code> 属性到嵌套的 <code>userProfile</code> 对象：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.set(vm.userProfile, <span class="string">'age'</span>, <span class="number">27</span>)</span><br></pre></td></tr></table></figure></p>
+<p>你还可以使用 <code>vm.$set</code> 实例方法，它只是全局 <code>Vue.set</code> 的别名：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.$set(vm.userProfile, <span class="string">'age'</span>, <span class="number">27</span>)</span><br></pre></td></tr></table></figure></p>
+<p>有时你可能需要为已有对象赋予多个新属性，比如使用 <code>Object.assign()</code> 或 <code>_.extend()</code>。在这种情况下，你应该用两个对象的属性创建一个新的对象。所以，如果你想添加新的响应式属性，不要像这样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.assign(vm.userProfile, &#123;</span><br><span class="line">  age: <span class="number">27</span>,</span><br><span class="line">  favoriteColor: <span class="string">'Vue Green'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>你应该这样做：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vm.userProfile = <span class="built_in">Object</span>.assign(&#123;&#125;, vm.userProfile, &#123;</span><br><span class="line">  age: <span class="number">27</span>,</span><br><span class="line">  favoriteColor: <span class="string">'Vue Green'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="数据响应式的几个例子"><a href="#数据响应式的几个例子" class="headerlink" title="#数据响应式的几个例子"></a><span style="color:#009688;">#</span>数据响应式的几个例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  data:&#123;</span><br><span class="line">    a:<span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// `vm.a` 是响应的</span></span><br><span class="line"></span><br><span class="line">vm.b = <span class="number">2</span></span><br><span class="line"><span class="comment">// `vm.b` 是非响应的</span></span><br></pre></td></tr></table></figure>
+<p><code>a</code> 就是在 <code>data</code> 中声明的具有响应特性的属性，而 <code>b</code> 就不是。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    a: &#123;</span><br><span class="line">      a1:<span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    change：<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.a.a1 = <span class="string">"text1"</span>    <span class="comment">//a1就是响应式的</span></span><br><span class="line">      <span class="keyword">this</span>.a.a2 = <span class="string">"text2"</span>    <span class="comment">//a2就不是响应式的</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><code>a2</code> 虽然不是响应式的，但它却是可以在 <code>HTML</code> 部分被渲染更新出来。这里就是一个比较容易掉进去的坑。由于 <code>Vue</code> 是异步执行 <code>DOM</code> 更新，虽然更新的动作是由 <code>this.a.a1 = &quot;text1&quot;</code> 触发，可动作的完成是在 <code>this.a.a2 = &quot;text2&quot;</code> 之后，下面有详细解析。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    a: &#123;</span><br><span class="line">      a1:<span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    change: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.a.a1 = <span class="string">"text1"</span>    <span class="comment">//a1就是响应式的</span></span><br><span class="line">      <span class="keyword">this</span>.a.a2 = <span class="string">"text2"</span>    <span class="comment">//a2就不是响应式的</span></span><br><span class="line">      <span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">      setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        that.a.a3 = <span class="string">'new text'</span>; <span class="comment">//这里与a2是相同的，区别在于这里的a3并不会被渲染到DOM中</span></span><br><span class="line">        that.$set(that.a, <span class="string">'a4'</span>, <span class="string">'new text'</span>);    <span class="comment">//这是正确的添加属性的方法</span></span><br><span class="line">        that.a = &#123;                              <span class="comment">//这种写法与a2不同，a5可以被更新到DOM中</span></span><br><span class="line">          a5: <span class="string">'hahaha'</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;, <span class="number">300</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="异步更新带来的数据响应式误解"><a href="#异步更新带来的数据响应式误解" class="headerlink" title="#异步更新带来的数据响应式误解"></a><span style="color:#009688;">#</span>异步更新带来的数据响应式误解</h3><p>异步数据的处理基本是一定会遇到的，处理不好就会遇到数据不更新的问题，但有一种情况是在未正确处理的情况下也能正常更新，这就会造成一种误解，详情如下所示：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        dataObj: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    ready: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 异步请求模拟</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            self.dataObj = &#123;&#125;; </span><br><span class="line">            self.dataObj[<span class="string">'text'</span>] = <span class="string">'new text'</span>;</span><br><span class="line">        &#125;, <span class="number">3000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>上面的代码非常简单，我们都知道 <code>vue</code> 中在 <code>data</code> 里面声明的数据才具有响应式的特性，所以我们一开始在 <code>data</code> 中声明了一个 <code>dataObj</code> 空对象，然后在异步请求中执行了两行代码，如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self.dataObj = &#123;&#125;; </span><br><span class="line">self.dataObj[<span class="string">'text'</span>] = <span class="string">'new text'</span>;</span><br></pre></td></tr></table></figure></p>
 <p>首先清空原始数据，然后添加一个 <code>text</code> 属性并赋值。到这里为止一切都如我们所想的，数据和模板都更新了。   </p>
 <p><span style="color:red;">那么问题来了，<code>dataObj.text</code> 具有响应式的特性吗？</span>  </p>
 <p>模板更新了，应该具有响应式特性，如果这么想那么你就已经走入了误区，一开始我们并没有在 <code>data</code> 中声明 <code>.text</code> 属性，所以该属性是不具有响应式的特性的。  </p>
@@ -607,12 +619,12 @@
 <li>指令更新开始执行    </li>
 </ul>
 <p>所以真正的触发更新操作是 <code>self.dataObj = { }</code>; 这一句引起的，所以单看上述例子，具有响应式特性的数据只有 <code>dataObj</code> 这一层，它的子属性是不具备的。</p>
-<p>注：其实 <code>vue</code> 文档中已经有说明，对于新增以及删除的属性，<code>vue</code> 是无法监测到的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var a = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">a.b = 0;    //新增b属性</span><br><span class="line">a = &#123;</span><br><span class="line">    c: 0</span><br><span class="line">&#125;;              //更改a属性的值</span><br></pre></td></tr></table></figure></p>
+<p>注：其实 <code>vue</code> 文档中已经有说明，对于新增以及删除的属性，<code>vue</code> 是无法监测到的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">a.b = <span class="number">0</span>;    <span class="comment">//新增b属性</span></span><br><span class="line">a = &#123;</span><br><span class="line">    c: <span class="number">0</span></span><br><span class="line">&#125;;              <span class="comment">//更改a属性的值</span></span><br></pre></td></tr></table></figure></p>
 <p>上述两种赋值方式对 <code>vue</code> 造成的影响是不同的。  </p>
-<p>对比示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">    el: &apos;#app&apos;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        dataObj: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    ready: function () &#123;</span><br><span class="line">        var self = this;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 异步请求模拟</span><br><span class="line">         */</span><br><span class="line">        setTimeout(function () &#123;</span><br><span class="line">            self.dataObj[&apos;text&apos;] = &apos;new text&apos;;</span><br><span class="line">        &#125;, 3000);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>对比示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        dataObj: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    ready: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 异步请求模拟</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            self.dataObj[<span class="string">'text'</span>] = <span class="string">'new text'</span>;</span><br><span class="line">        &#125;, <span class="number">3000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>上述例子的模板是不会更新的。</p>
 <p>🍭 <span style="font-weight:700;">Vue.$set </span> </p>
-<p>通过 <code>$set</code> 方法可以将添加一个具备响应式特性的属性，并且其子属性也具备响应式特性，但是必须是新属性才可以，如果是本身已有的属性该方法是不起作用的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">    el: &apos;#app&apos;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        dataObj: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    ready: function () &#123;</span><br><span class="line">        var self = this;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 异步请求模拟</span><br><span class="line">         */</span><br><span class="line">        setTimeout(function () &#123;</span><br><span class="line">            var data = &#123;</span><br><span class="line">                name: &apos;xiaofu&apos;,</span><br><span class="line">                age: 18</span><br><span class="line">            &#125;;</span><br><span class="line">            var data01 = &#123;</span><br><span class="line">                name: &apos;yangxiaofu&apos;,</span><br><span class="line">                age: 19</span><br><span class="line">            &#125;;</span><br><span class="line">            self.dataObj[&apos;person&apos;] = &#123;&#125;;</span><br><span class="line">            self.$set(&apos;dataObj.info&apos;, data);</span><br><span class="line">            self.$set(&apos;dataObj.person&apos;, data01); </span><br><span class="line">        &#125;, 3000);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>通过 <code>$set</code> 方法可以将添加一个具备响应式特性的属性，并且其子属性也具备响应式特性，但是必须是新属性才可以，如果是本身已有的属性该方法是不起作用的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        dataObj: &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    ready: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 异步请求模拟</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> data = &#123;</span><br><span class="line">                name: <span class="string">'xiaofu'</span>,</span><br><span class="line">                age: <span class="number">18</span></span><br><span class="line">            &#125;;</span><br><span class="line">            <span class="keyword">var</span> data01 = &#123;</span><br><span class="line">                name: <span class="string">'yangxiaofu'</span>,</span><br><span class="line">                age: <span class="number">19</span></span><br><span class="line">            &#125;;</span><br><span class="line">            self.dataObj[<span class="string">'person'</span>] = &#123;&#125;;</span><br><span class="line">            self.$set(<span class="string">'dataObj.info'</span>, data);</span><br><span class="line">            self.$set(<span class="string">'dataObj.person'</span>, data01); </span><br><span class="line">        &#125;, <span class="number">3000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>如上所示，<code>.person</code> 属性是不具备响应式特性的。  </p>
 <p><img class="img_v-bind" src="/images/vue_data_update.jpg"></p>
 <style>
@@ -881,10 +893,249 @@
 
         
       </div>
+      <!--增加底部裙子图片-->
+      <style>
+        @media screen and (max-width: 1050px) {
+            #footer-petticoat{
+                display: none;
+            }
+            .main{
+                /*裙子图片隐藏了，所以内边距恢复原来*/
+                padding-bottom: 150px !important;
+            }
+        }
+      </style>
+      <img id="footer-petticoat" src="/images/footer.png">
     </main>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner" style="background-color:#F4F6F6;">
+    <footer id="footer" class="footer" style="z-index:-10;background-color:#333;">
+      <div class="footer-inner">
+        <!--添加运行天数-->
+        <style>
+            #my-face{
+                animation: my-face 5s infinite ease-in-out;
+                display: inline-block;
+            }
+            @keyframes my-face{
+                2% {
+                    -webkit-transform: translateY(1.5px) rotate(1.5deg);
+                    transform: translateY(1.5px) rotate(1.5deg);
+                }
+                4% {
+                    -webkit-transform: translateY(-1.5px) rotate(-.5deg);
+                    transform: translateY(-1.5px) rotate(-.5deg);
+                }
+                6% {
+                    -webkit-transform: translateY(1.5px) rotate(-1.5deg);
+                    transform: translateY(1.5px) rotate(-1.5deg);
+                }
+                8% {
+                    -webkit-transform: translateY(-1.5px) rotate(-1.5deg);
+                    transform: translateY(-1.5px) rotate(-1.5deg);
+                }
+                10% {
+                    -webkit-transform: translateY(2.5px) rotate(1.5deg);
+                    transform: translateY(2.5px) rotate(1.5deg);
+                }
+                12% {
+                    -webkit-transform: translateY(-.5px) rotate(1.5deg);
+                    transform: translateY(-.5px) rotate(1.5deg);
+                }
+                14% {
+                    -webkit-transform: translateY(-1.5px) rotate(1.5deg);
+                    transform: translateY(-1.5px) rotate(1.5deg);
+                }
+                16% {
+                    -webkit-transform: translateY(-.5px) rotate(-1.5deg);
+                    transform: translateY(-.5px) rotate(-1.5deg);
+                }
+                18% {
+                    -webkit-transform: translateY(.5px) rotate(-1.5deg);
+                    transform: translateY(.5px) rotate(-1.5deg);
+                }
+                20% {
+                    -webkit-transform: translateY(-1.5px) rotate(2.5deg);
+                    transform: translateY(-1.5px) rotate(2.5deg);
+                }
+                22% {
+                    -webkit-transform: translateY(.5px) rotate(-1.5deg);
+                    transform: translateY(.5px) rotate(-1.5deg);
+                }
+                24% {
+                    -webkit-transform: translateY(1.5px) rotate(1.5deg);
+                    transform: translateY(1.5px) rotate(1.5deg);
+                }
+                26% {
+                    -webkit-transform: translateY(.5px) rotate(.5deg);
+                    transform: translateY(.5px) rotate(.5deg);
+                }
+                28% {
+                    -webkit-transform: translateY(.5px) rotate(1.5deg);
+                    transform: translateY(.5px) rotate(1.5deg);
+                }
+                30% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                32% {
+                    -webkit-transform: translateY(1.5px) rotate(-.5deg);
+                    transform: translateY(1.5px) rotate(-.5deg);
+                }
+                34% {
+                    -webkit-transform: translateY(1.5px) rotate(-.5deg);
+                    transform: translateY(1.5px) rotate(-.5deg);
+                }
+                36% {
+                    -webkit-transform: translateY(-1.5px) rotate(2.5deg);
+                    transform: translateY(-1.5px) rotate(2.5deg);
+                }
+                38% {
+                    -webkit-transform: translateY(1.5px) rotate(-1.5deg);
+                    transform: translateY(1.5px) rotate(-1.5deg);
+                }
+                40% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                42% {
+                    -webkit-transform: translateY(2.5px) rotate(-1.5deg);
+                    transform: translateY(2.5px) rotate(-1.5deg);
+                }
+                44% {
+                    -webkit-transform: translateY(1.5px) rotate(.5deg);
+                    transform: translateY(1.5px) rotate(.5deg);
+                }
+                46% {
+                    -webkit-transform: translateY(-1.5px) rotate(2.5deg);
+                    transform: translateY(-1.5px) rotate(2.5deg);
+                }
+                48% {
+                    -webkit-transform: translateY(-.5px) rotate(.5deg);
+                    transform: translateY(-.5px) rotate(.5deg);
+                }
+                50% {
+                    -webkit-transform: translateY(.5px) rotate(.5deg);
+                    transform: translateY(.5px) rotate(.5deg);
+                }
+                52% {
+                    -webkit-transform: translateY(2.5px) rotate(2.5deg);
+                    transform: translateY(2.5px) rotate(2.5deg);
+                }
+                54% {
+                    -webkit-transform: translateY(-1.5px) rotate(1.5deg);
+                    transform: translateY(-1.5px) rotate(1.5deg);
+                }
+                56% {
+                    -webkit-transform: translateY(2.5px) rotate(2.5deg);
+                    transform: translateY(2.5px) rotate(2.5deg);
+                }
+                58% {
+                    -webkit-transform: translateY(.5px) rotate(2.5deg);
+                    transform: translateY(.5px) rotate(2.5deg);
+                }
+                60% {
+                    -webkit-transform: translateY(2.5px) rotate(2.5deg);
+                    transform: translateY(2.5px) rotate(2.5deg);
+                }
+                62% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                64% {
+                    -webkit-transform: translateY(-.5px) rotate(1.5deg);
+                    transform: translateY(-.5px) rotate(1.5deg);
+                }
+                66% {
+                    -webkit-transform: translateY(1.5px) rotate(-.5deg);
+                    transform: translateY(1.5px) rotate(-.5deg);
+                }
+                68% {
+                    -webkit-transform: translateY(-1.5px) rotate(-.5deg);
+                    transform: translateY(-1.5px) rotate(-.5deg);
+                }
+                70% {
+                    -webkit-transform: translateY(1.5px) rotate(.5deg);
+                    transform: translateY(1.5px) rotate(.5deg);
+                }
+                72% {
+                    -webkit-transform: translateY(2.5px) rotate(1.5deg);
+                    transform: translateY(2.5px) rotate(1.5deg);
+                }
+                74% {
+                    -webkit-transform: translateY(-.5px) rotate(.5deg);
+                    transform: translateY(-.5px) rotate(.5deg);
+                }
+                76% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                78% {
+                    -webkit-transform: translateY(-.5px) rotate(1.5deg);
+                    transform: translateY(-.5px) rotate(1.5deg);
+                }
+                80% {
+                    -webkit-transform: translateY(1.5px) rotate(1.5deg);
+                    transform: translateY(1.5px) rotate(1.5deg);
+                }
+                82% {
+                    -webkit-transform: translateY(-.5px) rotate(.5deg);
+                    transform: translateY(-.5px) rotate(.5deg);
+                }
+                84% {
+                    -webkit-transform: translateY(1.5px) rotate(2.5deg);
+                    transform: translateY(1.5px) rotate(2.5deg);
+                }
+                86% {
+                    -webkit-transform: translateY(-1.5px) rotate(-1.5deg);
+                    transform: translateY(-1.5px) rotate(-1.5deg);
+                }
+                88% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                90% {
+                    -webkit-transform: translateY(2.5px) rotate(-.5deg);
+                    transform: translateY(2.5px) rotate(-.5deg);
+                }
+                92% {
+                    -webkit-transform: translateY(.5px) rotate(-.5deg);
+                    transform: translateY(.5px) rotate(-.5deg);
+                }
+                94% {
+                    -webkit-transform: translateY(2.5px) rotate(.5deg);
+                    transform: translateY(2.5px) rotate(.5deg);
+                }
+                96% {
+                    -webkit-transform: translateY(-.5px) rotate(1.5deg);
+                    transform: translateY(-.5px) rotate(1.5deg);
+                }
+                98% {
+                    -webkit-transform: translateY(-1.5px) rotate(-.5deg);
+                    transform: translateY(-1.5px) rotate(-.5deg);
+                }
+                0%, 100% {
+                    -webkit-transform: translate(0) rotate(0);
+                    transform: translate(0) rotate(0);
+                }
+            }
+        </style>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><span id="my-face">(●'◡'●)ﾉ♥</span>
+        <script>
+            var now = new Date(); 
+            function createtime() { 
+                var grt= new Date("09/30/2018 12:00:00");//此处修改你的建站时间或者网站上线时间 
+                now.setTime(now.getTime()+250); 
+                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                document.getElementById("timeDate").innerHTML = "本站已萌萌哒运行 "+dnum+" 天 "; 
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒了"; 
+            } 
+            setInterval("createtime()",250);
+        </script>
         <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-fas fa-heartbeat"></i>
@@ -899,7 +1150,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">24k</span>
+    <span title="站点总字数">23k</span>
   
 
   
@@ -961,24 +1212,6 @@
 
 
         
-        <!--添加运行天数-->
-        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-        <script>
-            var now = new Date(); 
-            function createtime() { 
-                var grt= new Date("09/30/2018 12:00:00");//此处修改你的建站时间或者网站上线时间 
-                now.setTime(now.getTime()+250); 
-                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
-                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-                document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 "; 
-                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
-            } 
-            setInterval("createtime()",250);
-        </script>
       </div>
     </footer>
 
@@ -1441,6 +1674,67 @@
   
 
 
+<!--添加萌物返回顶部功能-->
+<style>
+    #kotori{
+        position: fixed;
+        bottom: -10px;
+        left: -10px;
+        height: 70px;
+        width: 70px;
+        cursor: pointer;
+        transition: 0.2s all;
+        display: none;
+    }
+    #kotori:hover{
+        transform: translate(10px,-10px)
+    }
+</style>
+<img id="kotori" src="/images/kotori.png">
+<script>
+    kotoriScrollToTop();
+    //返回顶部函数
+    function kotoriScrollToTop(){
+        var obtn = document.getElementById('kotori');  //获取回到顶部按钮的ID
+        var clientHeight = document.documentElement.clientHeight;   //获取可视区域的高度
+        var timer = null; //定义一个定时器
+        var isTop = true; //定义一个布尔值，用于判断是否到达顶部
+
+        window.onscroll = function(){         //滚动条滚动事件
+            //获取滚动条的滚动高度
+            var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+            if(osTop >= clientHeight){  //如果滚动高度大于可视区域高度，则显示回到顶部按钮
+                obtn.style.display = 'block';
+            }else{         //否则隐藏
+                obtn.style.display = 'none';
+            }
+
+            //主要用于判断当 点击回到顶部按钮后 滚动条在回滚过程中，若手动滚动滚动条，则清除定时器
+            if(!isTop){
+
+                clearInterval(timer);
+            }
+            isTop = false;
+
+        }
+
+        obtn.onclick = function(){    //回到顶部按钮点击事件
+            //设置一个定时器
+            timer = setInterval(function(){
+                //获取滚动条的滚动高度
+                var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+                //用于设置速度差，产生缓动的效果
+                var speed = Math.floor(-osTop / 10);
+                document.documentElement.scrollTop = document.body.scrollTop = osTop + speed;
+                isTop =true;  //用于阻止滚动事件清除定时器
+                if(osTop == 0){
+                    clearInterval(timer);
+                }
+            },2);
+        }
+    }
+</script>
+
 <!--aplayer-->
 <link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
 <style>
@@ -1767,5 +2061,5 @@
         }
 
     </script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"position":"left","width":100,"height":200,"hOffset":20,"vOffset":-100},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":1},"log":false,"tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"position":"left","width":100,"height":200,"hOffset":60,"vOffset":-100},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":1},"log":false,"tagMode":false});</script></body>
 </html>
