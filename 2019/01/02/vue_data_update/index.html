@@ -204,10 +204,10 @@
       ▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀
      ▐▀▒▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀
     ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀
---你看源码时_是否期待源码也同样注视(注释)着你
---你,害怕了吗
+你看源码时_是否期待源码也同样注视(注释)着你
+就像凝望深渊时_深渊也在凝望你
+你_害怕了吗
 -->
-
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
@@ -421,7 +421,7 @@
     
 
 
-    <main id="main" class="main" style="padding-bottom:50px;">
+    <main id="main" class="main" style="padding-bottom:32px;">
       <div class="main-inner">
         <div class="content-wrap">
           
@@ -1747,7 +1747,7 @@
                 //获取滚动条的滚动高度
                 var osTop = document.documentElement.scrollTop || document.body.scrollTop;
                 //用于设置速度差，产生缓动的效果
-                var speed = Math.floor(-osTop / 10);
+                var speed = Math.floor(-osTop / 60);
                 document.documentElement.scrollTop = document.body.scrollTop = osTop + speed;
                 isTop =true;  //用于阻止滚动事件清除定时器
                 if(osTop == 0){
