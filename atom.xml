@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-01-06T08:05:39.279Z</updated>
+  <updated>2019-01-10T06:06:59.030Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>非模块化下实现简单 vue-router 应用</title>
+    <link href="https://jwchan1996.github.io/2019/01/10/vue_router_nomodular/"/>
+    <id>https://jwchan1996.github.io/2019/01/10/vue_router_nomodular/</id>
+    <published>2019-01-10T05:56:32.419Z</published>
+    <updated>2019-01-10T06:06:59.030Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;#场景&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688;&quot;&gt;#&lt;/span&gt;场景&lt;/h3&gt;&lt;p&gt;一般情况下，我们使用工程化构建应用，需要的是导入 &lt;code&gt;Vue&lt;/code&gt; 和 &lt;code&gt;VueRouter&lt;/code&gt;，然后要调用 &lt;code&gt;Vue.use(VueRouter)&lt;/code&gt;&lt;br&gt;那么，如果是非模块化 &lt;code&gt;vue&lt;/code&gt; 使用 &lt;code&gt;vue-router&lt;/code&gt; 应用的实现，是怎么样的呢？  &lt;/p&gt;
+&lt;p&gt;🍭 下面是贴代码时间：
+    
+    </summary>
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/tags/vue/"/>
+    
+      <category term="vue-router" scheme="https://jwchan1996.github.io/tags/vue-router/"/>
+    
+  </entry>
   
   <entry>
     <title>hover 伪类改变另一个元素的样式</title>
