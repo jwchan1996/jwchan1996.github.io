@@ -196,8 +196,8 @@
       ▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀
      ▐▀▒▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀
     ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀
-你看源码时_是否期待源码也同样注视(注释)着你
-就像凝望深渊时_深渊也在凝望你
+当_你看源码时_是否期待源码也同样注视(注释)着你
+_就像凝望深渊时_深渊也在凝望你
 你_害怕了吗
 -->
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -845,6 +845,80 @@
 
       
 
+        
+        
+        
+
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
+            <a class="post-title-link" href="/2018/10/17/poem_1/" itemprop="url">
+              
+                <span itemprop="name">诗 / Poem</span>
+              
+            </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-10-17T16:40:15+08:00"
+              content="2018-10-17" >
+          10-17
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
+        
+        
+        
+
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
+            <a class="post-title-link" href="/2018/09/27/hello-world/" itemprop="url">
+              
+                <span itemprop="name">序 / INTRO</span>
+              
+            </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-09-27T16:51:01+08:00"
+              content="2018-09-27" >
+          09-27
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
     </div>
   </div>
   
@@ -852,10 +926,6 @@
   
 
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
 
 
 
@@ -1812,6 +1882,7 @@
         cursor: pointer;
         transition: 0.2s all;
         display: none;
+        z-index: 100;
     }
     #kotori:hover{
         transform: translate(10px,-10px)
@@ -1827,7 +1898,8 @@
         var timer = null; //定义一个定时器
         var isTop = true; //定义一个布尔值，用于判断是否到达顶部
 
-        window.onscroll = function(){         //滚动条滚动事件
+        window.addEventListener("scroll",handleScroll)
+        function handleScroll(){         //滚动条滚动事件
             //获取滚动条的滚动高度
             var osTop = document.documentElement.scrollTop || document.body.scrollTop;
             if(osTop >= clientHeight){  //如果滚动高度大于可视区域高度，则显示回到顶部按钮
@@ -1843,6 +1915,11 @@
             }
             isTop = false;
 
+        }
+
+        if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+            document.querySelector('#kotori').style.display = 'none'
+            window.removeEventListener("scroll",handleScroll,false)
         }
 
         obtn.onclick = function(){    //回到顶部按钮点击事件
