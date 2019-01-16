@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-01-11T03:03:29.006Z</updated>
+  <updated>2019-01-16T12:31:26.155Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决 apicloud 下关闭 Win 页面失效问题</title>
+    <link href="https://jwchan1996.github.io/2019/01/16/apicloud_closeWin/"/>
+    <id>https://jwchan1996.github.io/2019/01/16/apicloud_closeWin/</id>
+    <published>2019-01-16T12:21:14.359Z</published>
+    <updated>2019-01-16T12:31:26.155Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;#场景&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688;&quot;&gt;#&lt;/span&gt;场景&lt;/h3&gt;&lt;p&gt;🌈 在使用 &lt;code&gt;apicloud&lt;/code&gt; 开发相关应用的时候，经常会遇到需要打开一个新的 &lt;code&gt;Window&lt;/code&gt; 页面，同时把其他 &lt;code&gt;Window&lt;/code&gt; 或 &lt;code&gt;Frame&lt;/code&gt; 页面关闭的情况。&lt;br&gt;以下是官网 &lt;code&gt;api&lt;/code&gt; 文档的描述：  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;closeWin&lt;/code&gt; 方法可以关闭 &lt;code&gt;Window&lt;/code&gt;，但注意，若当前正在进行 &lt;code&gt;openWin&lt;/code&gt;、&lt;code&gt;closeWin&lt;/code&gt; 等带动画过渡的 &lt;code&gt;Window&lt;/code&gt; 操作，调用此方法会失效。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="混合APP" scheme="https://jwchan1996.github.io/categories/%E6%B7%B7%E5%90%88APP/"/>
+    
+    
+      <category term="apicloud" scheme="https://jwchan1996.github.io/tags/apicloud/"/>
+    
+  </entry>
   
   <entry>
     <title>非模块化下实现简单 vue-router 应用</title>
