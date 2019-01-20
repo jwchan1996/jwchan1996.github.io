@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-01-17T01:21:56.765Z</updated>
+  <updated>2019-01-20T08:42:17.715Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用 git 向开源项目提交 pull request</title>
+    <link href="https://jwchan1996.github.io/2019/01/20/git_pull_request/"/>
+    <id>https://jwchan1996.github.io/2019/01/20/git_pull_request/</id>
+    <published>2019-01-20T08:10:55.377Z</published>
+    <updated>2019-01-20T08:42:17.715Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Pull-Request-是什么&quot;&gt;&lt;a href=&quot;#Pull-Request-是什么&quot; class=&quot;headerlink&quot; title=&quot;#Pull Request 是什么&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688;&quot;&gt;#&lt;/span&gt;Pull Request 是什么&lt;/h3&gt;&lt;p&gt;⛏️ &lt;code&gt;Pull Request&lt;/code&gt; 是一种通知机制&lt;br&gt;你修改了他人的代码，将你的修改通知原来的作者，希望他合并你的修改，这就是 &lt;code&gt;Pull Request&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;⛏️ &lt;code&gt;Pull Request&lt;/code&gt; 本质上是一种软件的合作方式，是将涉及不同功能的代码，纳入主干的一种流程。这个过程中，还可以进行讨论、审核和修改代码  &lt;/p&gt;
+&lt;p&gt;⛏️ 简单的说是在自己本地仓库修改代码，提交到自己远程仓库，提交 &lt;code&gt;PR&lt;/code&gt; 后被接受后，再会被合并到 &lt;code&gt;master&lt;/code&gt;
+    
+    </summary>
+    
+      <category term="git" scheme="https://jwchan1996.github.io/categories/git/"/>
+    
+    
+      <category term="git" scheme="https://jwchan1996.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>解决 apicloud 下关闭 Win 页面失效问题</title>
@@ -214,7 +236,7 @@
     <link href="https://jwchan1996.github.io/2018/12/20/git_command/"/>
     <id>https://jwchan1996.github.io/2018/12/20/git_command/</id>
     <published>2018-12-20T01:52:38.682Z</published>
-    <updated>2018-12-22T03:57:46.569Z</updated>
+    <updated>2019-01-20T08:13:50.399Z</updated>
     
     <summary type="html">
     
@@ -244,7 +266,7 @@
     
     </summary>
     
-      <category term="Git" scheme="https://jwchan1996.github.io/categories/Git/"/>
+      <category term="git" scheme="https://jwchan1996.github.io/categories/git/"/>
     
     
       <category term="git" scheme="https://jwchan1996.github.io/tags/git/"/>
