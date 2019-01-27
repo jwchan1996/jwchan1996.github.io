@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-01-21T05:56:10.475Z</updated>
+  <updated>2019-01-27T10:33:03.751Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>实现平滑滚动回到顶部</title>
+    <link href="https://jwchan1996.github.io/2019/01/27/back_to_top/"/>
+    <id>https://jwchan1996.github.io/2019/01/27/back_to_top/</id>
+    <published>2019-01-27T10:19:08.574Z</published>
+    <updated>2019-01-27T10:33:03.751Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;# 场景&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;场景&lt;/h3&gt;&lt;p&gt;🍰 实现页面滚动到一定位置，出现返回顶部图标&lt;br&gt;🍰 点击图标实现页面平滑滚动返回顶部&lt;/p&gt;
+&lt;h3 id=&quot;方案&quot;&gt;&lt;a href=&quot;#方案&quot; class=&quot;headerlink&quot; title=&quot;# 方案&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;方案&lt;/h3&gt;&lt;p&gt;采用 window.requestAnimationFrame( ) 实现
+    
+    </summary>
+    
+      <category term="前端" scheme="https://jwchan1996.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="js" scheme="https://jwchan1996.github.io/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>使用 git 向开源项目提交 pull request</title>
