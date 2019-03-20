@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-02-20T11:47:45.678Z</updated>
+  <updated>2019-03-20T07:11:53.851Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>获取 v-html 渲染的富文本数据元素内容</title>
+    <link href="https://jwchan1996.github.io/2019/03/20/vue_v-html/"/>
+    <id>https://jwchan1996.github.io/2019/03/20/vue_v-html/</id>
+    <published>2019-03-20T06:32:08.461Z</published>
+    <updated>2019-03-20T07:11:53.851Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;# 场景&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;场景&lt;/h3&gt;&lt;p&gt;🍰 在业务中，往往有时候需要处理富文本格式的数据。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;富文本格式数据： 带有html标签的数据&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在传统的 &lt;code&gt;web&lt;/code&gt; 开发下，当我们获取到数据，只要使用 &lt;code&gt;append&lt;/code&gt; 或 &lt;code&gt;innerHtml&lt;/code&gt; 将元素添加到 &lt;code&gt;dom&lt;/code&gt; 中，再使用 &lt;code&gt;document.querySelector()&lt;/code&gt; 即可获取 &lt;code&gt;dom&lt;/code&gt; 元素。  &lt;/p&gt;
+&lt;p&gt;而在 &lt;code&gt;vue&lt;/code&gt; 中，页面渲染完毕，&lt;code&gt;v-html&lt;/code&gt; 并没有触发页面渲染的重新执行，所以使用 &lt;code&gt;document.querySelector()&lt;/code&gt; 方式是获取不到数据的，因为 &lt;code&gt;dom&lt;/code&gt; 早在第一次加载时候就渲染完毕了，也就自然获取不到。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>关于控制台打印点击事件目标元素的 currentTarget 为 null</title>
