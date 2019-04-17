@@ -110,7 +110,7 @@
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="我爱盐酥鸡">
-<meta property="og:url" content="https://jwchan1996.github.io/tags/js/index.html">
+<meta property="og:url" content="https://jwchan1996.github.io/tags/JS/index.html">
 <meta property="og:site_name" content="我爱盐酥鸡">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="https://jwchan1996.github.io/tags/js/"/>
+  <link rel="canonical" href="https://jwchan1996.github.io/tags/JS/"/>
 
 
 
@@ -133,7 +133,7 @@
   };
 </script>
 
-  <title>标签: js | 我爱盐酥鸡</title>
+  <title>标签: JS | 我爱盐酥鸡</title>
   
 
 
@@ -452,7 +452,7 @@ _就像凝望深渊时_深渊也在凝望你
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h2>js<small>标签</small>
+        <h2>JS<small>标签</small>
         </h2>
       </div>
 
@@ -464,37 +464,9 @@ _就像凝望深渊时_深渊也在凝望你
 
       <h3 class="post-title">
         
-            <a class="post-title-link" href="/2019/02/20/currentTarget_console_log/" itemprop="url">
+            <a class="post-title-link" href="/2018/11/21/websocket/" itemprop="url">
               
-                <span itemprop="name">关于控制台打印点击事件目标元素的 currentTarget 为 null</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-02-20T19:41:49+08:00"
-              content="2019-02-20" >
-          02-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/27/back_to_top/" itemprop="url">
-              
-                <span itemprop="name">实现平滑滚动回到顶部</span>
+                <span itemprop="name">初探和实现websocket心跳重连</span>
               
             </a>
         
@@ -502,9 +474,9 @@ _就像凝望深渊时_深渊也在凝望你
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2019-01-27T18:19:08+08:00"
-              content="2019-01-27" >
-          01-27
+              datetime="2018-11-21T16:04:02+08:00"
+              content="2018-11-21" >
+          11-21
         </time>
       </div>
 
@@ -1841,6 +1813,16 @@ _就像凝望深渊时_深渊也在凝望你
         aplayerBody.className += " ap-hover";
         document.querySelector('.aplayer-miniswitcher').onclick = () => {
             if(aplayerBody.className.indexOf("ap-hover") >= 0 ){
+                aplayerBody.className = aplayerBody.className.replace("ap-hover","")
+            }else{
+                aplayerBody.className += " ap-hover"
+            }          
+        }
+
+    </script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"position":"left","width":100,"height":200,"hOffset":60,"vOffset":-100},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":1},"log":false,"tagMode":false});</script></body>
+</html>
+("ap-hover") >= 0 ){
                 aplayerBody.className = aplayerBody.className.replace("ap-hover","")
             }else{
                 aplayerBody.className += " ap-hover"
