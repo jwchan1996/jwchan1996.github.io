@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-03-20T07:24:34.272Z</updated>
+  <updated>2019-04-17T09:13:32.190Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>软件版本命名规则</title>
+    <link href="https://jwchan1996.github.io/2019/04/17/version_number/"/>
+    <id>https://jwchan1996.github.io/2019/04/17/version_number/</id>
+    <published>2019-04-17T09:11:06.085Z</published>
+    <updated>2019-04-17T09:13:32.190Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;版本号命名规则&quot;&gt;&lt;a href=&quot;#版本号命名规则&quot; class=&quot;headerlink&quot; title=&quot;# 版本号命名规则&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;版本号命名规则&lt;/h3&gt;&lt;p&gt;🍰 软件版本号有四部
+      
+    
+    </summary>
+    
+      <category term="知识" scheme="https://jwchan1996.github.io/categories/%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="认知" scheme="https://jwchan1996.github.io/tags/%E8%AE%A4%E7%9F%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>获取 v-html 渲染的富文本数据元素内容</title>
