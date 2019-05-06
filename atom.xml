@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-05-06T03:07:16.036Z</updated>
+  <updated>2019-05-06T03:34:47.130Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -17,18 +17,17 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>软件版本命名规则</title>
+    <title>关于 axios 请求出现 OPTIONS</title>
     <link href="https://jwchan1996.github.io/2019/05/06/axios_options/"/>
     <id>https://jwchan1996.github.io/2019/05/06/axios_options/</id>
     <published>2019-05-06T03:06:00.547Z</published>
-    <updated>2019-05-06T03:07:16.036Z</updated>
+    <updated>2019-05-06T03:34:47.130Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;h3 id=&quot;为什么-axios-先要请求-options-再请求-post&quot;&gt;&lt;a href=&quot;#为什么-axios-先要请求-options-再请求-post&quot; class=&quot;headerlink&quot; title=&quot;# 为什么 axios 先要请求 options 再请求 p
-      
+      &lt;h3 id=&quot;为什么-axios-先要请求-OPTIONS-再请求-POST&quot;&gt;&lt;a href=&quot;#为什么-axios-先要请求-OPTIONS-再请求-POST&quot; class=&quot;headerlink&quot; title=&quot;# 为什么 axios 先要请求 OPTIONS 再请求 POST&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;为什么 axios 先要请求 OPTIONS 再请求 POST&lt;/h3&gt;&lt;p&gt;🎨 最近在用 &lt;code&gt;vue&lt;/code&gt; 重写一个以前的 &lt;code&gt;angular&lt;/code&gt; + &lt;code&gt;thinkjs&lt;/code&gt; 的项目，由于项目环境的前后端分离了，就出现了跨域问题，配置了一下 &lt;code&gt;CORS&lt;/code&gt; 解决了跨域问题之后，又出现了 &lt;code&gt;axios&lt;/code&gt; 请求发送两次的情况。&lt;/p&gt;
+&lt;p&gt;以登录功能为例，一共发送两个请求，第一个是 &lt;code&gt;OPTIONS&lt;/code&gt; 请求，第二个是 &lt;code&gt;POST&lt;/code&gt; 请求。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;axios&lt;/code&gt; 配置如下：
     
     </summary>
     
@@ -359,9 +358,9 @@
       <category term="vue" scheme="https://jwchan1996.github.io/categories/vue/"/>
     
     
-      <category term="vue" scheme="https://jwchan1996.github.io/tags/vue/"/>
-    
       <category term="axios" scheme="https://jwchan1996.github.io/tags/axios/"/>
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/tags/vue/"/>
     
   </entry>
   
