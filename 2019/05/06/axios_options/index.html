@@ -1,0 +1,2058 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="# 为什么 axios 先要请求 options 再请求 post最近在用 vue 重写一个以前的 angular + thinkjs 的项目，由于项目环境的前后端分离了，就出现了跨域问题，配置了一下 CORS 解决了跨域问题之后，又出现了 axios 请求发送两次的情况。 以登录功能为例，一共发送两个请求，第一个是 options 请求，第二个是 post 请求。 axios 配置如下：1234">
+<meta name="keywords" content="axios,跨域,options">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件版本命名规则">
+<meta property="og:url" content="https://jwchan1996.github.io/2019/05/06/axios_options/index.html">
+<meta property="og:site_name" content="我爱盐酥鸡">
+<meta property="og:description" content="# 为什么 axios 先要请求 options 再请求 post最近在用 vue 重写一个以前的 angular + thinkjs 的项目，由于项目环境的前后端分离了，就出现了跨域问题，配置了一下 CORS 解决了跨域问题之后，又出现了 axios 请求发送两次的情况。 以登录功能为例，一共发送两个请求，第一个是 options 请求，第二个是 post 请求。 axios 配置如下：1234">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://jwchan1996.github.io/images/axios_options/axios_options_01.png">
+<meta property="og:image" content="https://jwchan1996.github.io/images/axios_options/axios_options_02.png">
+<meta property="og:image" content="https://jwchan1996.github.io/images/axios_options/axios_options_03.png">
+<meta property="og:image" content="https://jwchan1996.github.io/images/axios_options/axios_options_04.png">
+<meta property="og:image" content="https://jwchan1996.github.io/images/axios_options/axios_options_05.png">
+<meta property="og:image" content="https://jwchan1996.github.io/images/axios_options/axios_options_06.png">
+<meta property="og:updated_time" content="2019-05-06T03:07:16.036Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="软件版本命名规则">
+<meta name="twitter:description" content="# 为什么 axios 先要请求 options 再请求 post最近在用 vue 重写一个以前的 angular + thinkjs 的项目，由于项目环境的前后端分离了，就出现了跨域问题，配置了一下 CORS 解决了跨域问题之后，又出现了 axios 请求发送两次的情况。 以登录功能为例，一共发送两个请求，第一个是 options 请求，第二个是 post 请求。 axios 配置如下：1234">
+<meta name="twitter:image" content="https://jwchan1996.github.io/images/axios_options/axios_options_01.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我爱盐酥鸡" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="https://jwchan1996.github.io/2019/05/06/axios_options/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>软件版本命名规则 | 我爱盐酥鸡</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+
+  <!--引入动画css-->
+  <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One" rel="stylesheet">
+  <link rel="stylesheet" href="/css/animation_header.css">
+</head>
+<!--
+           ▄              ▄
+          ▌▒█           ▄▀▒▌
+          ▌▒▒▀▄        ▀▒▒▒▐
+         ▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐
+       ▄▄▀▒▒▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐
+     ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▐
+    ▐▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄▒▒▌
+    ▌▒▒▐▄█▀▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐
+   ▐▒▒▒▒▒▒▒▒▒▒▒▌██▀▒▒▒▒▒▒▒▒▀▄▌
+   ▌▒▀▄██▄▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
+   ▌▀▐▄█▄█▌▄▒▀▒▒▒▒▒▒░░░░░░▒▒▒▐
+  ▐▒▀▐▀▐▀▒▒▄▄▒▄▒▒▒▒░░░░░░░▒▒▒▒▌
+  ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒░░░░░░▒▒▒▐
+   ▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
+   ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+    ▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▒▒▒▒▌
+      ▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀
+     ▐▀▒▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀
+    ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀
+当_你看源码时_是否期待源码也同样注视(注释)着你
+_就像凝望深渊时_深渊也在凝望你
+你_害怕了吗
+-->
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+      <a href="https://github.com/jwchan1996" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 100;" src="/images/forkMeInGithub.png" alt="Fork me on GitHub"></a>
+    </div>
+
+    <canvas id="evanyou"></canvas>
+    <script>
+      document.addEventListener('touchmove', function (e) {
+          e.preventDefault()
+      })
+      var c = document.getElementById('evanyou'),
+          x = c.getContext('2d'),
+          pr = window.devicePixelRatio || 1,
+          w = window.innerWidth,
+          h = window.innerHeight,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
+      function i(){
+          x.clearRect(0,0,w,h)
+          q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+          while(q[1].x<w+f) d(q[0], q[1])
+      }
+      function d(i,j){   
+          x.beginPath()
+          x.moveTo(i.x, i.y)
+          x.lineTo(j.x, j.y)
+          var k = j.x + (z()*2-0.25)*f,
+              n = y(j.y)
+          x.lineTo(k, n)
+          x.closePath()
+          r-=u/-50
+          x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+          x.fill()
+          q[0] = q[1]
+          q[1] = {x:k,y:n}
+      }
+      function y(p){
+          var t = p + (z()*2-1.1)*f
+          return (t>h||t<0) ? y(p) : t
+      }
+      document.onclick = i
+      document.ontouchstart = i
+      i()
+    </script>
+
+    <!--动画-->
+      <p id="offscreen-text" class="offscreen-text"></p>
+      <p id="text" class="text"></p>
+      <svg id="svg"> </svg>
+      <input type="text" class="input", id="input" />
+      <script src='/js/animation_header/CSSPlugin.min.js'></script> 
+      <script src='/js/animation_header/EasePack.min.js'></script> 
+      <script src='/js/animation_header/TweenLite.min.js'></script> 
+      <script src="/js/animation_header/index.js"></script>
+    <!--动画-->
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+
+      
+
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我爱盐酥鸡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">在现实断裂的地方 梦汇成了海</h1>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">19</span></a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类<span class="badge">10</span></a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签<span class="badge">15</span></a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-友链">
+    <a href="/links/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-link"></i> <br />友链</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main" style="padding-bottom:32px;">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jwchan1996.github.io/2019/05/06/axios_options/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jwchan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我爱盐酥鸡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">软件版本命名规则
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-06 11:06:00 / 修改时间：11:07:16" itemprop="dateCreated datePublished" datetime="2019-05-06T11:06:00+08:00">2019-05-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/axios/" itemprop="url" rel="index"><span itemprop="name">axios</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+            </span>
+            <span id="busuanzi_value_page_pv"></span>次阅读
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="为什么-axios-先要请求-options-再请求-post"><a href="#为什么-axios-先要请求-options-再请求-post" class="headerlink" title="# 为什么 axios 先要请求 options 再请求 post"></a><span style="color:#009688"># </span>为什么 axios 先要请求 options 再请求 post</h3><p>最近在用 vue 重写一个以前的 angular + thinkjs 的项目，由于项目环境的前后端分离了，就出现了跨域问题，配置了一下 CORS 解决了跨域问题之后，又出现了 axios 请求发送两次的情况。</p>
+<p>以登录功能为例，一共发送两个请求，第一个是 options 请求，第二个是 post 请求。</p>
+<p>axios 配置如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line"><span class="keyword">import</span> qs <span class="keyword">from</span> <span class="string">'qs'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> baseURL = <span class="string">'http://localhost:8888'</span></span><br><span class="line"></span><br><span class="line">axios.interceptors.request.use(<span class="function">(<span class="params">config</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span>(config.method  === <span class="string">'post'</span>)&#123;</span><br><span class="line">    config.data = qs.stringify(config.data)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> config</span><br><span class="line">&#125;,(error) =&gt;&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> request = axios.create(&#123;</span><br><span class="line">  baseURL,</span><br><span class="line">  headers: &#123;</span><br><span class="line">    <span class="string">'X-Requested-With'</span>: <span class="string">'XMLHttpRequest'</span>, </span><br><span class="line">    <span class="string">'Content-Type'</span>: <span class="string">'application/x-www-form-urlencoded;charset=UTF-8'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  withCredentials: <span class="literal">true</span> <span class="comment">// 允许携带cookie</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> request</span><br></pre></td></tr></table></figure></p>
+<p>执行功能请求的时候，控制台 XHR 请求如下：</p>
+<p><img src="/images/axios_options/axios_options_01.png" alt="等待options"></p>
+<p><img src="/images/axios_options/axios_options_02.png" alt="等待options"></p>
+<p>thinkjs 控制台显示请求时间如下：</p>
+<p><img src="/images/axios_options/axios_options_03.png" alt="options请求处理时间"></p>
+<p><img src="/images/axios_options/axios_options_04.png" alt="post请求处理时间"></p>
+<p>可以看到，options 请求占用了差不多两分钟的时间之后，才进行 post 请求，简直不能忍！！！</p>
+<p>所以，问题来了，为什么会出现两次请求呢？这个 options 请求到底是何方神圣？</p>
+<h4 id="首先我们来了解一下-CORS"><a href="#首先我们来了解一下-CORS" class="headerlink" title="首先我们来了解一下 CORS :"></a>首先我们来了解一下 CORS :</h4><p>CORS 是一个 W3C 标准，全称是”跨域资源共享”（Cross-origin resource sharing）。<br>它允许浏览器向跨源服务器，发出 XMLHttpRequest 请求，从而克服了 AJAX 只能同源使用的限制。</p>
+<h4 id="CORS-的局限性："><a href="#CORS-的局限性：" class="headerlink" title="CORS 的局限性："></a>CORS 的局限性：</h4><p>CORS 需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于 IE10。<br>整个 CORS 通信过程，都是浏览器自动完成，不需要用户参与。<br>浏览器一旦发现 AJAX 请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求。<br>实现 CORS 通信的关键是服务器，只要服务器实现了 CORS 接口，就可以跨源通信。</p>
+<h4 id="CORS-的类别："><a href="#CORS-的类别：" class="headerlink" title="CORS 的类别："></a>CORS 的类别：</h4><ul>
+<li>简单请求（simple request）</li>
+<li>非简单请求（not-so-simple request）</li>
+</ul>
+<h4 id="简单请求（simple-request）"><a href="#简单请求（simple-request）" class="headerlink" title="简单请求（simple request）"></a>简单请求（simple request）</h4><p>只要同时满足以下两大条件，就属于简单请求：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">请求方法是以下三种方法之一：</span><br><span class="line">- HEAD</span><br><span class="line">- GET</span><br><span class="line">- POST</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HTTP 的头信息不超出以下几种字段：</span><br><span class="line">- Accept</span><br><span class="line">- Accept-Language</span><br><span class="line">- Content-Language</span><br><span class="line">- Last-Event-ID</span><br><span class="line">- Content-Type: 只限于三个值 application/x-www-form-urlencoded、multipart/form-data、text/plain</span><br></pre></td></tr></table></figure>
+<p>对于简单请求，浏览器直接发出 CORS 请求。<br>具体来说，就是在头信息之中，增加一个 Origin 字段。</p>
+<ul>
+<li>Access-Control-Allow-Origin: 该字段是必须的。它的值要么是请求时 Origin 字段的值，要么是一个 * ，表示接受任意域名的请求。</li>
+<li>Access-Control-Allow-Credentials: 该字段可选。它的值是一个布尔值，表示是否允许发送 Cookie。默认情况下，Cookie 不包括在 CORS 请求之中。设为 true，即表示服务器明确许可，Cookie 可以包含在请求中，一起发给服务器。这个值也只能设为 true，如果服务器不要浏览器发送 Cookie，删除该字段即可。</li>
+<li>Access-Control-Expose-Headers: 该字段可选。CORS 请求时，XMLHttpRequest 对象的 getResponseHeader() 方法只能拿到 6 个基本字段：Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma。如果想拿到其他字段，就必须在 Access-Control-Expose-Headers 里面指定。</li>
+</ul>
+<h4 id="非简单请求（not-so-simple-request）"><a href="#非简单请求（not-so-simple-request）" class="headerlink" title="非简单请求（not-so-simple request）"></a>非简单请求（not-so-simple request）</h4><p>复杂跨域请求要满足以下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 请求方法不是 HEAD/GET/POST</span><br><span class="line">- POST 请求的 Content-Type 并非 application/x-www-form-urlencoded、multipart/form-data、text/plain</span><br><span class="line">- 请求设置了自定义的 header 字段</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>非简单请求是那种对服务器有特殊要求的请求，比如请求方法是 PUT 或 DELETE，或者 Content-Type 字段的类型是 application/json。</li>
+<li>非简单请求的 CORS 请求，会在正式通信之前，增加一次 HTTP 查询请求，称为”预检”请求（preflight）。</li>
+<li>“预检”请求用的请求方法是 OPTIONS，表示这个请求是用来询问的。头信息里面，关键字段是 Origin，表示请求来自哪个源。</li>
+<li>浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些 HTTP 动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的 XMLHttpRequest 请求，否则就报错。</li>
+<li>除了 Origin 字段，”预检”请求的头信息包括两个特殊字段：<ul>
+<li>Access-Control-Request-Method：该字段是必须的，用来列出浏览器的 CORS 请求会用到哪些 HTTP 方法。</li>
+<li>Access-Control-Request-Headers：该字段是一个逗号分隔的字符串，指定浏览器 CORS 请求会额外发送的头信息字段。</li>
+</ul>
+</li>
+</ol>
+<p>一旦服务器通过了”预检”请求，以后每次浏览器正常的 CORS 请求，就都跟简单请求一样，会有一个 Origin 头信息字段。服务器的回应，也都会有一个 Access-Control-Allow-Origin 头信息字段。</p>
+<h3 id="解决-axios-请求-options-的方法"><a href="#解决-axios-请求-options-的方法" class="headerlink" title="# 解决 axios 请求 options 的方法"></a><span style="color:#009688"># </span>解决 axios 请求 options 的方法</h3><p>=&gt; 把非简单请求转换为简单请求！！！</p>
+<p>简单粗暴~</p>
+<p><img src="/images/axios_options/axios_options_05.png" alt="修改header"></p>
+<p>再次请求接口，发现 options 请求已经没有了，直接 post 请求响应速度杠杠的！</p>
+<p><img src="/images/axios_options/axios_options_06.png" alt="post请求成功"></p>
+<p>🍰 终于解决了困扰了两天的跨域问题和 options 验证 😤</p>
+<p>END</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/axios/" rel="tag"><i class="fa fa-tag"></i> axios</a>
+          
+            <a href="/tags/跨域/" rel="tag"><i class="fa fa-tag"></i> 跨域</a>
+          
+            <a href="/tags/options/" rel="tag"><i class="fa fa-tag"></i> options</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/17/version_number/" rel="next" title="软件版本命名规则">
+                <i class="fa fa-chevron-left"></i> 软件版本命名规则
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Jwchan" />
+            
+              <p class="site-author-name" itemprop="name">Jwchan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/jwchan1996" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:741755613@qq.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/breakingxiao-bi" target="_blank" title="知乎" rel="external nofollow"><i class="fa fa-fw fa-graduation-cap"></i>知乎</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么-axios-先要请求-options-再请求-post"><span class="nav-text"># 为什么 axios 先要请求 options 再请求 post</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#首先我们来了解一下-CORS"><span class="nav-text">首先我们来了解一下 CORS :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CORS-的局限性："><span class="nav-text">CORS 的局限性：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CORS-的类别："><span class="nav-text">CORS 的类别：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简单请求（simple-request）"><span class="nav-text">简单请求（simple request）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非简单请求（not-so-simple-request）"><span class="nav-text">非简单请求（not-so-simple request）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决-axios-请求-options-的方法"><span class="nav-text"># 解决 axios 请求 options 的方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+      <!--增加底部裙子图片-->
+      <style>
+        @media screen and (max-width: 1050px) {
+            #footer-petticoat{
+                display: none;
+            }
+            .main{
+                /*裙子图片隐藏了，所以内边距恢复原来*/
+                padding-bottom: 150px !important;
+            }
+        }
+      </style>
+      <img id="footer-petticoat" src="/images/footer.png">
+    </main>
+
+    <footer id="footer" class="footer" style="z-index:-10;background-color:#333;">
+      <div class="footer-inner">
+        <!--添加运行天数-->
+        <style>
+            #my-face{
+                animation: my-face 4s infinite ease-in-out;
+                display: inline-block;
+                color: #F2AA24;
+            }
+            @keyframes my-face{
+                2% {
+                    -webkit-transform: translateY(1.5px) rotate(1.5deg);
+                    transform: translateY(1.5px) rotate(1.5deg);
+                }
+                4% {
+                    -webkit-transform: translateY(-1.5px) rotate(-.5deg);
+                    transform: translateY(-1.5px) rotate(-.5deg);
+                }
+                6% {
+                    -webkit-transform: translateY(1.5px) rotate(-1.5deg);
+                    transform: translateY(1.5px) rotate(-1.5deg);
+                }
+                8% {
+                    -webkit-transform: translateY(-1.5px) rotate(-1.5deg);
+                    transform: translateY(-1.5px) rotate(-1.5deg);
+                }
+                10% {
+                    -webkit-transform: translateY(2.5px) rotate(1.5deg);
+                    transform: translateY(2.5px) rotate(1.5deg);
+                }
+                12% {
+                    -webkit-transform: translateY(-.5px) rotate(1.5deg);
+                    transform: translateY(-.5px) rotate(1.5deg);
+                }
+                14% {
+                    -webkit-transform: translateY(-1.5px) rotate(1.5deg);
+                    transform: translateY(-1.5px) rotate(1.5deg);
+                }
+                16% {
+                    -webkit-transform: translateY(-.5px) rotate(-1.5deg);
+                    transform: translateY(-.5px) rotate(-1.5deg);
+                }
+                18% {
+                    -webkit-transform: translateY(.5px) rotate(-1.5deg);
+                    transform: translateY(.5px) rotate(-1.5deg);
+                }
+                20% {
+                    -webkit-transform: translateY(-1.5px) rotate(2.5deg);
+                    transform: translateY(-1.5px) rotate(2.5deg);
+                }
+                22% {
+                    -webkit-transform: translateY(.5px) rotate(-1.5deg);
+                    transform: translateY(.5px) rotate(-1.5deg);
+                }
+                24% {
+                    -webkit-transform: translateY(1.5px) rotate(1.5deg);
+                    transform: translateY(1.5px) rotate(1.5deg);
+                }
+                26% {
+                    -webkit-transform: translateY(.5px) rotate(.5deg);
+                    transform: translateY(.5px) rotate(.5deg);
+                }
+                28% {
+                    -webkit-transform: translateY(.5px) rotate(1.5deg);
+                    transform: translateY(.5px) rotate(1.5deg);
+                }
+                30% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                32% {
+                    -webkit-transform: translateY(1.5px) rotate(-.5deg);
+                    transform: translateY(1.5px) rotate(-.5deg);
+                }
+                34% {
+                    -webkit-transform: translateY(1.5px) rotate(-.5deg);
+                    transform: translateY(1.5px) rotate(-.5deg);
+                }
+                36% {
+                    -webkit-transform: translateY(-1.5px) rotate(2.5deg);
+                    transform: translateY(-1.5px) rotate(2.5deg);
+                }
+                38% {
+                    -webkit-transform: translateY(1.5px) rotate(-1.5deg);
+                    transform: translateY(1.5px) rotate(-1.5deg);
+                }
+                40% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                42% {
+                    -webkit-transform: translateY(2.5px) rotate(-1.5deg);
+                    transform: translateY(2.5px) rotate(-1.5deg);
+                }
+                44% {
+                    -webkit-transform: translateY(1.5px) rotate(.5deg);
+                    transform: translateY(1.5px) rotate(.5deg);
+                }
+                46% {
+                    -webkit-transform: translateY(-1.5px) rotate(2.5deg);
+                    transform: translateY(-1.5px) rotate(2.5deg);
+                }
+                48% {
+                    -webkit-transform: translateY(-.5px) rotate(.5deg);
+                    transform: translateY(-.5px) rotate(.5deg);
+                }
+                50% {
+                    -webkit-transform: translateY(.5px) rotate(.5deg);
+                    transform: translateY(.5px) rotate(.5deg);
+                }
+                52% {
+                    -webkit-transform: translateY(2.5px) rotate(2.5deg);
+                    transform: translateY(2.5px) rotate(2.5deg);
+                }
+                54% {
+                    -webkit-transform: translateY(-1.5px) rotate(1.5deg);
+                    transform: translateY(-1.5px) rotate(1.5deg);
+                }
+                56% {
+                    -webkit-transform: translateY(2.5px) rotate(2.5deg);
+                    transform: translateY(2.5px) rotate(2.5deg);
+                }
+                58% {
+                    -webkit-transform: translateY(.5px) rotate(2.5deg);
+                    transform: translateY(.5px) rotate(2.5deg);
+                }
+                60% {
+                    -webkit-transform: translateY(2.5px) rotate(2.5deg);
+                    transform: translateY(2.5px) rotate(2.5deg);
+                }
+                62% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                64% {
+                    -webkit-transform: translateY(-.5px) rotate(1.5deg);
+                    transform: translateY(-.5px) rotate(1.5deg);
+                }
+                66% {
+                    -webkit-transform: translateY(1.5px) rotate(-.5deg);
+                    transform: translateY(1.5px) rotate(-.5deg);
+                }
+                68% {
+                    -webkit-transform: translateY(-1.5px) rotate(-.5deg);
+                    transform: translateY(-1.5px) rotate(-.5deg);
+                }
+                70% {
+                    -webkit-transform: translateY(1.5px) rotate(.5deg);
+                    transform: translateY(1.5px) rotate(.5deg);
+                }
+                72% {
+                    -webkit-transform: translateY(2.5px) rotate(1.5deg);
+                    transform: translateY(2.5px) rotate(1.5deg);
+                }
+                74% {
+                    -webkit-transform: translateY(-.5px) rotate(.5deg);
+                    transform: translateY(-.5px) rotate(.5deg);
+                }
+                76% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                78% {
+                    -webkit-transform: translateY(-.5px) rotate(1.5deg);
+                    transform: translateY(-.5px) rotate(1.5deg);
+                }
+                80% {
+                    -webkit-transform: translateY(1.5px) rotate(1.5deg);
+                    transform: translateY(1.5px) rotate(1.5deg);
+                }
+                82% {
+                    -webkit-transform: translateY(-.5px) rotate(.5deg);
+                    transform: translateY(-.5px) rotate(.5deg);
+                }
+                84% {
+                    -webkit-transform: translateY(1.5px) rotate(2.5deg);
+                    transform: translateY(1.5px) rotate(2.5deg);
+                }
+                86% {
+                    -webkit-transform: translateY(-1.5px) rotate(-1.5deg);
+                    transform: translateY(-1.5px) rotate(-1.5deg);
+                }
+                88% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                90% {
+                    -webkit-transform: translateY(2.5px) rotate(-.5deg);
+                    transform: translateY(2.5px) rotate(-.5deg);
+                }
+                92% {
+                    -webkit-transform: translateY(.5px) rotate(-.5deg);
+                    transform: translateY(.5px) rotate(-.5deg);
+                }
+                94% {
+                    -webkit-transform: translateY(2.5px) rotate(.5deg);
+                    transform: translateY(2.5px) rotate(.5deg);
+                }
+                96% {
+                    -webkit-transform: translateY(-.5px) rotate(1.5deg);
+                    transform: translateY(-.5px) rotate(1.5deg);
+                }
+                98% {
+                    -webkit-transform: translateY(-1.5px) rotate(-.5deg);
+                    transform: translateY(-1.5px) rotate(-.5deg);
+                }
+                0%, 100% {
+                    -webkit-transform: translate(0) rotate(0);
+                    transform: translate(0) rotate(0);
+                }
+            }
+        </style>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><span id="my-face">(●'◡'●)ﾉ♥</span>
+        <script>
+            var now = new Date(); 
+            function createtime() { 
+                var grt= new Date("09/30/2018 12:00:00");//此处修改你的建站时间或者网站上线时间 
+                now.setTime(now.getTime()+250); 
+                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                document.getElementById("timeDate").innerHTML = "本站已萌萌哒运行 "+dnum+" 天 "; 
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒了 "; 
+            } 
+            setInterval("createtime()",250);
+        </script>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-fas fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jwchan</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">43k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">39 分钟</span>
+  
+</div>
+
+
+  
+
+
+
+  <!--隐藏了强力驱动说明-->
+  <!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+  -->
+
+
+
+  <!--
+  <span class="post-meta-divider">|</span>
+  -->
+
+
+
+  <!--隐藏了主题说明-->
+  <!--
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" rel="external nofollow" href="https://theme-next.org">NexT.Muse</a> v6.4.1</div>
+  -->
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        <div>
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+                <span class="post-meta-divider">|</span>
+            </span>
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+            </span>
+        </div>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<!--添加萌物返回顶部功能-->
+<style>
+    #kotori{
+        position: fixed;
+        bottom: -10px;
+        left: -10px;
+        height: 70px;
+        width: 70px;
+        cursor: pointer;
+        transition: 0.2s all;
+        display: none;
+        z-index: 100;
+    }
+    #kotori:hover{
+        transform: translate(10px,-10px)
+    }
+</style>
+<img id="kotori" src="/images/kotori.png" onclick="smoothscroll()">
+<script>
+    function smoothscroll(){
+        var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        if (currentScroll > 0) {
+            //告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画
+            window.requestAnimationFrame(smoothscroll);
+            window.scrollTo (0,currentScroll - (currentScroll/10));
+        }
+    }
+
+    window.addEventListener("scroll",handleScroll)
+    function handleScroll(){         //滚动条滚动事件
+        var obtn = document.getElementById('kotori');  //获取回到顶部按钮的ID
+        var clientHeight = document.documentElement.clientHeight;   //获取可视区域的高度
+        //获取滚动条的滚动高度
+        var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if(osTop >= 0.5*clientHeight){  //如果滚动高度大于可视区域高度，则显示回到顶部按钮
+            obtn.style.display = 'block';
+        }else{         //否则隐藏
+            obtn.style.display = 'none';
+        }
+    }
+
+    if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+        document.querySelector('#kotori').style.display = 'none'
+        window.removeEventListener("scroll",handleScroll,false)
+    }
+</script>
+
+<!--aplayer-->
+<link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
+<style>
+    /* 添加以下样式，则定位左上角 */
+    /*.aplayer-fixed{
+        top: 0 !important;
+        z-index: 99999 !important;
+        height: 0 !important;
+    }
+    .aplayer-body{
+        top: 0px !important;
+        max-height: 66px !important;
+    }
+    .aplayer-fixed .aplayer-list{
+        margin-top: 66px !important; 
+        margin-bottom: 0 !important;
+        background-color: #fff;
+    }*/
+    /* 添加以上样式，则定位左上角 */
+    /*以下样式定位在猫的头顶*/
+    
+    .aplayer-fixed{
+      bottom: 220px !important;
+      z-index: 99999 !important;
+    }
+    .aplayer-body{
+      bottom: 220px !important;
+    }
+    
+    /**/
+    .ap-hover{
+        left: -66px !important;
+    }
+    .ap-hover:hover{
+        left: 0 !important;
+    }
+    /* 调整歌词总高度 */
+    .aplayer-lrc{
+        height: 54px !important;
+        background-color: rgba(0,0,0,0) !important;
+        z-index: 99999 !important;
+        bottom: 0 !important;
+    }
+    /* 正在排队的歌词 */
+    .aplayer-lrc p{
+        color: #666 !important;
+    }
+    /* 正在唱歌的歌词 */
+    .aplayer-lrc p.aplayer-lrc-current{
+        color: #009688 !important;
+        font-size: 20px;
+        padding: 10px 0 !important;
+        /* line-height: 30px !important; */
+    }
+</style>
+<body>
+
+    <div id="aplayer">
+        <!-- 每个aplayer-lrc-content就是每一首歌的歌词 -->
+        <pre class="aplayer-lrc-content">
+            [00:06.59]呼んでいる 胸のどこか奥で
+            [00:12.06]いつも心踊る 夢を見たい
+            [00:18.09]かなしみは 数えきれないけれど
+            [00:23.87]その向こうできっと あなたに会える
+            [00:29.40]
+            [00:31.81]繰り返すあやまちの そのたび ひとは
+            [00:38.20]ただ青い空の 青さを知る
+            [00:43.33]果てしなく 道は続いて見えるけれど
+            [00:50.92]この両手は 光を抱ける
+            [00:54.89]
+            [00:57.26]さよならのときの 静かな胸
+            [01:02.80]ゼロになるからだが 耳をすませる
+            [01:08.60]生きている不思議 死んでいく不思議
+            [01:14.53]花も風も街も みんなおなじ
+            [01:20.50]
+            [01:22.40]nananan lalala lululu
+            [01:47.63]呼んでいる 胸のどこか奥で
+            [01:53.56]いつも何度でも 夢を描こう
+            [01:59.14]かなしみの数を 言い尽くすより
+            [02:05.16]同じくちびるで そっとうたおう
+            [02:11.48]
+            [02:12.96]閉じていく思い出の そのなかにいつも
+            [02:19.31]忘れたくない ささやきを聞く
+            [02:24.47]こなごなに砕かれた 鏡の上にも
+            [02:31.12]新しい景色が 映される
+            [02:35.89]
+            [02:38.27]はじまりの朝の静かな窓
+            [02:43.72]ゼロになるからだ 充たされてゆけ
+            [02:49.70]海の彼方には もう探さない
+            [02:55.66]輝くものは いつもここに
+            [03:01.66]わたしのなかに 見つけられたから
+            [03:08.20]
+            [03:14.13]nananan lalala lululu
+        </pre>
+        <pre class="aplayer-lrc-content">
+            [by:嘶哑音符]
+            [00:00.12]二人の間 通り過ぎた風は
+            [00:07.15]どこから寂しさを運んできたの
+            [00:13.66]泣いたりしたそのあとの空は
+            [00:19.82]やけに透き通っていたりしたんだ
+            [00:26.02]music
+            [00:37.03]いつもは尖ってた父の言葉が
+            [00:42.82]今日は暖かく感じました
+            [00:48.47]優しさも笑顔も夢の語り方も
+            [00:54.07]知らなくて全部 君を真似たよ
+            [00:59.48]もう少しだけでいい あと少しだけでいい
+            [01:05.39]もう少しだけでいいから
+            [01:11.20]もう少しだけでいい あと少しだけでいい
+            [01:16.97]もう少しだけ くっついていようか
+            [01:21.11]music
+            [01:25.69]僕らタイムフライヤー 時を駆け上がるクライマー
+            [01:30.74]時のかくれんぼ はぐれっこはもういやなんだ
+            [01:37.51]嬉しくて泣くのは 悲しくて笑うのは
+            [01:41.74]君の心が 君を追い越したんだよ
+            [01:46.78]music
+            [02:08.22]星にまで願って 手にいれたオモチャも
+            [02:14.10]部屋の隅っこに今 転がってる
+            [02:19.83]叶えたい夢も 今日で100個できたよ
+            [02:25.53]たった一つといつか 交換こしよう
+            [02:31.26]music
+            [02:37.14]いつもは喋らないあの子に今日は
+            [02:42.95]放課後「また明日」と声をかけた
+            [02:48.50]慣れないこともたまにならいいね
+            [02:54.25]特にあなたが 隣にいたら
+            [02:59.69]もう少しだけでいい あと少しだけでいい
+            [03:05.39]もう少しだけでいいから
+            [03:11.09]もう少しだけでいい あと少しだけでいい
+            [03:16.69]もう少しだけくっついていようよ
+            [03:21.02]music
+            [03:25.75]僕らタイムフライヤー 君を知っていたんだ
+            [03:30.42]僕が 僕の名前を 覚えるよりずっと前に
+            [03:43.62]君のいない 世界にも 何かの意味はきっとあって
+            [03:49.00]でも君のいない 世界など 夏休みのない 八月のよう
+            [03:55.15]君のいない 世界など 笑うことない サンタのよう
+            [04:00.60]君のいない 世界など
+            [04:08.70]music
+            [04:34.00]僕らタイムフライヤー 時を駆け上がるクライマー
+            [04:39.32]時のかくれんぼ はぐれっこはもういやなんだ
+            [04:46.03]なんでもないや やっぱりなんでもないや
+            [04:50.46]今から行くよ
+            [04:55.00]僕らタイムフライヤー 時を駆け上がるクライマー
+            [04:59.98]時のかくれんぼ はぐれっこ はもういいよ
+            [05:06.45]君は派手なクライヤー その涙 止めてみたいな
+            [05:11.34]だけど 君は拒んだ 零れるままの涙を見てわかった
+            [05:18.08]嬉しくて泣くのは 悲しくて 笑うのは
+            [05:22.51]僕の心が 僕を追い越したんだよ
+            [05:27.55]end
+        </pre>
+        <pre class="aplayer-lrc-content">
+            [by:InuNeko]
+            [00:01.100]少し歩き疲れたんだ
+            [00:04.100]少し歩き疲れたんだ
+            [00:07.100]月並みな表現(ひょうげん)だけど
+            [00:09.100]人生(じんせい)とかいう長い道を
+            [00:12.100]少し休みたいんだ
+            [00:15.100]少し休みたいんだけど
+            [00:17.800]時間は刻一刻(こくいっこく)残酷と
+            [00:20.100]私を    引っぱっていくんだ
+            [00:26.100]Yeah——
+            [00:28.100]Yeah——Yeah——
+            [00:38.100]
+            [00:44.100]うまくいきそうなんだけど
+            [00:47.100]うまくいかないことばかりで
+            [00:50.100]迂闊(うかつ)にも泣いてしまいそうになる
+            [00:52.100]情(なさ)けない本当にな
+            [00:55.100]惨(みじ)めな気持なんか
+            [00:57.100]嫌というほど味わってきたし
+            [01:00.100]とっくに悔しさなんてものは
+            [01:03.100]捨ててきたはずなのに
+            [01:06.100]絶望抱くほど  悪いわけじゃないけど
+            [01:09.100]欲しいものは  いつも少し手には届かない
+            [01:11.100]そんな半端(はんぱ)だとね
+            [01:13.100]なんか期待してしまうから
+            [01:17.800]それならもういっそのこと
+            [01:21.100]ドン底まで突き落としてよ
+            [01:27.100]答えなんて言われたって
+            [01:29.800]人によってすり替(か)わってって
+            [01:32.100]だから絶対(ぜったい)なんて絶対
+            [01:35.100]信じらんないよ  ねぇ
+            [01:37.800]苦しみって誰にもあるって
+            [01:40.100]そんなのわかってるから何だって
+            [01:43.100]なら笑って済ませばいいの？
+            [01:45.100]もうわかんないよ　バカ！
+            [01:49.100]
+            [01:54.100]
+            [01:59.100]散々言われてきたくせに
+            [02:02.100]なんだ  まんざらでもないんだ
+            [02:04.800]簡単に考えたら楽なことも
+            [02:07.800]難関(なんかん)に考えてたんだ
+            [02:10.100]段々(だんだん)と色々めんどくなって
+            [02:12.100]もう淡々と終わらせちゃおうか
+            [02:15.100]「病んだ？」とかもう  嫌になったから
+            [02:18.100]やんわりと終わればもういいじゃんか
+            [02:21.100]夢だとか希望だとか  生きてる意味とか
+            [02:23.100]別にそんなものはさして  必要ないから
+            [02:26.100]具体的(ぐたいてき)でわかりやすい
+            [02:28.700]機会(きかい)をください
+            [02:32.100]泣き場所探すうちに
+            [02:36.100]もう泣き疲れちゃったよ
+            [02:41.700]きれいごとって嫌い  だって
+            [02:44.100]期待しちゃっても形になんなくて
+            [02:47.100]「星が僕ら見守って」って
+            [02:49.800]夜しかいないじゃん　ねぇ
+            [02:52.100]君のその優しいとこ
+            [02:55.100]不覚(ふかく)にも求めちゃうから
+            [02:57.800]この心やらかいとこ
+            [03:00.100]もう触んないで  ヤダ！
+            [03:03.000]
+            [03:14.100]
+            [03:22.100]
+            [03:24.100]もうほっといて
+            [03:27.100]もう置いてって
+            [03:29.800]汚れきったこの道は
+            [03:32.100]もう変わんないよ嗚呼
+            [03:35.100]疲れちゃって弱気(よわき)になって
+            [03:37.800]逃げ出したって無駄なんだって
+            [03:40.100]だから内面(ないめん)耳塞いで
+            [03:43.100]もう最低(さいてい)だって泣いて
+            [03:45.800]人生って何なのって
+            [03:48.100]わかんなくても生きてるだけで
+            [03:51.100]幸せって思えばいいの？
+            [03:53.100]もうわかんないよ　バカ！
+            [03:56.100]
+            [04:01.100]
+            [04:07.100]
+        </pre>
+        <pre class="aplayer-lrc-content">
+            [by:Crystalyn]
+            [ti:ぼくら 《城镇青年》片尾曲]
+            [ar:ヘクとパスカル]
+            [by:Crystalyn]
+            [00:09.75]
+            [00:25.26]駆け足で ウチに帰る 子供たちの声がする
+            [00:35.59]
+            [00:36.75]つま先で 石を蹴りながら
+            [00:42.14]めぐりめぐる 帰り道
+            [00:47.08]
+            [00:47.69]谁かの财布拾って 交番まで届けた
+            [00:59.51]
+            [01:02.50]いつか 时が 过ぎて 仆ら
+            [01:07.78]ただの大人になったとしても
+            [01:13.75]今のままの このままの 自分でいられるかな？
+            [01:25.27]
+            [01:43.87]ハタチになって更に 二年二ヶ月が过ぎた
+            [01:53.48]
+            [01:54.87]やみくもに わけもわからず 我が尽で
+            [02:01.23]ここまで来たけど
+            [02:05.27]
+            [02:06.02]どこにも 辿り着けてない
+            [02:11.56]谁にも 出会えていない
+            [02:17.53]
+            [02:20.76]いつか 时が 过ぎて 仆ら
+            [02:26.03]ただの大人になったとしても
+            [02:31.75]今のままの このままの 自分でいられるかな？
+            [02:41.27]
+            [02:42.96]心 折れて 梦に やぶれ
+            [02:48.13]ただの大人になったとしても
+            [02:54.37]今のままの こんなままの 自分でいられるかな？
+            [03:04.29]
+        </pre>
+    </div>
+
+    <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js"></script>
+    <script>
+        const ap = new APlayer({
+            container: document.getElementById('aplayer'),
+            listFolded: false,
+            listMaxHeight: 90,
+            // lrcType: 3,
+            lrcType: 2,
+            fixed: true,
+            order: 'random',
+            listFolded: true,
+            //音乐数据json数组
+            audio: [{
+                name: 'いつも何度でも',
+                artist: '伊藤サチコ',
+                url: 'http://music.163.com/song/media/outer/url?id=584155.mp3',
+                cover: 'http://p1.music.126.net/GYWkXtrnAawOWO2nfLg3PA==/109951163028865726.jpg?param=130y130',
+            },{
+                name: 'なんでもないや 没什么大不了的',
+                artist: 'Akie秋绘',
+                url: 'http://music.163.com/song/media/outer/url?id=450795499.mp3',
+                cover: 'http://p2.music.126.net/EizbSb-yKpjslyUOQjdsdA==/109951162822510988.jpg',
+            },
+            {
+                name: 'アイロニ',
+                artist: '4円',
+                url: 'http://music.163.com/song/media/outer/url?id=26447698.mp3',
+                cover: 'http://p1.music.126.net/6Jd98bMPGi8VRsh0QeEeoA==/109951163028868049.jpg?param=130y130',
+            },
+            {
+                name: 'ぼくら',
+                artist: 'ヘクとパスカル',
+                url: 'http://music.163.com/song/media/outer/url?id=31273654.mp3',
+                cover: 'http://p2.music.126.net/KrBV3KoeVY1ZXoOv7Wbg1Q==/7804333534626753.jpg?param=130y130',
+            }]
+        });
+
+        ap.lrc.hide()
+        ap.on('play',()=>{
+            ap.lrc.show()
+        })
+        ap.on('pause',()=>{
+            ap.lrc.hide()
+        })
+
+        if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+            document.querySelector('#aplayer').style.display = 'none'
+        }else{
+            setTimeout(()=>{
+                ap.play()
+            },3000)
+        }
+
+        let aplayerBody = document.querySelector('.aplayer-body')
+        aplayerBody.className += " ap-hover";
+        document.querySelector('.aplayer-miniswitcher').onclick = () => {
+            if(aplayerBody.className.indexOf("ap-hover") >= 0 ){
+                aplayerBody.className = aplayerBody.className.replace("ap-hover","")
+            }else{
+                aplayerBody.className += " ap-hover"
+            }          
+        }
+
+    </script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"position":"left","width":100,"height":200,"hOffset":60,"vOffset":-100},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":1},"log":false,"tagMode":false});</script></body>
+</html>
