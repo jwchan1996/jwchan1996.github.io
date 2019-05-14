@@ -108,13 +108,23 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="我爱盐酥鸡">
-<meta property="og:url" content="https://jwchan1996.github.io/index.html">
+  <meta name="description" content="# 如何获取 v-for 渲染的多个不同 ref 的 dom🍍 在编写 vue 项目过程中，遇到了获取不到正确的 dom 元素节点的问题。 功能界面如图所示：  需要实现的是，点击每个播放器的右上角的关闭按钮，则关闭播放器。">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于 ref 与 $refs 对 dom 元素的操作">
+<meta property="og:url" content="https://jwchan1996.github.io/2019/05/14/vue_$refs/index.html">
 <meta property="og:site_name" content="我爱盐酥鸡">
+<meta property="og:description" content="# 如何获取 v-for 渲染的多个不同 ref 的 dom🍍 在编写 vue 项目过程中，遇到了获取不到正确的 dom 元素节点的问题。 功能界面如图所示：  需要实现的是，点击每个播放器的右上角的关闭按钮，则关闭播放器。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://jwchan1996.github.io/images/vue_$refs/vue_$refs_01.png">
+<meta property="og:image" content="https://jwchan1996.github.io/images/vue_$refs/vue_$refs_02.png">
+<meta property="og:image" content="https://jwchan1996.github.io/images/vue_$refs/vue_$refs_03.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13840900-55b264c8af7a95b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/667/format/webp">
+<meta property="og:updated_time" content="2019-05-14T12:02:17.430Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我爱盐酥鸡">
+<meta name="twitter:title" content="关于 ref 与 $refs 对 dom 元素的操作">
+<meta name="twitter:description" content="# 如何获取 v-for 渲染的多个不同 ref 的 dom🍍 在编写 vue 项目过程中，遇到了获取不到正确的 dom 元素节点的问题。 功能界面如图所示：  需要实现的是，点击每个播放器的右上角的关闭按钮，则关闭播放器。">
+<meta name="twitter:image" content="https://jwchan1996.github.io/images/vue_$refs/vue_$refs_01.png">
 
 
 
@@ -123,7 +133,7 @@
 
 
 
-  <link rel="canonical" href="https://jwchan1996.github.io/"/>
+  <link rel="canonical" href="https://jwchan1996.github.io/2019/05/14/vue_$refs/"/>
 
 
 
@@ -133,7 +143,7 @@
   };
 </script>
 
-  <title>我爱盐酥鸡</title>
+  <title>关于 ref 与 $refs 对 dom 元素的操作 | 我爱盐酥鸡</title>
   
 
 
@@ -207,8 +217,7 @@ _就像凝望深渊时_深渊也在凝望你
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband">
       <a href="https://github.com/jwchan1996" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 100;" src="/images/forkMeInGithub.png" alt="Fork me on GitHub"></a>
     </div>
@@ -313,7 +322,7 @@ _就像凝望深渊时_深渊也在凝望你
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
     <a href="/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
   </li>
@@ -420,9 +429,9 @@ _就像凝望深渊时_深渊也在凝望你
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -454,11 +463,7 @@ _就像凝望深渊时_深渊也在凝望你
 
         
         
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/14/vue_$refs/" itemprop="url">
-                  关于 ref 与 $refs 对 dom 元素的操作
-                </a>
+          <h2 class="post-title" itemprop="name headline">关于 ref 与 $refs 对 dom 元素的操作
               
             
           </h2>
@@ -523,6 +528,12 @@ _就像凝望深渊时_深渊也在凝望你
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+            </span>
+            <span id="busuanzi_value_page_pv"></span>次阅读
+          
 
           
             <div class="post-symbolscount">
@@ -569,623 +580,35 @@ _就像凝望深渊时_深渊也在凝望你
       
 
       
-        
-          <h3 id="如何获取-v-for-渲染的多个不同-ref-的-dom"><a href="#如何获取-v-for-渲染的多个不同-ref-的-dom" class="headerlink" title="# 如何获取 v-for 渲染的多个不同 ref 的 dom"></a><span style="color:#009688"># </span>如何获取 v-for 渲染的多个不同 ref 的 dom</h3><p>🍍 在编写 <code>vue</code> 项目过程中，遇到了获取不到正确的 <code>dom</code> 元素节点的问题。</p>
+        <h3 id="如何获取-v-for-渲染的多个不同-ref-的-dom"><a href="#如何获取-v-for-渲染的多个不同-ref-的-dom" class="headerlink" title="# 如何获取 v-for 渲染的多个不同 ref 的 dom"></a><span style="color:#009688"># </span>如何获取 v-for 渲染的多个不同 ref 的 dom</h3><p>🍍 在编写 <code>vue</code> 项目过程中，遇到了获取不到正确的 <code>dom</code> 元素节点的问题。</p>
 <p>功能界面如图所示：</p>
 <p><img src="/images/vue_$refs/vue_$refs_01.png" alt="界面"></p>
-<p>需要实现的是，点击每个播放器的右上角的关闭按钮，则关闭播放器。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/14/vue_$refs/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jwchan1996.github.io/2019/05/06/axios_options/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jwchan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我爱盐酥鸡">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/06/axios_options/" itemprop="url">
-                  关于 axios 请求出现 OPTIONS
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-06 11:06:00 / 修改时间：11:34:47" itemprop="dateCreated datePublished" datetime="2019-05-06T11:06:00+08:00">2019-05-06</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/axios/" itemprop="url" rel="index"><span itemprop="name">axios</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">3k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">3 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="为什么-axios-先要请求-OPTIONS-再请求-POST"><a href="#为什么-axios-先要请求-OPTIONS-再请求-POST" class="headerlink" title="# 为什么 axios 先要请求 OPTIONS 再请求 POST"></a><span style="color:#009688"># </span>为什么 axios 先要请求 OPTIONS 再请求 POST</h3><p>🎨 最近在用 <code>vue</code> 重写一个以前的 <code>angular</code> + <code>thinkjs</code> 的项目，由于项目环境的前后端分离了，就出现了跨域问题，配置了一下 <code>CORS</code> 解决了跨域问题之后，又出现了 <code>axios</code> 请求发送两次的情况。</p>
-<p>以登录功能为例，一共发送两个请求，第一个是 <code>OPTIONS</code> 请求，第二个是 <code>POST</code> 请求。</p>
-<p><code>axios</code> 配置如下：
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/06/axios_options/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jwchan1996.github.io/2019/04/17/version_number/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jwchan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我爱盐酥鸡">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/17/version_number/" itemprop="url">
-                  软件版本命名规则
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-04-17 17:11:06 / 修改时间：20:15:18" itemprop="dateCreated datePublished" datetime="2019-04-17T17:11:06+08:00">2019-04-17</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/知识/" itemprop="url" rel="index"><span itemprop="name">知识</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.4k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <style>
-    #version_number_01{
-        border: 0 !important;
-        /**设置缩放**/
-        -webkit-transition: 0.2s all;
-        -moz-transition: 0.2s all;
-        -ms-transition: 0.2s all;
-        transition: 0.2s all;
-    }
-    #version_number_01:hover{
-        -webkit-transform: scale(1.02,1.02);
-        -moz-transform: scale(1.02,1.02);
-        -ms-transform: scale(1.02,1.02);
-        transform: scale(1.02,1.02);
-        box-shadow: 5px 5px 30px #999;
-        cursor: pointer;
-    }
-</style>
-
-<h3 id="版本号命名规则"><a href="#版本号命名规则" class="headerlink" title="# 版本号命名规则"></a><span style="color:#009688"># </span>版本号命名规则</h3><p>🍰 软件版本号有四部分组成：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">第一部分为主版本号  </span><br><span class="line">第二部分为次版本号  </span><br><span class="line">第三部分为修订版本号  </span><br><span class="line">第四部分为日期版本号加希腊字母版本号</span><br></pre></td></tr></table></figure>
-<p><img id="version_number_01" src="/images/version_number.png">
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/17/version_number/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jwchan1996.github.io/2019/03/20/vue_v-html/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jwchan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我爱盐酥鸡">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/20/vue_v-html/" itemprop="url">
-                  获取 v-html 渲染的富文本数据元素内容
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-20 14:32:08 / 修改时间：15:24:34" itemprop="dateCreated datePublished" datetime="2019-03-20T14:32:08+08:00">2019-03-20</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.5k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="场景"><a href="#场景" class="headerlink" title="# 场景"></a><span style="color:#009688"># </span>场景</h3><p>🍰 在业务中，往往有时候需要处理富文本格式的数据。</p>
+<p>需要实现的是，点击每个播放器的右上角的关闭按钮，则关闭播放器。<br><a id="more"></a><br>代码如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"device-status"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 树组件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Tree</span>&gt;</span><span class="tag">&lt;/<span class="name">Tree</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 业务内容 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content-container"</span> <span class="attr">ref</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; msg &#125;&#125; (这是待删除文字) 具体看 status.vue 看代码写法<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123;buildings&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"video-box"</span> <span class="attr">ref</span>=<span class="string">"video1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Player</span> </span></span><br><span class="line"><span class="tag">                <span class="attr">src</span>=<span class="string">"https://gss3.baidu.com/6LZ0ej3k1Qd3ote6lo7D0j9wehsv/tieba-smallvideo/12846619_51a524dffce6834f1d221be2a1037834.mp4"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">poster</span>=<span class="string">"https://puui.qpic.cn/fans_admin/0/3_118841988_1557667793407/0"</span></span></span><br><span class="line"><span class="tag">        &gt;</span><span class="tag">&lt;/<span class="name">Player</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"el-icon-circle-close"</span> @<span class="attr">click</span>=<span class="string">"close('video1')"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">import Tree from "component/checkbox-tree/tree";</span></span><br><span class="line"><span class="undefined">import Player from "component/player/player";</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">export default &#123;</span></span><br><span class="line"><span class="undefined">  data() &#123;</span></span><br><span class="line"><span class="undefined">    return &#123;</span></span><br><span class="line"><span class="undefined">      msg: "我是设备状态及控制组件",</span></span><br><span class="line"><span class="undefined">      videoList: [</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="undefined">          id: 1,</span></span><br><span class="line"><span class="undefined">          index: 0,</span></span><br><span class="line"><span class="undefined">          src: "https://gss3.baidu.com/6LZ0ej3k1Qd3ote6lo7D0j9wehsv/tieba-smallvideo/12846619_51a524dffce6834f1d221be2a1037834.mp4",</span></span><br><span class="line"><span class="undefined">          poster: "https://puui.qpic.cn/fans_admin/0/3_118841988_1557667793407/0"</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="undefined">          id: 2,</span></span><br><span class="line"><span class="undefined">          index: 1,</span></span><br><span class="line"><span class="undefined">          src: "https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm",</span></span><br><span class="line"><span class="undefined">          poster: "https://ww1.sinaimg.cn/large/007i4MEmgy1g29h63wl0yj30et08c0tc.jpg"</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">      ]</span></span><br><span class="line"><span class="undefined">    &#125;;</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  computed: &#123;</span></span><br><span class="line"><span class="undefined">    buildings()&#123;</span></span><br><span class="line"><span class="undefined">      return this.$store.state.buildingTree</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  components: &#123;</span></span><br><span class="line"><span class="undefined">    Tree,</span></span><br><span class="line"><span class="undefined">    Player</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  watch: &#123;</span></span><br><span class="line"><span class="undefined">    buildings(newVal, oldVal)&#123;</span></span><br><span class="line"><span class="undefined">      console.log("监听到树选中值变化",JSON.stringify(newVal))</span></span><br><span class="line"><span class="undefined">      //判断树数组的值，空则不作操作，否则带上树id</span></span><br><span class="line"><span class="undefined">      //进行 http 请求获取数据</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  methods: &#123;</span></span><br><span class="line"><span class="undefined">    //关闭播放器</span></span><br><span class="line"><span class="undefined">    close(videoStr)&#123;</span></span><br><span class="line"><span class="undefined">      //应该用数据驱动dom，这里直接操作了dom，不符合vue的理念，暂时</span></span><br><span class="line"><span class="undefined">      let video = this.$refs[videoStr]</span></span><br><span class="line"><span class="undefined">      video.parentNode.removeChild(video)</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span> <span class="attr">lang</span>=<span class="string">"stylus"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">.device-status&#123;</span></span><br><span class="line"><span class="undefined">  .el-tree&#123;</span></span><br><span class="line"><span class="undefined">    width: 200px;</span></span><br><span class="line"><span class="undefined">    height: calc(100vh - 70px);</span></span><br><span class="line"><span class="undefined">    background-color: #f8f8f8;</span></span><br><span class="line"><span class="undefined">    float: left;</span></span><br><span class="line"><span class="undefined">    padding: 10px 20px;</span></span><br><span class="line"><span class="undefined">  &#125;  </span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">  .content-container&#123;</span></span><br><span class="line"><span class="undefined">    padding: 20px;</span></span><br><span class="line"><span class="undefined">    margin-left: 200px;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    .video-box&#123;</span></span><br><span class="line"><span class="undefined">      position: relative;</span></span><br><span class="line"><span class="undefined">      width: 640px;</span></span><br><span class="line"><span class="undefined">      display: inline-block;</span></span><br><span class="line"><span class="undefined">      border: 5px solid #6699FF;</span></span><br><span class="line"><span class="undefined">      margin: 40px 40px 10px 10px;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">      .el-icon-circle-close&#123;</span></span><br><span class="line"><span class="undefined">        position: absolute;</span></span><br><span class="line"><span class="undefined">        top: -40px;</span></span><br><span class="line"><span class="undefined">        right: -40px;</span></span><br><span class="line"><span class="undefined">        color: #4A6495;</span></span><br><span class="line"><span class="undefined">        font-size: 40px;</span></span><br><span class="line"><span class="undefined">        opacity: 0.8;</span></span><br><span class="line"><span class="undefined">        cursor: pointer;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>至此代码功能正常，点击右上角关闭按钮，则移除播放器元素。</p>
+<p>然后问题在于，播放器可能有多个存在，这时候，如何实现点击每个关闭按钮，关闭对应的播放器呢？</p>
+<p>尝试修改代码如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-for</span>=<span class="string">"video in videoList"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 播放器组件，带关闭按钮 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"video-box"</span> <span class="attr">:ref</span>=<span class="string">"`video$&#123;video.id&#125;`"</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Player</span> </span></span><br><span class="line"><span class="tag">           <span class="attr">:src</span>=<span class="string">"video.src"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">:poster</span>=<span class="string">"video.poster"</span></span></span><br><span class="line"><span class="tag">    &gt;</span><span class="tag">&lt;/<span class="name">Player</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"el-icon-circle-close"</span> @<span class="attr">click</span>=<span class="string">"close(`video$&#123;video.id&#125;`)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">  <span class="comment">//关闭播放器</span></span><br><span class="line">  close(videoStr)&#123;</span><br><span class="line">    <span class="comment">//应该用数据驱动dom，这里直接操作了dom，不符合vue的理念，暂时</span></span><br><span class="line">    <span class="keyword">let</span> video = <span class="keyword">this</span>.$refs[videoStr]</span><br><span class="line">    video.parentNode.removeChild(video)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后点击关闭按钮时，可以看到控制台报错：</p>
+<p><img src="/images/vue_$refs/vue_$refs_02.png" alt="报错"></p>
+<p>提示不能获取未定义的属性，则表明该 <code>dom</code> 元素节点获取不对。</p>
+<h3 id="发现问题所在"><a href="#发现问题所在" class="headerlink" title="# 发现问题所在"></a><span style="color:#009688"># </span>发现问题所在</h3><p>后面经过一番折腾，发现以上代码 <code>this.$refs[videoStr]</code> 获取的是一个 <code>ref</code> 等于 <code>videoStr</code> （此处为变量）的 <code>dom</code> 节点数组，不是单个 <code>dom</code> 节点元素！</p>
+<p><img src="/images/vue_$refs/vue_$refs_03.png" alt="数组节点"></p>
+<p>至此，踩坑这个之后，就明白了为什么获取不到对应的 <code>dom</code> 元素了。</p>
+<p>代码修改如下即可：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">  <span class="comment">//关闭播放器</span></span><br><span class="line">  close(videoStr)&#123;</span><br><span class="line">    <span class="comment">//应该用数据驱动dom，这里直接操作了dom，不符合vue的理念，暂时</span></span><br><span class="line">    <span class="keyword">let</span> video = <span class="keyword">this</span>.$refs[videoStr][<span class="number">0</span>]</span><br><span class="line">    video.parentNode.removeChild(video)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>功能实现后，再来拓展其他方法。</p>
+<p>比如当 <code>ref</code> 的值一样，都为 <code>videoBox</code> 时：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-for</span>=<span class="string">"video in videoList"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"video-box"</span> <span class="attr">ref</span>=<span class="string">"videoBox"</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Player</span> </span></span><br><span class="line"><span class="tag">           <span class="attr">:src</span>=<span class="string">"video.src"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">:poster</span>=<span class="string">"video.poster"</span></span></span><br><span class="line"><span class="tag">    &gt;</span><span class="tag">&lt;/<span class="name">Player</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"el-icon-circle-close"</span> @<span class="attr">click</span>=<span class="string">"close(video.index)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">  <span class="comment">//关闭播放器</span></span><br><span class="line">  close(index)&#123;</span><br><span class="line">    <span class="comment">// 利用数组下标操作</span></span><br><span class="line">    <span class="keyword">let</span> video = <span class="keyword">this</span>.$refs.videoBox[index]</span><br><span class="line">    video.parentNode.removeChild(video)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>又或者不使用 <code>ref</code> 属性，改而为每个播放器元素赋值 <code>id</code>，也可：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-for</span>=<span class="string">"video in videoList"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"video-box"</span> <span class="attr">:id</span>=<span class="string">"`video$&#123;video.id&#125;`"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Player</span> </span></span><br><span class="line"><span class="tag">           <span class="attr">:src</span>=<span class="string">"video.src"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">:poster</span>=<span class="string">"video.poster"</span></span></span><br><span class="line"><span class="tag">    &gt;</span><span class="tag">&lt;/<span class="name">Player</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"el-icon-circle-close"</span> @<span class="attr">click</span>=<span class="string">"close(`video$&#123;video.id&#125;`)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">  <span class="comment">//关闭播放器</span></span><br><span class="line">  close(videoId)&#123;</span><br><span class="line">    <span class="comment">// 利用数组下标操作</span></span><br><span class="line">    <span class="keyword">let</span> video = <span class="built_in">document</span>.querySelector(<span class="string">`#<span class="subst">$&#123;videoId&#125;</span>`</span>)</span><br><span class="line">    video.parentNode.removeChild(video)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>官网概念：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/13840900-55b264c8af7a95b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/667/format/webp" alt=""></p>
+<p>总结：</p>
 <blockquote>
-<p>富文本格式数据： 带有html标签的数据</p>
+<p>ref 相当于给元素或组件赋予一个 ID 引用，用来注册引用信息的，方便获取 dom 元素或获取组件实例。</p>
 </blockquote>
-<p>在传统的 <code>web</code> 开发下，当我们获取到数据，只要使用 <code>append</code> 或 <code>innerHtml</code> 将元素添加到 <code>dom</code> 中，再使用 <code>document.querySelector()</code> 即可获取 <code>dom</code> 元素。  </p>
-<p>而在 <code>vue</code> 中，页面渲染完毕，<code>v-html</code> 并没有触发页面渲染的重新执行，所以使用 <code>document.querySelector()</code> 方式是获取不到数据的，因为 <code>dom</code> 早在第一次加载时候就渲染完毕了，也就自然获取不到。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/20/vue_v-html/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<p>使用场景：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. ref 加在普通元素上，this.<span class="variable">$refs</span>.name 获取的是 dom 元素</span><br><span class="line">2. ref 加在子组件上，this.<span class="variable">$refs</span>.name 获取到的是组件实例，方便父组件使用子组件的所有方法</span><br><span class="line">3. 当 v-for 用于元素或组件，ref 获取的将是一组数组或 dom 节点</span><br></pre></td></tr></table></figure></p>
+<p>文章所说遇到的问题即是上述第三种情况。</p>
+
       
     </div>
 
@@ -1203,399 +626,36 @@ _就像凝望深渊时_深渊也在凝望你
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jwchan1996.github.io/2019/02/20/currentTarget_console_log/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jwchan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我爱盐酥鸡">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/20/currentTarget_console_log/" itemprop="url">
-                  关于控制台打印点击事件目标元素的 currentTarget 为 null
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-02-20 19:41:49 / 修改时间：19:47:45" itemprop="dateCreated datePublished" datetime="2019-02-20T19:41:49+08:00">2019-02-20</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/vue/" rel="tag"><i class="fa fa-tag"></i> vue</a>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">827</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <h3 id="场景"><a href="#场景" class="headerlink" title="# 场景"></a><span style="color:#009688"># </span>场景</h3><p>JS 代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> target = <span class="built_in">document</span>.getElementById(<span class="string">'target'</span>);</span><br><span class="line">target.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e);</span><br><span class="line">    <span class="built_in">console</span>.log(e.currentTarget);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/02/20/currentTarget_console_log/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/06/axios_options/" rel="next" title="关于 axios 请求出现 OPTIONS">
+                <i class="fa fa-chevron-left"></i> 关于 axios 请求出现 OPTIONS
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jwchan1996.github.io/2019/01/27/back_to_top/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jwchan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我爱盐酥鸡">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/27/back_to_top/" itemprop="url">
-                  实现平滑滚动回到顶部
-                </a>
-              
+          <div class="post-nav-prev post-nav-item">
             
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-27 18:19:08 / 修改时间：18:33:03" itemprop="dateCreated datePublished" datetime="2019-01-27T18:19:08+08:00">2019-01-27</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">2.7k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">2 分钟</span>
-              
-            </div>
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h3 id="场景"><a href="#场景" class="headerlink" title="# 场景"></a><span style="color:#009688"># </span>场景</h3><p>🍰 实现页面滚动到一定位置，出现返回顶部图标<br>🍰 点击图标实现页面平滑滚动返回顶部</p>
-<h3 id="方案"><a href="#方案" class="headerlink" title="# 方案"></a><span style="color:#009688"># </span>方案</h3><p>采用 window.requestAnimationFrame( ) 实现
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/27/back_to_top/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -1605,831 +665,15 @@ _就像凝望深渊时_深渊也在凝望你
   </article>
 
 
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jwchan1996.github.io/2019/01/20/git_pull_request/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jwchan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我爱盐酥鸡">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/20/git_pull_request/" itemprop="url">
-                  使用 git 向开源项目提交 pull request
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-20 16:10:55" itemprop="dateCreated datePublished" datetime="2019-01-20T16:10:55+08:00">2019-01-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-21 13:56:10" itemprop="dateModified" datetime="2019-01-21T13:56:10+08:00">2019-01-21</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.8k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">2 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Pull-Request-是什么"><a href="#Pull-Request-是什么" class="headerlink" title="#Pull Request 是什么"></a><span style="color:#009688;">#</span>Pull Request 是什么</h3><p>⛏️ <code>Pull Request</code> 是一种通知机制<br>你修改了他人的代码，将你的修改通知原来的作者，希望他合并你的修改，这就是 <code>Pull Request</code>  </p>
-<p>⛏️ <code>Pull Request</code> 本质上是一种软件的合作方式，是将涉及不同功能的代码，纳入主干的一种流程。这个过程中，还可以进行讨论、审核和修改代码  </p>
-<p>⛏️ 简单的说是在自己本地仓库修改代码，提交到自己远程仓库，提交 <code>PR</code> 后被接受后，再会被合并到 <code>master</code>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/20/git_pull_request/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jwchan1996.github.io/2019/01/16/apicloud_closeWin/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jwchan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我爱盐酥鸡">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/16/apicloud_closeWin/" itemprop="url">
-                  解决 apicloud 下关闭 Win 页面失效问题
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-16 20:21:14" itemprop="dateCreated datePublished" datetime="2019-01-16T20:21:14+08:00">2019-01-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-17 09:21:56" itemprop="dateModified" datetime="2019-01-17T09:21:56+08:00">2019-01-17</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/混合APP/" itemprop="url" rel="index"><span itemprop="name">混合APP</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">2.3k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">2 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="场景"><a href="#场景" class="headerlink" title="#场景"></a><span style="color:#009688;">#</span>场景</h3><p>🌈 在使用 <code>apicloud</code> 开发相关应用的时候，经常会遇到打开一个新的 <code>Window</code> 页面，<br>同时需要把其他 <code>Window</code> 或 <code>Frame</code> 页面关闭的情况。<br>以下是官网 <code>api</code> 文档的描述：  </p>
-<blockquote>
-<p><code>closeWin</code> 方法可以关闭 <code>Window</code>，但注意，若当前正在进行 <code>openWin</code>、<code>closeWin</code> 等带动画过渡的 <code>Window</code> 操作，调用此方法会失效。</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/16/apicloud_closeWin/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jwchan1996.github.io/2019/01/10/vue_router_nomodular/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jwchan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我爱盐酥鸡">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/10/vue_router_nomodular/" itemprop="url">
-                  非模块化下实现简单 vue-router 应用
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-10 13:56:32" itemprop="dateCreated datePublished" datetime="2019-01-10T13:56:32+08:00">2019-01-10</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-11 11:03:29" itemprop="dateModified" datetime="2019-01-11T11:03:29+08:00">2019-01-11</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">6.7k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">6 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="场景"><a href="#场景" class="headerlink" title="#场景"></a><span style="color:#009688;">#</span>场景</h3><p>一般情况下，我们使用工程化构建应用，需要的是导入 <code>Vue</code> 和 <code>VueRouter</code>，然后要调用 <code>Vue.use(VueRouter)</code><br>那么，如果是非模块化 <code>vue</code> 使用 <code>vue-router</code> 应用的实现，是怎么样的呢？  </p>
-<p>🍭 下面是贴代码时间：
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/10/vue_router_nomodular/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://jwchan1996.github.io/2019/01/06/css_hover/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jwchan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我爱盐酥鸡">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/06/css_hover/" itemprop="url">
-                  hover 伪类改变另一个元素的样式
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-06 11:47:14 / 修改时间：16:05:39" itemprop="dateCreated datePublished" datetime="2019-01-06T11:47:14+08:00">2019-01-06</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">619</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="功能"><a href="#功能" class="headerlink" title="#功能"></a><span style="color:#009688;">#</span>功能</h3><p>使用 <code>css</code> 的 <code>hover</code> 伪类改变另一个元素的样式<br>比如本博客友链页面，鼠标悬停 <code>a</code> 标签，实现子元素 <code>img</code> 标签进行旋转动画<br>使用 <code>js</code> 触发动态添加属性可以实现，但最简便的办法是 <code>css hover</code><br>举个栗子：  </p>
-<blockquote>
-<p>鼠标悬停在 <code>A</code> 元素时，改变 <code>B</code> 元素样式  </p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/06/css_hover/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -2450,8 +694,17 @@ _就像凝望深渊时_深渊也在凝望你
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -2598,6 +851,22 @@ _就像凝望深渊时_深渊也在凝望你
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何获取-v-for-渲染的多个不同-ref-的-dom"><span class="nav-text"># 如何获取 v-for 渲染的多个不同 ref 的 dom</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发现问题所在"><span class="nav-text"># 发现问题所在</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -3015,6 +1284,9 @@ _就像凝望深渊时_深渊也在凝望你
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
 
   
 

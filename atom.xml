@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-05-06T03:34:47.130Z</updated>
+  <updated>2019-05-14T12:02:17.430Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于 ref 与 $refs 对 dom 元素的操作</title>
+    <link href="https://jwchan1996.github.io/2019/05/14/vue_$refs/"/>
+    <id>https://jwchan1996.github.io/2019/05/14/vue_$refs/</id>
+    <published>2019-05-14T11:48:00.432Z</published>
+    <updated>2019-05-14T12:02:17.430Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;如何获取-v-for-渲染的多个不同-ref-的-dom&quot;&gt;&lt;a href=&quot;#如何获取-v-for-渲染的多个不同-ref-的-dom&quot; class=&quot;headerlink&quot; title=&quot;# 如何获取 v-for 渲染的多个不同 ref 的 dom&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;如何获取 v-for 渲染的多个不同 ref 的 dom&lt;/h3&gt;&lt;p&gt;🍍 在编写 &lt;code&gt;vue&lt;/code&gt; 项目过程中，遇到了获取不到正确的 &lt;code&gt;dom&lt;/code&gt; 元素节点的问题。&lt;/p&gt;
+&lt;p&gt;功能界面如图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/vue_$refs/vue_$refs_01.png&quot; alt=&quot;界面&quot;&gt;&lt;/p&gt;
+&lt;p&gt;需要实现的是，点击每个播放器的右上角的关闭按钮，则关闭播放器。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>关于 axios 请求出现 OPTIONS</title>
