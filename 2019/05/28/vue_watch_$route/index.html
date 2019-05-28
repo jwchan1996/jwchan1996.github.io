@@ -108,24 +108,18 @@
 
 
 
-  <meta name="description" content=".container-links{         display: flex;         flex-direction: row;         align-items: center;         flex-wrap: wrap;         padding: 0;         margin: 0;     }     .container-links-item{">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我爱盐酥鸡">
-<meta property="og:url" content="https://jwchan1996.github.io/links/index.html">
+  <meta name="description" content="# 背景在 vue + vue-router 的项目中，单页面路由的出现使得页面加载更加优雅。但与此同时，也会出现一些问题。 比如：121. 页面刷新如何保持功能选中状态2. 浏览器前进后退如何保持功能选中状态 😑 关于这两个问题，我们很容易想到通过监听路由地址来解决。 # 页面刷新对于问题 1 ，解决方法就是在页面加载时根据路由地址判断当前选择的是什么，从而激活对应的选中样式。">
+<meta name="keywords" content="vue,vue-router">
+<meta property="og:type" content="article">
+<meta property="og:title" content="响应路由参数的变化保持功能选中状态">
+<meta property="og:url" content="https://jwchan1996.github.io/2019/05/28/vue_watch_$route/index.html">
 <meta property="og:site_name" content="我爱盐酥鸡">
-<meta property="og:description" content=".container-links{         display: flex;         flex-direction: row;         align-items: center;         flex-wrap: wrap;         padding: 0;         margin: 0;     }     .container-links-item{">
+<meta property="og:description" content="# 背景在 vue + vue-router 的项目中，单页面路由的出现使得页面加载更加优雅。但与此同时，也会出现一些问题。 比如：121. 页面刷新如何保持功能选中状态2. 浏览器前进后退如何保持功能选中状态 😑 关于这两个问题，我们很容易想到通过监听路由地址来解决。 # 页面刷新对于问题 1 ，解决方法就是在页面加载时根据路由地址判断当前选择的是什么，从而激活对应的选中样式。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://blog.beixibaobao.com/wp-content/uploads/2019/01/logo.jpg">
-<meta property="og:image" content="http://sweetsmoe.cn-sh2.ufileos.com/blog.gif">
-<meta property="og:image" content="https://secure.gravatar.com/avatar/b7f56e9db1e5a08163a5925dfa9f90b3?s=55&r=G&d=">
-<meta property="og:image" content="https://jwchan.cn/images/avatar.jpg">
-<meta property="og:image" content="https://www.timelessq.com/public/images/avatar.jpg">
-<meta property="og:image" content="https://xianjieli.github.io/images/avatar.jpg">
-<meta property="og:updated_time" content="2019-05-27T08:18:36.002Z">
+<meta property="og:updated_time" content="2019-05-28T09:13:24.864Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我爱盐酥鸡">
-<meta name="twitter:description" content=".container-links{         display: flex;         flex-direction: row;         align-items: center;         flex-wrap: wrap;         padding: 0;         margin: 0;     }     .container-links-item{">
-<meta name="twitter:image" content="https://blog.beixibaobao.com/wp-content/uploads/2019/01/logo.jpg">
+<meta name="twitter:title" content="响应路由参数的变化保持功能选中状态">
+<meta name="twitter:description" content="# 背景在 vue + vue-router 的项目中，单页面路由的出现使得页面加载更加优雅。但与此同时，也会出现一些问题。 比如：121. 页面刷新如何保持功能选中状态2. 浏览器前进后退如何保持功能选中状态 😑 关于这两个问题，我们很容易想到通过监听路由地址来解决。 # 页面刷新对于问题 1 ，解决方法就是在页面加载时根据路由地址判断当前选择的是什么，从而激活对应的选中样式。">
 
 
 
@@ -134,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="https://jwchan1996.github.io/links/"/>
+  <link rel="canonical" href="https://jwchan1996.github.io/2019/05/28/vue_watch_$route/"/>
 
 
 
@@ -144,7 +138,7 @@
   };
 </script>
 
-  <title> | 我爱盐酥鸡</title>
+  <title>响应路由参数的变化保持功能选中状态 | 我爱盐酥鸡</title>
   
 
 
@@ -363,7 +357,7 @@ _就像凝望深渊时_深渊也在凝望你
         
         
           
-          <li class="menu-item menu-item-友链 menu-item-active">
+          <li class="menu-item menu-item-友链">
     <a href="/links/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-link"></i> <br />友链</a>
   </li>
@@ -383,31 +377,6 @@ _就像凝望深渊时_深渊也在凝望你
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -458,128 +427,224 @@ _就像凝望深渊时_深渊也在凝望你
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jwchan1996.github.io/2019/05/28/vue_watch_$route/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jwchan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我爱盐酥鸡">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h2 class="post-title" itemprop="name headline"></h2>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <style>
-    .container-links{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        flex-wrap: wrap;
-        padding: 0;
-        margin: 0;
-    }
-    .container-links-item{
-        width: 33%;
-        /* display: flex;
-        flex-direction: row;
-        align-items: center; */
-        border-radius: 10px;
-        cursor: pointer;
-        text-decoration: none;
-        border-width: 0 !important;
-        margin: 10px 0;
-        border: 1px solid #fff !important;
-    }
-    @media screen and (max-width: 1400px) {
-        .container-links-item{
-            width: 49%;
-        }
-    }
-    @media screen and (max-width: 600px) {
-        .container-links-item{
-            width: 99%;
-        }
-    }
-    .container-links-item:hover{
-        background-color: #f1f1f1;
-        border: 1px solid #009688 !important;
-    }
-    .links-item-avatar{
-        width: 60px;
-        height: 60px;
-        box-sizing: inherit !important;
-        border-width: 0 !important;
-        border-radius: 50%;
-        margin: 0 !important;
-        padding: 14px 14px !important;
-        float: left;
-    }
-    .container-links-item:hover .links-item-avatar{
-        animation: avatar 50s ease-in-out 1;
-    }
-    .links-item-about{
-        position: relative;
-        margin-top: 10px;
-        margin-left: 88px;
-        padding-right: 10px;
-    }
-    .links-item-username{
-        margin: 0;
-        color: #515151;
-        padding-top: 5px; 
-        font-size: 16px;
-        display: block;
-        font-weight: bold;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-    .links-item-intro{
-        margin: 0;
-        font-size: 14px;
-        color: #515151;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-    @media screen and (max-width: 440px) {
-        .main-inner{
-            padding: 40px 0 100px;
-        }
-    }
-</style>
-
-<div style="text-align:center;"><p style="font-size:24px;font-weight:700;">友人帐</p></div><br><div class="container-links"><br>    <a class="container-links-item" href="https://blog.beixibaobao.com" target="_blank" title="一个努力奋斗的赶上时代的二次元酱"><div class="links-item-img"><img class="links-item-avatar" src="https://blog.beixibaobao.com/wp-content/uploads/2019/01/logo.jpg" alt=""></div><div class="links-item-about"><p class="links-item-username">北熙宝宝</p><p class="links-item-intro">一个努力奋斗的赶上时代的二次元酱</p></div></a><br>    <a class="container-links-item" href="http://www.sweetsmoe.com/" target="_blank" title="甜甜哒~萌萌哒~ε๑⍥๑з"><div class="links-item-img"><img class="links-item-avatar" src="http://sweetsmoe.cn-sh2.ufileos.com/blog.gif" alt=""></div><div class="links-item-about"><p class="links-item-username">甜小萌</p><p class="links-item-intro">甜甜哒~萌萌哒~ε๑⍥๑з</p></div></a><br>    <a class="container-links-item" href="https://www.ghosin.com/" target="_blank" title="我好弱啊"><div class="links-item-img"><img class="links-item-avatar" src="https://secure.gravatar.com/avatar/b7f56e9db1e5a08163a5925dfa9f90b3?s=55&r=G&d=" alt=""></div><div class="links-item-about"><p class="links-item-username">Ghosin</p><p class="links-item-intro">我好弱啊</p></div></a><br>    <a class="container-links-item" href="https://jwchan.cn/" target="_blank" title="真的很想要一只小肥柴耶~"><div class="links-item-img"><img class="links-item-avatar" src="https://jwchan.cn/images/avatar.jpg" alt=""></div><div class="links-item-about"><p class="links-item-username">我爱盐酥鸡</p><p class="links-item-intro">真的很想要一只小肥柴耶~</p></div></a><br>    <a class="container-links-item" href="https://www.timelessq.com/" target="_blank" title="专注于web开发、ACG~"><div class="links-item-img"><img class="links-item-avatar" src="https://www.timelessq.com/public/images/avatar.jpg" alt=""></div><div class="links-item-about"><p class="links-item-username">Timeless&apos;s博客</p><p class="links-item-intro">专注于web开发、ACG~</p></div></a><br>    <a class="container-links-item" href="https://xianjieli.github.io/" target="_blank" title="入错行的美食爱好者~"><div class="links-item-img"><img class="links-item-avatar" src="https://xianjieli.github.io/images/avatar.jpg" alt=""></div><div class="links-item-about"><p class="links-item-username">虚空行者 杰</p><p class="links-item-intro">入错行的美食爱好者~</p></div></a><br></div>
-
-<script src="/js/links/sakura.js"></script>
-<script>
-    document.title = "友链 | 我爱盐酥鸡"
-</script>
+          <h2 class="post-title" itemprop="name headline">响应路由参数的变化保持功能选中状态
+              
+            
+          </h2>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-28 17:09:09 / 修改时间：17:13:24" itemprop="dateCreated datePublished" datetime="2019-05-28T17:09:09+08:00">2019-05-28</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+            </span>
+            <span id="busuanzi_value_page_pv"></span>次阅读
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h3 id="背景"><a href="#背景" class="headerlink" title="# 背景"></a><span style="color:#009688"># </span>背景</h3><p>在 <code>vue + vue-router</code> 的项目中，单页面路由的出现使得页面加载更加优雅。<br>但与此同时，也会出现一些问题。</p>
+<p>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 页面刷新如何保持功能选中状态</span><br><span class="line">2. 浏览器前进后退如何保持功能选中状态</span><br></pre></td></tr></table></figure></p>
+<p>😑 关于这两个问题，我们很容易想到通过监听路由地址来解决。</p>
+<h4 id="页面刷新"><a href="#页面刷新" class="headerlink" title="# 页面刷新"></a><span style="color:#009688"># </span>页面刷新</h4><p>对于问题 <code>1</code> ，解决方法就是在页面加载时根据路由地址判断当前选择的是什么，从而激活对应的选中样式。<br><a id="more"></a><br>如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/user/666"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span></span></span><br><span class="line"><span class="tag">        <span class="attr">class</span>=<span class="string">"posts"</span></span></span><br><span class="line"><span class="tag">        @<span class="attr">click</span>=<span class="string">"selectNav('posts')"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:class</span>=<span class="string">"&#123;active: navName === 'posts'&#125;"</span></span></span><br><span class="line"><span class="tag">      &gt;</span>帖子 1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/user/666/followers"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span></span></span><br><span class="line"><span class="tag">        <span class="attr">class</span>=<span class="string">"followers"</span></span></span><br><span class="line"><span class="tag">        @<span class="attr">click</span>=<span class="string">"selectNav('followers')"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:class</span>=<span class="string">"&#123;active: navName === 'followers'&#125;"</span></span></span><br><span class="line"><span class="tag">      &gt;</span>粉丝 2<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    export default &#123;</span></span><br><span class="line"><span class="undefined">      data() &#123;</span></span><br><span class="line"><span class="undefined">        return &#123;</span></span><br><span class="line"><span class="undefined">          navName: "posts"</span></span><br><span class="line"><span class="undefined">        &#125;;</span></span><br><span class="line"><span class="undefined">      &#125;,</span></span><br><span class="line"><span class="undefined">      mounted()&#123;</span></span><br><span class="line"><span class="undefined">        this.refleshSelectStatus(this.$route.name) </span></span><br><span class="line"><span class="undefined">      &#125;,</span></span><br><span class="line"><span class="undefined">      methods: &#123;</span></span><br><span class="line"><span class="undefined">        selectNav(str) &#123;</span></span><br><span class="line"><span class="undefined">          this.navName = str;</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        refleshSelectStatus(route)&#123;</span></span><br><span class="line"><span class="undefined">          switch (route) &#123;</span></span><br><span class="line"><span class="undefined">            case 'UserPostList':</span></span><br><span class="line"><span class="undefined">              this.navName = 'posts'</span></span><br><span class="line"><span class="undefined">              break;</span></span><br><span class="line"><span class="undefined">            case 'UserFollowerList':</span></span><br><span class="line"><span class="undefined">              this.navName = 'followers'</span></span><br><span class="line"><span class="undefined">              break;</span></span><br><span class="line"><span class="undefined">          </span></span><br><span class="line"><span class="undefined">            default:</span></span><br><span class="line"><span class="undefined">              break;</span></span><br><span class="line"><span class="undefined">          &#125;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>😑 很容易想到的解决方法。</p>
+<h4 id="浏览器前进后退"><a href="#浏览器前进后退" class="headerlink" title="# 浏览器前进后退"></a><span style="color:#009688"># </span>浏览器前进后退</h4><p>对于问题 <code>2</code> ，本次采用的是 <code>history</code> 的路由模式，一般来说，我们会想到监听浏览器前进后退事件，从而处理数据。然而，<code>history</code> 模式不比 <code>hash</code> 模式，需要监听 <code>pushState</code> 和 <code>replaceState</code> 行为，太过繁琐，参考 <code>CSDN</code> 文章 <a href="https://blog.csdn.net/weixin_33747129/article/details/88205861" target="_blank" rel="noopener">如何监听URL的变化</a>。</p>
+<p>最后，最简单合理的办法就是监听 <code>$route</code> 的变化 (我佛了😑)，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    ...</span><br><span class="line">    watch: &#123;</span><br><span class="line">        $route(to, from)&#123;</span><br><span class="line">          //to代表下一个的路由，from代表上一个路由</span><br><span class="line">          //监听路由变化，改变选中</span><br><span class="line">          this.refleshSelectStatus(to.name)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>PS：惯性思维有时候会令人深陷泥潭，换一种思维能更好的提高解决效率。<br>当然，前提是对文档要熟悉（摊手😑）  </p>
+</blockquote>
+<p>更多路由使用方法参考官网 <a href="https://router.vuejs.org/zh/guide/essentials/dynamic-matching.html#%E5%93%8D%E5%BA%94%E8%B7%AF%E7%94%B1%E5%8F%82%E6%95%B0%E7%9A%84%E5%8F%98%E5%8C%96" target="_blank" rel="noopener">vue-router</a></p>
+
       
     </div>
-    
-
-
 
     
+
     
     
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"><i class="fa fa-tag"></i> vue</a>
+          
+            <a href="/tags/vue-router/" rel="tag"><i class="fa fa-tag"></i> vue-router</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/14/vue_$refs/" rel="next" title="关于 ref 与 $refs 对 dom 元素的操作">
+                <i class="fa fa-chevron-left"></i> 关于 ref 与 $refs 对 dom 元素的操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
   </div>
 
 
@@ -609,8 +674,17 @@ _就像凝望深渊时_深渊也在凝望你
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -757,6 +831,22 @@ _就像凝望深渊时_深渊也在凝望你
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-text"># 背景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#页面刷新"><span class="nav-text"># 页面刷新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器前进后退"><span class="nav-text"># 浏览器前进后退</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

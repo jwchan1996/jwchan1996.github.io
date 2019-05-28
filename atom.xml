@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-05-14T12:02:17.430Z</updated>
+  <updated>2019-05-28T09:13:24.864Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>响应路由参数的变化保持功能选中状态</title>
+    <link href="https://jwchan1996.github.io/2019/05/28/vue_watch_$route/"/>
+    <id>https://jwchan1996.github.io/2019/05/28/vue_watch_$route/</id>
+    <published>2019-05-28T09:09:09.238Z</published>
+    <updated>2019-05-28T09:13:24.864Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;# 背景&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;背景&lt;/h3&gt;&lt;p&gt;在 &lt;code&gt;vue + vue-router&lt;/code&gt; 的项目中，单页面路由的出现使得页面加载更加优雅。&lt;br&gt;但与此同时，也会出现一些问题。&lt;/p&gt;
+&lt;p&gt;比如：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1. 页面刷新如何保持功能选中状态&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2. 浏览器前进后退如何保持功能选中状态&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;😑 关于这两个问题，我们很容易想到通过监听路由地址来解决。&lt;/p&gt;
+&lt;h4 id=&quot;页面刷新&quot;&gt;&lt;a href=&quot;#页面刷新&quot; class=&quot;headerlink&quot; title=&quot;# 页面刷新&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;页面刷新&lt;/h4&gt;&lt;p&gt;对于问题 &lt;code&gt;1&lt;/code&gt; ，解决方法就是在页面加载时根据路由地址判断当前选择的是什么，从而激活对应的选中样式。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/tags/vue/"/>
+    
+      <category term="vue-router" scheme="https://jwchan1996.github.io/tags/vue-router/"/>
+    
+  </entry>
   
   <entry>
     <title>关于 ref 与 $refs 对 dom 元素的操作</title>
@@ -581,27 +606,6 @@
     
     
       <category term="诗" scheme="https://jwchan1996.github.io/tags/%E8%AF%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>序 / INTRO</title>
-    <link href="https://jwchan1996.github.io/2018/09/27/hello-world/"/>
-    <id>https://jwchan1996.github.io/2018/09/27/hello-world/</id>
-    <published>2018-09-27T08:51:01.626Z</published>
-    <updated>2019-01-06T04:04:16.358Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/post/hello-world.css&quot;&gt;&lt;/p&gt;
-&lt;div class=&quot;blockqueto&quot;&gt;&lt;br&gt;&lt;p class=&quot;poetry&quot;&gt;生命的幻影&lt;br&gt;穿过狭长的岁月&lt;br&gt;向东向西&lt;br&gt;消失在暮色里&lt;br&gt;—— 改编自《生命幻想曲》顾城&lt;/p&gt;&lt;br&gt;&lt;/div&gt;
-    
-    </summary>
-    
-      <category term="随笔" scheme="https://jwchan1996.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-      <category term="Hello World" scheme="https://jwchan1996.github.io/tags/Hello-World/"/>
     
   </entry>
   
