@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-05-28T09:13:24.864Z</updated>
+  <updated>2019-06-27T11:56:23.145Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>map 字符串数组/数字数组 快速转换</title>
+    <link href="https://jwchan1996.github.io/2019/06/27/js_map/"/>
+    <id>https://jwchan1996.github.io/2019/06/27/js_map/</id>
+    <published>2019-06-27T11:50:08.182Z</published>
+    <updated>2019-06-27T11:56:23.145Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span 
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="https://jwchan1996.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="JS" scheme="https://jwchan1996.github.io/tags/JS/"/>
+    
+  </entry>
   
   <entry>
     <title>响应路由参数的变化保持功能选中状态</title>
@@ -585,27 +608,6 @@
     
     
       <category term="总结" scheme="https://jwchan1996.github.io/tags/%E6%80%BB%E7%BB%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>诗 / Poem</title>
-    <link href="https://jwchan1996.github.io/2018/10/17/poem_1/"/>
-    <id>https://jwchan1996.github.io/2018/10/17/poem_1/</id>
-    <published>2018-10-17T08:40:15.470Z</published>
-    <updated>2019-01-06T04:04:29.359Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/post/poem_1.css&quot;&gt;&lt;/p&gt;
-&lt;div class=&quot;blockqueto&quot;&gt;&lt;br&gt;&lt;p class=&quot;poetry&quot;&gt;&lt;br&gt;所遇即所爱&lt;br&gt;幸之所在&lt;br&gt;&lt;/p&gt;&lt;br&gt;&lt;/div&gt;
-    
-    </summary>
-    
-      <category term="诗词" scheme="https://jwchan1996.github.io/categories/%E8%AF%97%E8%AF%8D/"/>
-    
-    
-      <category term="诗" scheme="https://jwchan1996.github.io/tags/%E8%AF%97/"/>
     
   </entry>
   

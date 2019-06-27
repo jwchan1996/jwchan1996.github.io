@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[map 字符串数组/数字数组 快速转换]]></title>
+    <url>%2F2019%2F06%2F27%2Fjs_map%2F</url>
+    <content type="text"><![CDATA[12345let arr = [1, 2, 3];arr.map(String); //结果： ['1', '2', '3']let a = ['1', '2', '3'];a.map(Number); //结果：[1, 2, 3]]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[响应路由参数的变化保持功能选中状态]]></title>
     <url>%2F2019%2F05%2F28%2Fvue_watch_%24route%2F</url>
     <content type="text"><![CDATA[# 背景在 vue + vue-router 的项目中，单页面路由的出现使得页面加载更加优雅。但与此同时，也会出现一些问题。 比如：121. 页面刷新如何保持功能选中状态2. 浏览器前进后退如何保持功能选中状态 😑 关于这两个问题，我们很容易想到通过监听路由地址来解决。 # 页面刷新对于问题 1 ，解决方法就是在页面加载时根据路由地址判断当前选择的是什么，从而激活对应的选中样式。如下：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849&lt;template&gt; ... &lt;router-link to="/user/666"&gt; &lt;span class="posts" @click="selectNav('posts')" :class="&#123;active: navName === 'posts'&#125;" &gt;帖子 1&lt;/span&gt; &lt;/router-link&gt; &lt;router-link to="/user/666/followers"&gt; &lt;span class="followers" @click="selectNav('followers')" :class="&#123;active: navName === 'followers'&#125;" &gt;粉丝 2&lt;/span&gt; &lt;/router-link&gt; &lt;router-view&gt;&lt;/router-view&gt; ...&lt;/template&gt;&lt;script&gt; export default &#123; data() &#123; return &#123; navName: "posts" &#125;; &#125;, mounted()&#123; this.refleshSelectStatus(this.$route.name) &#125;, methods: &#123; selectNav(str) &#123; this.navName = str; &#125;, refleshSelectStatus(route)&#123; switch (route) &#123; case 'UserPostList': this.navName = 'posts' break; case 'UserFollowerList': this.navName = 'followers' break; default: break; &#125; &#125; &#125; &#125;;&lt;/script&gt; 😑 很容易想到的解决方法。 # 浏览器前进后退对于问题 2 ，本次采用的是 history 的路由模式，一般来说，我们会想到监听浏览器前进后退事件，从而处理数据。然而，history 模式不比 hash 模式，需要监听 pushState 和 replaceState 行为，太过繁琐，参考 CSDN 文章 如何监听URL的变化。 最后，最简单合理的办法就是监听 $route 的变化 (我佛了😑)，如下：1234567891011&lt;script&gt; ... watch: &#123; $route(to, from)&#123; //to代表下一个的路由，from代表上一个路由 //监听路由变化，改变选中 this.refleshSelectStatus(to.name) &#125; &#125; ...&lt;/script&gt; PS：惯性思维有时候会令人深陷泥潭，换一种思维能更好的提高解决效率。当然，前提是对文档要熟悉（摊手😑） 更多路由使用方法参考官网 vue-router]]></content>
