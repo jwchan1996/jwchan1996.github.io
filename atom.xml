@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-06-27T11:56:23.145Z</updated>
+  <updated>2019-07-25T05:59:59.394Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue 重新加载当前组件</title>
+    <link href="https://jwchan1996.github.io/2019/07/25/vue_reload_component/"/>
+    <id>https://jwchan1996.github.io/2019/07/25/vue_reload_component/</id>
+    <published>2019-07-25T05:50:46.205Z</published>
+    <updated>2019-07-25T05:59:59.394Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;vue-重新加载当前组件&quot;&gt;&lt;a href=&quot;#vue-重新加载当前组件&quot; class=&quot;headerlink&quot; title=&quot;# vue 重新加载当前组件&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;vue 重新加载当前组件&lt;/h3&gt;&lt;p&gt;🍍 遇到问题的场景&lt;br&gt;需要把当前组件完全还原成初始化状态，不要页面全部刷新&lt;br&gt;🍍 例如：播放 &lt;code&gt;rtmp&lt;/code&gt; 直播视频流的时候，点击暂停之后，想要恢复播放，需要重新载入当前播放器才行。&lt;br&gt;🍍 情景：使用了 &lt;code&gt;vue-video-player&lt;/code&gt; 播放器，点击视频播放界面，会暂停，因为播放的是 &lt;code&gt;rtmp&lt;/code&gt; 直播流，想要恢复的话必须重新加载视频流以及加载 &lt;code&gt;flash&lt;/code&gt; 等插件才行，此时简单的替换播放源 &lt;code&gt;src&lt;/code&gt; 是不可行的，需要的是重新初始化当前播放器。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/vue_reload_component/01.png&quot; alt=&quot;暂停&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>map 字符串数组/数字数组 快速转换</title>
@@ -553,61 +574,6 @@
     
     
       <category term="JS" scheme="https://jwchan1996.github.io/tags/JS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>10月份 / Summary</title>
-    <link href="https://jwchan1996.github.io/2018/11/01/summary_201810/"/>
-    <id>https://jwchan1996.github.io/2018/11/01/summary_201810/</id>
-    <published>2018-11-01T03:16:57.538Z</published>
-    <updated>2018-11-02T02:08:38.228Z</updated>
-    
-    <summary type="html">
-    
-      &lt;style&gt;
-    #summary_201810_01,
-    #summary_201810_02,
-    #summary_201810_03,
-    #summary_201810_04,
-    #summary_201810_05,
-    #summary_201810_06{
-        /**设置缩放**/
-        -webkit-transition: 0.2s all;
-        -moz-transition: 0.2s all;
-        -ms-transition: 0.2s all;
-        transition: 0.2s all;
-    }
-    #summary_201810_01:hover,
-    #summary_201810_02:hover,
-    #summary_201810_03:hover,
-    #summary_201810_04:hover,
-    #summary_201810_05:hover,
-    #summary_201810_06:hover{
-        -webkit-transform: scale(1.02,1.02);
-        -moz-transform: scale(1.02,1.02);
-        -ms-transform: scale(1.02,1.02);
-        transform: scale(1.02,1.02);
-        box-shadow: 5px 5px 30px #999;
-        cursor: pointer;
-    }
-&lt;/style&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;未央十月，清风微似梦&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre&gt;&lt;code&gt;十月份于我，是一个慵懒的月份，也是个探索的月份，没有coding的紧迫感，也没有八九月份的热情。
-&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
-&lt;p&gt;01~07号&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p style=&quot;text-indent:2em;&quot;&gt;在经历过对未知领域与技术的了解与实践后，九月末搭建了博客，接着就开启了一个星期的国庆假期，在经过了佛性的几天后，抓着假期的尾巴，去了长隆水上乐园，太阳很猛，水温很凉，全程玩下来整整一个下午，单论玩真的很值，很刺激，过后泡个温泉浴，身心舒畅，回来站上体重秤一秤发现轻了两斤，血亏！(因为博主9月中旬制定了增重计划)，建议需要减肥的同学可以去玩一哈……&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活与工作" scheme="https://jwchan1996.github.io/categories/%E7%94%9F%E6%B4%BB%E4%B8%8E%E5%B7%A5%E4%BD%9C/"/>
-    
-    
-      <category term="总结" scheme="https://jwchan1996.github.io/tags/%E6%80%BB%E7%BB%93/"/>
     
   </entry>
   

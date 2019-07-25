@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[vue 重新加载当前组件]]></title>
+    <url>%2F2019%2F07%2F25%2Fvue_reload_component%2F</url>
+    <content type="text"><![CDATA[# vue 重新加载当前组件🍍 遇到问题的场景需要把当前组件完全还原成初始化状态，不要页面全部刷新🍍 例如：播放 rtmp 直播视频流的时候，点击暂停之后，想要恢复播放，需要重新载入当前播放器才行。🍍 情景：使用了 vue-video-player 播放器，点击视频播放界面，会暂停，因为播放的是 rtmp 直播流，想要恢复的话必须重新加载视频流以及加载 flash 等插件才行，此时简单的替换播放源 src 是不可行的，需要的是重新初始化当前播放器。 # 方案及结果🎨 刷新整个页面（用户体验不好）🎨 刷新单个组件12- 使用 v-if 控制组件的销毁和重建（本文用到方法）- 使用路由切换控制组件的销毁和重建 代码如下： 父组件 live 中包含子组件 player，使用中央事件总线作为父子通信方法。 👉 player.vue1234567891011121314151617181920212223242526272829303132333435363738394041&lt;template&gt; &lt;div class="container"&gt; &lt;a-spin tip="加载中..." :spinning="spinning"&gt; &lt;video-player class="vjs-custom-skin" ref="videoPlayer" :options="options" :playsinline="true" @play="onPlayerPlay($event)" @pause="onPlayerPause($event)" @ready="playerReadied" &gt;&lt;/video-player&gt; &lt;/a-spin&gt; &lt;/div&gt;&lt;/template&gt;&lt;script&gt;import "videojs-flash";export default &#123; …… …… methods: &#123; // listen event onPlayerPlay(player) &#123; // console.log('player play 播放!', player) if(!this.isFirstPlay)&#123; //重新加载播放器 this.bus.$emit("refleshPlayer") &#125; this.isFirstPlay = false &#125;, onPlayerPause(player) &#123; // console.log('player pause 暂停', player) &#125;, // player is ready playerReadied(player) &#123; this.spinning = false &#125; &#125;&#125;&lt;/script&gt; 👉 live.vue123456789101112131415161718192021222324252627282930313233343536373839&lt;template&gt; &lt;div class="main-container"&gt; &lt;a-row&gt; &lt;a-col :span="12" id="leftLayout"&gt; &lt;Player id="player" v-if="isFirstPlay"&gt;&lt;/Player&gt; &lt;Chatroom&gt;&lt;/Chatroom&gt; &lt;/a-col&gt; &lt;a-col :span="12"&gt; &lt;Webrtc&gt;&lt;/Webrtc&gt; &lt;/a-col&gt; &lt;/a-row&gt; &lt;/div&gt;&lt;/template&gt;&lt;script&gt;import Webrtc from 'component/webrtc'import Player from 'component/player'import Chatroom from 'component/chatroom'export default &#123; data()&#123; return &#123; isFirstPlay: true &#125; &#125;, mounted()&#123; this.bus.$on("refleshPlayer", () =&gt; &#123; this.isFirstPlay = false this.$nextTick(() =&gt; &#123; this.isFirstPlay = true &#125;) &#125;) &#125;, components: &#123; Webrtc, Player, Chatroom &#125;&#125;&lt;/script&gt; 🙃 再次点击播放，播放器组件就会重新加载初始化。]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[map 字符串数组/数字数组 快速转换]]></title>
     <url>%2F2019%2F06%2F27%2Fjs_map%2F</url>
     <content type="text"><![CDATA[12345let arr = [1, 2, 3];arr.map(String); //结果： ['1', '2', '3']let a = ['1', '2', '3'];a.map(Number); //结果：[1, 2, 3]]]></content>
