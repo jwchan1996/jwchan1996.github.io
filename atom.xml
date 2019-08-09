@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-07-25T05:59:59.394Z</updated>
+  <updated>2019-08-09T03:08:08.683Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Electron 踩坑记录（一）</title>
+    <link href="https://jwchan1996.github.io/2019/08/09/electron_note_1/"/>
+    <id>https://jwchan1996.github.io/2019/08/09/electron_note_1/</id>
+    <published>2019-08-09T02:37:07.554Z</published>
+    <updated>2019-08-09T03:08:08.683Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;场景描述&quot;&gt;&lt;a href=&quot;#场景描述&quot; class=&quot;headerlink&quot; title=&quot;# 场景描述&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;场景描述&lt;/h3&gt;&lt;p&gt;构建 &lt;code&gt;pc&lt;/code&gt; 客户端，采用 &lt;code&gt;electron-vue&lt;/code&gt; 脚手架进行快速搭建环境。&lt;br&gt;功能点在 &lt;code&gt;web&lt;/code&gt; 端全部正常，移植代码到 &lt;code&gt;electron&lt;/code&gt; 时出现问题的功能点有：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1. rtmp 流媒体的播放  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2. ant-design-vue UI 框架部分组件失效&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;🔥 播放器使用的是 &lt;code&gt;vue-video-player&lt;/code&gt;，播放 &lt;code&gt;rtmp&lt;/code&gt; 流需要使用 &lt;code&gt;flash&lt;/code&gt; 技术。  &lt;/p&gt;
+&lt;h3 id=&quot;问题解决&quot;&gt;&lt;a href=&quot;#问题解决&quot; class=&quot;headerlink&quot; title=&quot;# 问题解决&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;问题解决&lt;/h3&gt;&lt;p&gt;简单记录问题关键&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;问题：pc 客户端 ant-design-vue 部分组件不能正常工作 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;原因：electron-vue 将它视为 webpack 的 externals 了，其中 UI 组件含有的 vue 文件没有被 vue-loader 正常编译，才导致功能失效&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;解决：找到 .electron-vue/webpack.renderer.config.js 将 ant-design-vue 加入到白名单 whiteListedModules&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;🧐 &lt;a href=&quot;https://simulatedgreg.gitbooks.io/electron-vue/content/en/webpack-configurations.html#white-listing-externals&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;electron 白名单配置&lt;/a&gt;
+    
+    </summary>
+    
+      <category term="electron" scheme="https://jwchan1996.github.io/categories/electron/"/>
+    
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/tags/vue/"/>
+    
+      <category term="electron" scheme="https://jwchan1996.github.io/tags/electron/"/>
+    
+      <category term="elecrton-vue" scheme="https://jwchan1996.github.io/tags/elecrton-vue/"/>
+    
+      <category term="flash" scheme="https://jwchan1996.github.io/tags/flash/"/>
+    
+      <category term="vue-video-player" scheme="https://jwchan1996.github.io/tags/vue-video-player/"/>
+    
+      <category term="rtmp" scheme="https://jwchan1996.github.io/tags/rtmp/"/>
+    
+      <category term="ant-design-vue" scheme="https://jwchan1996.github.io/tags/ant-design-vue/"/>
+    
+  </entry>
   
   <entry>
     <title>vue 重新加载当前组件</title>
@@ -554,26 +589,6 @@
     
     
       <category term="总结" scheme="https://jwchan1996.github.io/tags/%E6%80%BB%E7%BB%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>初探和实现websocket心跳重连</title>
-    <link href="https://jwchan1996.github.io/2018/11/21/websocket/"/>
-    <id>https://jwchan1996.github.io/2018/11/21/websocket/</id>
-    <published>2018-11-21T08:04:02.672Z</published>
-    <updated>2019-01-06T07:51:02.369Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;心跳重连缘由&quot;&gt;&lt;a href=&quot;#心跳重连缘由&quot; class=&quot;headerlink&quot; title=&quot;心跳重连缘由&quot;&gt;&lt;/a&gt;心跳重连缘由&lt;/h2&gt;&lt;p style=&quot;text-indent:2em;&quot;&gt;&lt;code&gt;websocket&lt;/code&gt; 是前后端交互的长连接，前后端也都可能因为一些情况导致连接失效并且相互之间没有反馈提醒。因此为了保证连接的可持续性和稳定性，&lt;code&gt;websocket&lt;/code&gt; 心跳重连就应运而生。&lt;/p&gt;&lt;p style=&quot;text-indent:2em;&quot;&gt;在使用原生 &lt;code&gt;websocket&lt;/code&gt; 的时候，如果设备网络断开，不会触发 &lt;code&gt;websocket&lt;/code&gt; 的任何事件函数，前端程序无法得知当前连接已经断开。这个时候如果调用 &lt;code&gt;websocket.send&lt;/code&gt; 方法，浏览器就会发现消息发不出去，便会立刻或者一定短时间后（不同浏览器或者浏览器版本可能表现不同）触发 &lt;code&gt;onclose&lt;/code&gt; 函数。&lt;/p&gt;&lt;p style=&quot;text-indent:2em;&quot;&gt;后端 &lt;code&gt;websocket&lt;/code&gt; 服务也可能出现异常，连接断开后前端也并没有收到通知，因此需要&lt;span style=&quot;color:red;&quot;&gt;前端定时发送心跳消息&lt;/span&gt; &lt;code&gt;ping&lt;/code&gt; ，&lt;span style=&quot;color:red;&quot;&gt;后端收到&lt;/span&gt; &lt;code&gt;ping&lt;/code&gt; 类型的消息，&lt;span style=&quot;color:red;&quot;&gt;立马返回&lt;/span&gt; &lt;code&gt;pong&lt;/code&gt; 消息，告知前端连接正常。如果一定时间没收到 &lt;code&gt;pong&lt;/code&gt; 消息，就说明连接不正常，前端便会执行重连。
-    
-    </summary>
-    
-      <category term="前端" scheme="https://jwchan1996.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="JS" scheme="https://jwchan1996.github.io/tags/JS/"/>
     
   </entry>
   
