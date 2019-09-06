@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-08-09T03:08:08.683Z</updated>
+  <updated>2019-09-06T03:05:38.078Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>koa 实现 token 有效时间续期的思路</title>
+    <link href="https://jwchan1996.github.io/2019/09/06/koa_token/"/>
+    <id>https://jwchan1996.github.io/2019/09/06/koa_token/</id>
+    <published>2019-09-06T02:56:56.357Z</published>
+    <updated>2019-09-06T03:05:38.078Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;场景描述&quot;&gt;&lt;a href=&quot;#场景描述&quot; class=&quot;headerlink&quot; title=&quot;# 场景描述&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;场景描述&lt;/h3&gt;&lt;p&gt;🍭 在前后端的交互中，无可避免的存在一些需要验证身份的请求。&lt;br&gt;🍭 一般来说，使用 &lt;code&gt;token&lt;/code&gt; 作为身份令牌可以实现身份验证的问题。&lt;br&gt;🍭 以此同时，&lt;code&gt;token&lt;/code&gt; 作为自带描述信息的无状态数据，唯一的判断标准就是生成 &lt;code&gt;token&lt;/code&gt; 时设置的有效期时间，当超过有效期时则作废。&lt;br&gt;🍭 我们在使用 &lt;code&gt;APP&lt;/code&gt; 或 &lt;code&gt;WEB&lt;/code&gt; 应用时，如果正在操作的时候，&lt;code&gt;token&lt;/code&gt; 刚好过期了，那就出大问题了。&lt;br&gt;🍭 所有的数据请求都会失败，给用户带来极其糟糕的体验。&lt;br&gt;🍭 所以，如何才能让 &lt;code&gt;token&lt;/code&gt; 进行续期呢？  &lt;/p&gt;
+&lt;h3 id=&quot;处理思路&quot;&gt;&lt;a href=&quot;#处理思路&quot; class=&quot;headerlink&quot; title=&quot;# 处理思路&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;处理思路&lt;/h3&gt;&lt;p&gt;🍤 因为 &lt;code&gt;token&lt;/code&gt; 是无状态数据，一旦生成了，不能主动删除或者让它失效，唯一的就是等待有效期时间到。&lt;br&gt;🍤 所以，我们会想到，在 &lt;code&gt;token&lt;/code&gt; 过期时客户端携带新的 &lt;code&gt;token&lt;/code&gt; 来访问数据接口，是不是就可以了呢。&lt;br&gt;🍤 答案是的，那么现在需要解决的问题就是：&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1.怎么返回新的 token 给到客户端&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2.什么时候返回 token 使得用户登录状态得到续期&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="node" scheme="https://jwchan1996.github.io/categories/node/"/>
+    
+    
+      <category term="koa" scheme="https://jwchan1996.github.io/tags/koa/"/>
+    
+      <category term="token" scheme="https://jwchan1996.github.io/tags/token/"/>
+    
+  </entry>
   
   <entry>
     <title>Electron 踩坑记录（一）</title>
@@ -35,11 +58,11 @@
       <category term="electron" scheme="https://jwchan1996.github.io/categories/electron/"/>
     
     
-      <category term="vue" scheme="https://jwchan1996.github.io/tags/vue/"/>
-    
       <category term="electron" scheme="https://jwchan1996.github.io/tags/electron/"/>
     
       <category term="elecrton-vue" scheme="https://jwchan1996.github.io/tags/elecrton-vue/"/>
+    
+      <category term="vue" scheme="https://jwchan1996.github.io/tags/vue/"/>
     
       <category term="flash" scheme="https://jwchan1996.github.io/tags/flash/"/>
     
@@ -528,67 +551,6 @@
     
     
       <category term="git" scheme="https://jwchan1996.github.io/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>11月份 / Summary</title>
-    <link href="https://jwchan1996.github.io/2018/12/01/summary_201811/"/>
-    <id>https://jwchan1996.github.io/2018/12/01/summary_201811/</id>
-    <published>2018-12-01T07:59:10.434Z</published>
-    <updated>2018-12-20T02:44:14.185Z</updated>
-    
-    <summary type="html">
-    
-      &lt;style&gt;
-    #summary_201811_01,
-    #summary_201811_02,
-    #summary_201811_03,
-    #summary_201811_04,
-    #summary_201811_05,
-    #summary_201811_06,
-    #summary_201811_07,
-    #summary_201811_08,
-    #summary_201811_09{
-        /**设置缩放**/
-        -webkit-transition: 0.2s all;
-        -moz-transition: 0.2s all;
-        -ms-transition: 0.2s all;
-        transition: 0.2s all;
-    }
-    #summary_201811_01:hover,
-    #summary_201811_02:hover,
-    #summary_201811_03:hover,
-    #summary_201811_04:hover,
-    #summary_201811_05:hover,
-    #summary_201811_06:hover,
-    #summary_201811_07:hover,
-    #summary_201811_08:hover,
-    #summary_201811_09:hover{
-        -webkit-transform: scale(1.02,1.02);
-        -moz-transform: scale(1.02,1.02);
-        -ms-transform: scale(1.02,1.02);
-        transform: scale(1.02,1.02);
-        box-shadow: 5px 5px 30px #999;
-        cursor: pointer;
-    }
-&lt;/style&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;雉青十一，渐入佳境&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre&gt;&lt;code&gt;十一月份，是梳理的月份，是持续学习与渴望coding的。
-&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
-&lt;p&gt;关于产品&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p style=&quot;text-indent:2em;&quot;&gt;解决了用户需求，实现了产品目标对用户和公司来说是个好产品。而对于产品本身，应该从设计实现的每个细节角度来评判其是不是个好产品。每个功能是不是以最优的用户体验和技术实现方式来完成的。这个考验的是产品、设计、开发人员的功底，协作程度、责任心等各个方面。&lt;/p&gt;&lt;span style=&quot;color:red;&quot;&gt;功能设计&lt;/span&gt;方面：是否在协调用户体验和产品目标上找到最佳的平衡点？是否在最合适的场合为用户呈现了他需要的功能和帮助？是否考虑到了用户所以的使用场景？&lt;br&gt;
-    
-    </summary>
-    
-      <category term="生活与工作" scheme="https://jwchan1996.github.io/categories/%E7%94%9F%E6%B4%BB%E4%B8%8E%E5%B7%A5%E4%BD%9C/"/>
-    
-    
-      <category term="总结" scheme="https://jwchan1996.github.io/tags/%E6%80%BB%E7%BB%93/"/>
     
   </entry>
   

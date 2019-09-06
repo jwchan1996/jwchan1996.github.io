@@ -1933,7 +1933,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #7a9f2a;
+  background: #de16ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2610,11 +2610,11 @@ html {
 /*三角箭头的颜色*/
   scrollbar-arrow-color: #f2aa24;
 /*滚动条滑块按钮的颜色*/
-  scrollbar-face-color: #009688;
+  scrollbar-face-color: #fff;
 /*滚动条整体颜色*/
   scrollbar-highlight-color: #fff;
 /*滚动条阴影*/
-  scrollbar-shadow-color: #009688;
+  scrollbar-shadow-color: #ccc;
 /*滚动条轨道颜色*/
   scrollbar-track-color: #fff;
 }
@@ -2629,12 +2629,13 @@ html {
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: #009688;
+  background-color: #ccc;
   box-shadow: inset 0 0 5px #fff;
 }
 ::-webkit-scrollbar-button {
   height: 0;
-  background-color: #009688;
+  width: 0;
+  background-color: #fff;
 }
 .custom-logo .site-meta-headline {
   text-align: center;

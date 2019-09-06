@@ -108,13 +108,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="我爱盐酥鸡">
-<meta property="og:url" content="https://jwchan1996.github.io/categories/诗词/index.html">
+  <meta name="description" content="# 场景描述🍭 在前后端的交互中，无可避免的存在一些需要验证身份的请求。🍭 一般来说，使用 token 作为身份令牌可以实现身份验证的问题。🍭 以此同时，token 作为自带描述信息的无状态数据，唯一的判断标准就是生成 token 时设置的有效期时间，当超过有效期时则作废。🍭 我们在使用 APP 或 WEB 应用时，如果正在操作的时候，token 刚好过期了，那就出大问题了。🍭 所有的数">
+<meta name="keywords" content="koa,token">
+<meta property="og:type" content="article">
+<meta property="og:title" content="koa 实现 token 有效时间续期的思路">
+<meta property="og:url" content="https://jwchan1996.github.io/2019/09/06/koa_token/index.html">
 <meta property="og:site_name" content="我爱盐酥鸡">
+<meta property="og:description" content="# 场景描述🍭 在前后端的交互中，无可避免的存在一些需要验证身份的请求。🍭 一般来说，使用 token 作为身份令牌可以实现身份验证的问题。🍭 以此同时，token 作为自带描述信息的无状态数据，唯一的判断标准就是生成 token 时设置的有效期时间，当超过有效期时则作废。🍭 我们在使用 APP 或 WEB 应用时，如果正在操作的时候，token 刚好过期了，那就出大问题了。🍭 所有的数">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-06T03:05:38.078Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我爱盐酥鸡">
+<meta name="twitter:title" content="koa 实现 token 有效时间续期的思路">
+<meta name="twitter:description" content="# 场景描述🍭 在前后端的交互中，无可避免的存在一些需要验证身份的请求。🍭 一般来说，使用 token 作为身份令牌可以实现身份验证的问题。🍭 以此同时，token 作为自带描述信息的无状态数据，唯一的判断标准就是生成 token 时设置的有效期时间，当超过有效期时则作废。🍭 我们在使用 APP 或 WEB 应用时，如果正在操作的时候，token 刚好过期了，那就出大问题了。🍭 所有的数">
 
 
 
@@ -123,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="https://jwchan1996.github.io/categories/诗词/"/>
+  <link rel="canonical" href="https://jwchan1996.github.io/2019/09/06/koa_token/"/>
 
 
 
@@ -133,7 +138,7 @@
   };
 </script>
 
-  <title>分类: 诗词 | 我爱盐酥鸡</title>
+  <title>koa 实现 token 有效时间续期的思路 | 我爱盐酥鸡</title>
   
 
 
@@ -207,7 +212,7 @@ _就像凝望深渊时_深渊也在凝望你
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband">
       <a href="https://github.com/jwchan1996" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 100;" src="/images/forkMeInGithub.png" alt="Fork me on GitHub"></a>
     </div>
@@ -328,7 +333,7 @@ _就像凝望深渊时_深渊也在凝望你
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类<span class="badge">12</span></a>
   </li>
@@ -372,31 +377,6 @@ _就像凝望深渊时_深渊也在凝望你
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -445,59 +425,232 @@ _就像凝望深渊时_深渊也在凝望你
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>诗词<small>分类</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jwchan1996.github.io/2019/09/06/koa_token/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jwchan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我爱盐酥鸡">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/10/17/poem_1/" itemprop="url">
-              
-                <span itemprop="name">诗 / Poem</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">koa 实现 token 有效时间续期的思路
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-17T16:40:15+08:00"
-              content="2018-10-17" >
-          10-17
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
 
+              
+                
+              
+
+              <time title="创建时间：2019-09-06 10:56:56 / 修改时间：11:05:38" itemprop="dateCreated datePublished" datetime="2019-09-06T10:56:56+08:00">2019-09-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/node/" itemprop="url" rel="index"><span itemprop="name">node</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+            </span>
+            <span id="busuanzi_value_page_pv"></span>次阅读
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="场景描述"><a href="#场景描述" class="headerlink" title="# 场景描述"></a><span style="color:#009688"># </span>场景描述</h3><p>🍭 在前后端的交互中，无可避免的存在一些需要验证身份的请求。<br>🍭 一般来说，使用 <code>token</code> 作为身份令牌可以实现身份验证的问题。<br>🍭 以此同时，<code>token</code> 作为自带描述信息的无状态数据，唯一的判断标准就是生成 <code>token</code> 时设置的有效期时间，当超过有效期时则作废。<br>🍭 我们在使用 <code>APP</code> 或 <code>WEB</code> 应用时，如果正在操作的时候，<code>token</code> 刚好过期了，那就出大问题了。<br>🍭 所有的数据请求都会失败，给用户带来极其糟糕的体验。<br>🍭 所以，如何才能让 <code>token</code> 进行续期呢？  </p>
+<h3 id="处理思路"><a href="#处理思路" class="headerlink" title="# 处理思路"></a><span style="color:#009688"># </span>处理思路</h3><p>🍤 因为 <code>token</code> 是无状态数据，一旦生成了，不能主动删除或者让它失效，唯一的就是等待有效期时间到。<br>🍤 所以，我们会想到，在 <code>token</code> 过期时客户端携带新的 <code>token</code> 来访问数据接口，是不是就可以了呢。<br>🍤 答案是的，那么现在需要解决的问题就是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.怎么返回新的 token 给到客户端</span><br><span class="line">2.什么时候返回 token 使得用户登录状态得到续期</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h4 id="思路"><a href="#思路" class="headerlink" title="# 思路"></a><span style="color:#009688"># </span>思路</h4><ol>
+<li>通过设置返回头设置新 <code>token</code> 的值，客户端使用 <code>axios</code> 进行响应拦截判断是否有新 <code>token</code> 字段，有则保存起来。</li>
+<li>如果用户在一定的 <code>token</code> 有效时间段期间（比如有效期时间的后半段）访问了数据接口，就应该对 <code>token</code> 进行续期。</li>
+</ol>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="# 代码实现"></a><span style="color:#009688"># </span>代码实现</h3><p>🍥 本次项目采用的是 <code>koa</code> 基于 <code>node</code> 实现的 <code>api</code> 服务端。<br>🍥 主要文件有两个，一个是入口文件 <code>app.js</code>，另一个是工具函数文件 <code>token.js</code>。<br>🍥 完整 <code>github</code> 项目可以查看 <a href="https://github.com/ppap6/PPAP.server" target="_blank" rel="noopener">PPAP.server</a>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//token.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> jwt = <span class="built_in">require</span>(<span class="string">'jsonwebtoken'</span>)</span><br><span class="line"><span class="keyword">const</span> secret = <span class="string">'secret'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//判断token是否应该更新有效期（续期）</span></span><br><span class="line"><span class="keyword">const</span> getTokenRenewStatus = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//检测当前token是否到达续期时间段</span></span><br><span class="line">  <span class="keyword">let</span> token = global.token</span><br><span class="line">  <span class="keyword">let</span> obj = jwt.verify(token, secret)</span><br><span class="line">  <span class="comment">//更新时间段在过期前3天</span></span><br><span class="line">  <span class="keyword">if</span>(obj.exp - <span class="keyword">new</span> <span class="built_in">Date</span>().getTime()/<span class="number">1000</span> &gt; <span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>*<span class="number">3</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取一个期限为7天的token</span></span><br><span class="line"><span class="keyword">const</span> getToken = <span class="function">(<span class="params">payload = &#123;&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> jwt.sign(payload, secret, &#123; <span class="attr">expiresIn</span>: <span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>*<span class="number">7</span> &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//重新生成一个期限为7天的token</span></span><br><span class="line"><span class="keyword">const</span> createNewToken = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> token = global.token</span><br><span class="line">  <span class="keyword">let</span> obj = jwt.verify(token, secret)</span><br><span class="line">  <span class="keyword">let</span> payload = &#123;</span><br><span class="line">    account: obj.account,</span><br><span class="line">    password: obj.password</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> getToken(payload)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//解析token为对象</span></span><br><span class="line"><span class="keyword">const</span> parseToken = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">let</span> token = global.token</span><br><span class="line">  <span class="keyword">return</span> jwt.verify(token, secret)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  getTokenRenewStatus,</span><br><span class="line">  getToken,</span><br><span class="line">  createNewToken,</span><br><span class="line">  parseToken</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//app.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>)</span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">'koa-bodyparser'</span>)</span><br><span class="line"><span class="keyword">const</span> jwtKoa = <span class="built_in">require</span>(<span class="string">'koa-jwt'</span>)  <span class="comment">// 用于路由权限控制</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa()</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> tokenUtil = <span class="built_in">require</span>(<span class="string">'./util/token'</span>)</span><br><span class="line"><span class="keyword">const</span> router = <span class="built_in">require</span>(<span class="string">'./router'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//配置ctx.body解析中间件</span></span><br><span class="line">app.use(bodyParser())</span><br><span class="line"></span><br><span class="line"><span class="comment">// 错误处理</span></span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//获取token，保存全局变量</span></span><br><span class="line">  <span class="keyword">if</span>(ctx.request.header.authorization)&#123;</span><br><span class="line">    global.token = ctx.request.header.authorization.split(<span class="string">' '</span>)[<span class="number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> next().then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 设置login、register接口，不需要判断token续期</span></span><br><span class="line">    <span class="keyword">if</span>(ctx.path == <span class="string">'/user/login'</span> || ctx.path == <span class="string">'/user/register'</span>)&#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//判断token是否应该续期（有效时间）</span></span><br><span class="line">    <span class="keyword">if</span>(tokenUtil.getTokenRenewStatus)&#123;</span><br><span class="line">      <span class="comment">//设置返回头header</span></span><br><span class="line">      ctx.set(&#123;</span><br><span class="line">        <span class="comment">//客户端读取该属性即可获取新的token</span></span><br><span class="line">        new_token: tokenUtil.createNewToken()</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(err.status === <span class="number">401</span>)&#123;</span><br><span class="line">          ctx.status = <span class="number">401</span>;</span><br><span class="line">          ctx.body = &#123;</span><br><span class="line">            status: <span class="number">401</span>,</span><br><span class="line">            message: <span class="string">'未携带token令牌或者token令牌已过期'</span></span><br><span class="line">          &#125;</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          <span class="keyword">throw</span> err;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> secret = <span class="string">'secret'</span></span><br><span class="line">app.use(jwtKoa(&#123; <span class="attr">secret</span>: secret &#125;).unless(&#123;</span><br><span class="line">  <span class="comment">// 设置login、register接口，可以不需要认证访问</span></span><br><span class="line">  path: [</span><br><span class="line">      /^\/user\/login/,</span><br><span class="line">      /^\/user\/register/</span><br><span class="line">  ]</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化路由中间件</span></span><br><span class="line">app.use(router.routes()).use(router.allowedMethods())</span><br><span class="line"></span><br><span class="line"><span class="comment">//监听启动窗口</span></span><br><span class="line">app.listen(<span class="number">2333</span>, () =&gt; <span class="built_in">console</span>.log(<span class="string">"koa is run on localhost:2333"</span>))</span><br></pre></td></tr></table></figure>
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/koa/" rel="tag"><i class="fa fa-tag"></i> koa</a>
+          
+            <a href="/tags/token/" rel="tag"><i class="fa fa-tag"></i> token</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/09/electron_note_1/" rel="next" title="Electron 踩坑记录（一）">
+                <i class="fa fa-chevron-left"></i> Electron 踩坑记录（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -518,8 +671,17 @@ _就像凝望深渊时_深渊也在凝望你
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -686,6 +848,22 @@ _就像凝望深渊时_深渊也在凝望你
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#场景描述"><span class="nav-text"># 场景描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理思路"><span class="nav-text"># 处理思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-text"># 思路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-text"># 代码实现</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1103,6 +1281,9 @@ _就像凝望深渊时_深渊也在凝望你
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
 
   
 
