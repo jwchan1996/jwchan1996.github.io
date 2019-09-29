@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-09-12T05:54:08.136Z</updated>
+  <updated>2019-09-29T08:01:51.872Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>443端口占用导致其他程序启动失败</title>
+    <link href="https://jwchan1996.github.io/2019/09/29/https_443_port_occupy/"/>
+    <id>https://jwchan1996.github.io/2019/09/29/https_443_port_occupy/</id>
+    <published>2019-09-29T07:55:07.364Z</published>
+    <updated>2019-09-29T08:01:51.872Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;笔记&quot;&gt;&lt;a href=&quot;#笔记&quot; class=&quot;headerlink&quot; title=&quot;# 笔记&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;笔记&lt;/h3&gt;&lt;p&gt;🧐 由于需要编写基于 &lt;code&gt;go&lt;/code&gt; 的微信公众号接口，端口限制在 &lt;code&gt;80&lt;/code&gt; 端口和 &lt;code&gt;443&lt;/code&gt; 端口之间，所以就只能起一个监听端口为 &lt;code&gt;443&lt;/code&gt; 的 &lt;code&gt;https&lt;/code&gt; 服务。&lt;br&gt;🧐 但是，&lt;code&gt;beego&lt;/code&gt; 运行 &lt;code&gt;443&lt;/code&gt; 端口的 &lt;code&gt;https&lt;/code&gt; 服务，成功运行了而且并没有报错（这是个奇怪的点），但是当访问接口的时候都是返回 &lt;code&gt;404 not found&lt;/code&gt;。&lt;br&gt;🧐 在排除 https 服务异常的情况下（除了 &lt;code&gt;443&lt;/code&gt; 端口其他端口都是正常工作的），最终定位到问题应该在端口占用上。&lt;br&gt;🧐 于是，查看 &lt;code&gt;443&lt;/code&gt; 端口的占用情况，果然有进程在占用着，是 &lt;code&gt;vmware-hostd.exe&lt;/code&gt; 这个进程，然后将它 &lt;code&gt;kill&lt;/code&gt; 掉，然后发现，还是不行，一样是 &lt;code&gt;404 not found&lt;/code&gt;。&lt;br&gt;🧐 出大问题哈哈哈！一开始没注意到 &lt;code&gt;vmware-hostd.exe&lt;/code&gt; 是自启动的，杀掉了还是会重新启动，还捣鼓了几个小时。&lt;br&gt;🧐 所以，后面只需要将 &lt;code&gt;vmware-hostd.exe&lt;/code&gt; 进程设置为手动开启，然后关掉即可释放 &lt;code&gt;443&lt;/code&gt; 端口。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://jwchan1996.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="go" scheme="https://jwchan1996.github.io/tags/go/"/>
+    
+      <category term="VMware" scheme="https://jwchan1996.github.io/tags/VMware/"/>
+    
+      <category term="https" scheme="https://jwchan1996.github.io/tags/https/"/>
+    
+      <category term="微信公众号" scheme="https://jwchan1996.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>Electron 踩坑记录（二）</title>
@@ -515,29 +541,6 @@
     
     
       <category term="vue" scheme="https://jwchan1996.github.io/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于 Axios Post 请求的坑</title>
-    <link href="https://jwchan1996.github.io/2018/12/25/axios_post/"/>
-    <id>https://jwchan1996.github.io/2018/12/25/axios_post/</id>
-    <published>2018-12-25T11:47:14.481Z</published>
-    <updated>2019-05-14T02:29:19.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Axios&quot;&gt;&lt;a href=&quot;#Axios&quot; class=&quot;headerlink&quot; title=&quot;Axios&quot;&gt;&lt;/a&gt;Axios&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;Axios 是一个基于 &lt;code&gt;promise&lt;/code&gt; 的 HTTP 库，可以用在浏览器和 node.js 中。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;踩坑&quot;&gt;&lt;a href=&quot;#踩坑&quot; class=&quot;headerlink&quot; title=&quot;踩坑&quot;&gt;&lt;/a&gt;踩坑&lt;/h2&gt;&lt;p&gt;按照 axios 官网例子使用 axios.post 发起请求传递 json，后台接受到的数据为空&lt;br&gt;浏览器报错，然后使用 &lt;code&gt;restlet&lt;/code&gt; 请求却可以正常返回数据&lt;br&gt;
-    
-    </summary>
-    
-      <category term="axios" scheme="https://jwchan1996.github.io/categories/axios/"/>
-    
-    
-      <category term="axios" scheme="https://jwchan1996.github.io/tags/axios/"/>
     
   </entry>
   
