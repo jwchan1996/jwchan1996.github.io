@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-09-29T08:01:51.872Z</updated>
+  <updated>2019-10-18T03:27:04.094Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>443端口占用导致其他程序启动失败</title>
+    <title>koa-jwt 实现自定义排除动态路由的鉴权</title>
+    <link href="https://jwchan1996.github.io/2019/10/18/koa_jwt_unless/"/>
+    <id>https://jwchan1996.github.io/2019/10/18/koa_jwt_unless/</id>
+    <published>2019-10-18T03:14:07.756Z</published>
+    <updated>2019-10-18T03:27:04.094Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;场景描述&quot;&gt;&lt;a href=&quot;#场景描述&quot; class=&quot;headerlink&quot; title=&quot;# 场景描述&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;场景描述&lt;/h3&gt;&lt;p&gt;🍭 最近在编写 &lt;a href=&quot;https://github.com/ppap6/PPAP.server&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;PPAP.server&lt;/code&gt;&lt;/a&gt; 项目，一个基于 &lt;code&gt;koa2&lt;/code&gt; 的 &lt;code&gt;nodejs&lt;/code&gt; 服务端接口程序。&lt;br&gt;由于接口采用的是 &lt;code&gt;RESTful API&lt;/code&gt;，所以鉴权令牌由客户端携带发送到接口。&lt;br&gt;业务需求的是部分接口是需要用户登陆再进行操作，比如需要记录用户点赞的接口。&lt;br&gt;而不需要用户鉴权的接口，如查看帖子等不记录用户数据的接口。  &lt;/p&gt;
+&lt;p&gt;对于路由权限控制（鉴权），项目使用的是 &lt;a href=&quot;https://github.com/auth0/node-jsonwebtoken&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;koa-jwt&lt;/code&gt;&lt;/a&gt;，支持对 &lt;code&gt;token&lt;/code&gt; 的生成与校验，还能对接口路由进行过滤排除，指定不需要鉴权的接口。  &lt;/p&gt;
+&lt;p&gt;如：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//配置不需要jwt验证的接口&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;app.use(jwtKoa(&amp;#123; &lt;span class=&quot;attr&quot;&gt;secret&lt;/span&gt;: tokenUtil.secret &amp;#125;).unless(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  path: [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&#39;/user/login&#39;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&#39;/user/register&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  ]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这样上面两个接口 &lt;code&gt;/user/login&lt;/code&gt; 和 &lt;code&gt;/user/register&lt;/code&gt; 都是可以跳过鉴权的，不需要携带 &lt;code&gt;token&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;对于本项目来说，棘手的是项目接口大多使用了动态路由，即比如 &lt;code&gt;/user/:id&lt;/code&gt; 这样的接口，需要用正则表达式去进行匹配。&lt;br&gt;但是动态路由 &lt;code&gt;/user/:id&lt;/code&gt; 的请求方法可能会有 &lt;code&gt;get post put delete&lt;/code&gt; 四种，所以不仅仅要排除配置的静态路由，还需要排除配置的特定请求方法的动态路由。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="node" scheme="https://jwchan1996.github.io/categories/node/"/>
+    
+    
+      <category term="jwt鉴权" scheme="https://jwchan1996.github.io/tags/jwt%E9%89%B4%E6%9D%83/"/>
+    
+      <category term="koa" scheme="https://jwchan1996.github.io/tags/koa/"/>
+    
+      <category term="token" scheme="https://jwchan1996.github.io/tags/token/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>443 端口占用导致其他程序启动失败</title>
     <link href="https://jwchan1996.github.io/2019/09/29/https_443_port_occupy/"/>
     <id>https://jwchan1996.github.io/2019/09/29/https_443_port_occupy/</id>
     <published>2019-09-29T07:55:07.364Z</published>
-    <updated>2019-09-29T08:01:51.872Z</updated>
+    <updated>2019-10-18T03:19:32.632Z</updated>
     
     <summary type="html">
     
@@ -521,26 +549,6 @@
     
     
       <category term="Google" scheme="https://jwchan1996.github.io/tags/Google/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>v-bind 动态拼接参数</title>
-    <link href="https://jwchan1996.github.io/2018/12/29/vue_v-bind/"/>
-    <id>https://jwchan1996.github.io/2018/12/29/vue_v-bind/</id>
-    <published>2018-12-29T00:47:14.655Z</published>
-    <updated>2019-01-06T07:59:05.943Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;#场景&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688;&quot;&gt;#&lt;/span&gt;场景&lt;/h3&gt;&lt;p&gt;在业务开发中常常&lt;br&gt;需要对元素属性进行动态绑定&lt;br&gt;比如 &lt;code&gt;v-for&lt;/code&gt; 下遍历 &lt;code&gt;img&lt;/code&gt; 绑定 &lt;code&gt;src&lt;/code&gt; 地址&lt;br&gt;传统方法用的是拼接 &lt;code&gt;dom&lt;/code&gt; 元素字符串，再把字符串&lt;br&gt;插入到文档流里，对于使用 &lt;code&gt;vue&lt;/code&gt;，我们不必再频繁地处理 &lt;code&gt;dom&lt;/code&gt;&lt;br&gt;我们可以使用 &lt;code&gt;v-bind&lt;/code&gt; 来处理它们：只需要通过表达式计算出字符串结果即可。不过，字符串拼接麻烦且易错，需要处理妥当。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="vue" scheme="https://jwchan1996.github.io/categories/vue/"/>
-    
-    
-      <category term="vue" scheme="https://jwchan1996.github.io/tags/vue/"/>
     
   </entry>
   
