@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-10-18T03:27:04.094Z</updated>
+  <updated>2019-10-21T07:42:03.553Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript 中的 call()、apply()、bind() 的用法</title>
+    <link href="https://jwchan1996.github.io/2019/10/21/js_call_apply_bind/"/>
+    <id>https://jwchan1996.github.io/2019/10/21/js_call_apply_bind/</id>
+    <published>2019-10-21T07:02:28.054Z</published>
+    <updated>2019-10-21T07:42:03.553Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;笔记&quot;&gt;&lt;a href=&quot;#笔记&quot; class=&quot;headerlink&quot; title=&quot;# 笔记&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;笔记&lt;/h3&gt;&lt;p&gt;其实是一个很简单的东西，认真看十分钟就能完全理解！&lt;br&gt;先看明白下面：  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;例1&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;/images/js_call_apply_bind/01.png&quot; alt=&quot;image&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;obj.objAge;    &lt;span class=&quot;comment&quot;&gt;//17&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;obj.myFun();    &lt;span class=&quot;comment&quot;&gt;//小张年龄undefined&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;例2&lt;/strong&gt;&lt;br&gt;&lt;img src=&quot;/images/js_call_apply_bind/02.png&quot; alt=&quot;image&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;shows();    &lt;span class=&quot;comment&quot;&gt;//盲僧&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;比较一下这两者 &lt;code&gt;this&lt;/code&gt; 的差别，第一个打印里面的 &lt;code&gt;this&lt;/code&gt; 指向 &lt;code&gt;obj&lt;/code&gt;，第二个全局声明的 &lt;code&gt;shows()&lt;/code&gt; 函数 &lt;code&gt;this&lt;/code&gt; 是 &lt;code&gt;window&lt;/code&gt;。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://jwchan1996.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="JS" scheme="https://jwchan1996.github.io/tags/JS/"/>
+    
+  </entry>
   
   <entry>
     <title>koa-jwt 实现自定义排除动态路由的鉴权</title>
@@ -491,64 +514,6 @@
     
     
       <category term="vue" scheme="https://jwchan1996.github.io/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Google DevFest 2018</title>
-    <link href="https://jwchan1996.github.io/2019/01/02/GDG2018/"/>
-    <id>https://jwchan1996.github.io/2019/01/02/GDG2018/</id>
-    <published>2019-01-02T01:40:35.100Z</published>
-    <updated>2019-01-02T01:57:45.133Z</updated>
-    
-    <summary type="html">
-    
-      &lt;style&gt;
-    #GDG2018_01,
-    #GDG2018_02,
-    #GDG2018_03,
-    #GDG2018_04,
-    #GDG2018_05,
-    #GDG2018_06,
-    #GDG2018_07,
-    #GDG2018_08,
-    #GDG2018_09,
-    #GDG2018_10{
-        border: 0 !important;
-        /**设置缩放**/
-        -webkit-transition: 0.2s all;
-        -moz-transition: 0.2s all;
-        -ms-transition: 0.2s all;
-        transition: 0.2s all;
-    }
-    #GDG2018_01:hover,
-    #GDG2018_02:hover,
-    #GDG2018_03:hover,
-    #GDG2018_04:hover,
-    #GDG2018_05:hover,
-    #GDG2018_06:hover,
-    #GDG2018_07:hover,
-    #GDG2018_08:hover,
-    #GDG2018_09:hover,
-    #GDG2018_10:hover{
-        -webkit-transform: scale(1.02,1.02);
-        -moz-transform: scale(1.02,1.02);
-        -ms-transform: scale(1.02,1.02);
-        transform: scale(1.02,1.02);
-        box-shadow: 5px 5px 30px #999;
-        cursor: pointer;
-    }
-&lt;/style&gt;
-
-&lt;p&gt;&lt;img id=&quot;GDG2018_01&quot; src=&quot;http://chinagdg.org/wp-content/uploads/2015/07/logo_lockup_gdg_horizontal-e1539944886259-600x247.png&quot;&gt;  &lt;/p&gt;
-&lt;h3 id=&quot;什么是-GDG&quot;&gt;&lt;a href=&quot;#什么是-GDG&quot; class=&quot;headerlink&quot; title=&quot;#什么是 GDG&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688;&quot;&gt;#&lt;/span&gt;什么是 GDG&lt;/h3&gt;&lt;p&gt;&lt;code&gt;GDG&lt;/code&gt; 是 &lt;code&gt;Google Developer Groups&lt;/code&gt; (谷歌开发者社区)的缩写，也是现在项目的正式名称。&lt;code&gt;GDG&lt;/code&gt; 是谷歌开发者部门发起的开发者社区全球项目，是面向对 &lt;code&gt;Google&lt;/code&gt; 和开源、开放技术感兴趣的公益性开发者社区，内容涵盖 &lt;code&gt;Web&lt;/code&gt;、&lt;code&gt;Android&lt;/code&gt; 和其它 &lt;code&gt;Google API&lt;/code&gt; 等。目前在全球已有500多个 &lt;code&gt;GDG&lt;/code&gt; 社区，中国已有超过 20个 &lt;code&gt;GDG&lt;/code&gt; 社区。&lt;code&gt;GDG&lt;/code&gt; 主要面向开发者、设计师、创业者、大学生等软件从业人员，是一个开放和自由的社区。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="活动" scheme="https://jwchan1996.github.io/categories/%E6%B4%BB%E5%8A%A8/"/>
-    
-    
-      <category term="Google" scheme="https://jwchan1996.github.io/tags/Google/"/>
     
   </entry>
   
