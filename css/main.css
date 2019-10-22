@@ -1933,7 +1933,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #8affff;
+  background: #e2fffb;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2585,10 +2585,27 @@ ul.breadcrumb li+li:last-child {
   box-shadow: 0 0 30px #ddd;
   border-radius: 0 0 10px 10px;
 }
-.main-inner .posts-expand .post-body {
+.main-inner .posts-expand .post-body img {
   padding-top: 0;
   margin-bottom: 0;
   border: none;
+  cursor: pointer;
+/**设置缩放**/
+  -webkit-transition: 0.2s all;
+  -moz-transition: 0.2s all;
+  -ms-transition: 0.2s all;
+  transition: 0.2s all;
+}
+.main-inner .posts-expand .post-body img:hover {
+  -webkit-transform: scale(1.02, 1.02);
+  -moz-transform: scale(1.02, 1.02);
+  -ms-transform: scale(1.02, 1.02);
+  -webkit-transform: scale(1.02, 1.02);
+  -moz-transform: scale(1.02, 1.02);
+  -ms-transform: scale(1.02, 1.02);
+  -o-transform: scale(1.02, 1.02);
+  transform: scale(1.02, 1.02);
+  box-shadow: 2px 2px 30px #ccc;
 }
 @media screen and (max-width: 440px) {
   .main-inner {
