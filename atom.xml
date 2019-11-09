@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2019-10-21T07:42:03.553Z</updated>
+  <updated>2019-11-09T03:42:05.771Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JS 模拟实现 call、apply、bind</title>
+    <link href="https://jwchan1996.github.io/2019/11/09/js_simulate_call_apply_bind/"/>
+    <id>https://jwchan1996.github.io/2019/11/09/js_simulate_call_apply_bind/</id>
+    <published>2019-11-08T16:00:00.000Z</published>
+    <updated>2019-11-09T03:42:05.771Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;实现call&quot;&gt;&lt;a href=&quot;#实现call&quot; class=&quot;headerlink&quot; title=&quot;实现call&quot;&gt;&lt;/a&gt;实现call&lt;/h3&gt;&lt;p&gt;&lt;code&gt;call&lt;/code&gt; 的参数是直接放进去的，第二第三第 &lt;code&gt;n&lt;/code&gt; 个参数全部都是用逗号分割  &lt;/p&gt;
+&lt;p&gt;下面是 &lt;code&gt;call&lt;/code&gt; 的用法形式：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;test&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;arg1, arg2&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(arg1, arg2)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.a, &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.b)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;run.call(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a: &lt;span class=&quot;string&quot;&gt;&quot;a&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b: &lt;span class=&quot;string&quot;&gt;&quot;b&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;call&lt;/code&gt; 的作用是可以改变函数的上下文对象，也就是函数里 &lt;code&gt;this&lt;/code&gt; 的指向&lt;br&gt;👉 这是我们模拟实现 &lt;code&gt;call&lt;/code&gt; 的关键  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;如果一个函数作为一个对象的属性，那么通过调用这个对象的属性调用该函数，&lt;code&gt;this&lt;/code&gt; 就是该对象&lt;/strong&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="https://jwchan1996.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="JS" scheme="https://jwchan1996.github.io/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript 中的 call()、apply()、bind() 的用法</title>
     <link href="https://jwchan1996.github.io/2019/10/21/js_call_apply_bind/"/>
     <id>https://jwchan1996.github.io/2019/10/21/js_call_apply_bind/</id>
-    <published>2019-10-21T07:02:28.054Z</published>
-    <updated>2019-10-21T07:42:03.553Z</updated>
+    <published>2019-10-20T16:00:00.000Z</published>
+    <updated>2019-11-09T03:42:36.669Z</updated>
     
     <summary type="html">
     
@@ -43,8 +67,8 @@
     <title>koa-jwt 实现自定义排除动态路由的鉴权</title>
     <link href="https://jwchan1996.github.io/2019/10/18/koa_jwt_unless/"/>
     <id>https://jwchan1996.github.io/2019/10/18/koa_jwt_unless/</id>
-    <published>2019-10-18T03:14:07.756Z</published>
-    <updated>2019-10-18T03:27:04.094Z</updated>
+    <published>2019-10-17T16:00:00.000Z</published>
+    <updated>2019-11-09T03:43:06.290Z</updated>
     
     <summary type="html">
     
@@ -71,8 +95,8 @@
     <title>443 端口占用导致其他程序启动失败</title>
     <link href="https://jwchan1996.github.io/2019/09/29/https_443_port_occupy/"/>
     <id>https://jwchan1996.github.io/2019/09/29/https_443_port_occupy/</id>
-    <published>2019-09-29T07:55:07.364Z</published>
-    <updated>2019-10-18T03:19:32.632Z</updated>
+    <published>2019-09-28T16:00:00.000Z</published>
+    <updated>2019-11-09T03:44:26.553Z</updated>
     
     <summary type="html">
     
@@ -97,8 +121,8 @@
     <title>Electron 踩坑记录（二）</title>
     <link href="https://jwchan1996.github.io/2019/09/12/electron_note_2/"/>
     <id>https://jwchan1996.github.io/2019/09/12/electron_note_2/</id>
-    <published>2019-09-12T04:03:31.774Z</published>
-    <updated>2019-09-12T05:54:08.136Z</updated>
+    <published>2019-09-11T16:00:00.000Z</published>
+    <updated>2019-11-09T03:44:53.998Z</updated>
     
     <summary type="html">
     
@@ -126,8 +150,8 @@
     <title>koa 实现 token 有效时间续期的思路</title>
     <link href="https://jwchan1996.github.io/2019/09/06/koa_token/"/>
     <id>https://jwchan1996.github.io/2019/09/06/koa_token/</id>
-    <published>2019-09-06T02:56:56.357Z</published>
-    <updated>2019-09-06T03:05:38.078Z</updated>
+    <published>2019-09-05T16:00:00.000Z</published>
+    <updated>2019-11-09T03:45:05.929Z</updated>
     
     <summary type="html">
     
@@ -149,8 +173,8 @@
     <title>Electron 踩坑记录（一）</title>
     <link href="https://jwchan1996.github.io/2019/08/09/electron_note_1/"/>
     <id>https://jwchan1996.github.io/2019/08/09/electron_note_1/</id>
-    <published>2019-08-09T02:37:07.554Z</published>
-    <updated>2019-08-09T03:08:08.683Z</updated>
+    <published>2019-08-08T16:00:00.000Z</published>
+    <updated>2019-11-09T03:45:18.262Z</updated>
     
     <summary type="html">
     
@@ -184,8 +208,8 @@
     <title>vue 重新加载当前组件</title>
     <link href="https://jwchan1996.github.io/2019/07/25/vue_reload_component/"/>
     <id>https://jwchan1996.github.io/2019/07/25/vue_reload_component/</id>
-    <published>2019-07-25T05:50:46.205Z</published>
-    <updated>2019-07-25T05:59:59.394Z</updated>
+    <published>2019-07-24T16:00:00.000Z</published>
+    <updated>2019-11-09T03:45:29.990Z</updated>
     
     <summary type="html">
     
@@ -205,8 +229,8 @@
     <title>map 字符串数组/数字数组 快速转换</title>
     <link href="https://jwchan1996.github.io/2019/06/27/js_map/"/>
     <id>https://jwchan1996.github.io/2019/06/27/js_map/</id>
-    <published>2019-06-27T11:50:08.182Z</published>
-    <updated>2019-06-27T11:56:23.145Z</updated>
+    <published>2019-06-26T16:00:00.000Z</published>
+    <updated>2019-11-09T03:46:12.025Z</updated>
     
     <summary type="html">
     
@@ -217,7 +241,7 @@
     
     </summary>
     
-      <category term="前端" scheme="https://jwchan1996.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="笔记" scheme="https://jwchan1996.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
       <category term="JS" scheme="https://jwchan1996.github.io/tags/JS/"/>
@@ -228,8 +252,8 @@
     <title>响应路由参数的变化保持功能选中状态</title>
     <link href="https://jwchan1996.github.io/2019/05/28/vue_watch_$route/"/>
     <id>https://jwchan1996.github.io/2019/05/28/vue_watch_$route/</id>
-    <published>2019-05-28T09:09:09.238Z</published>
-    <updated>2019-05-28T09:13:24.864Z</updated>
+    <published>2019-05-27T16:00:00.000Z</published>
+    <updated>2019-11-09T03:46:28.756Z</updated>
     
     <summary type="html">
     
@@ -253,8 +277,8 @@
     <title>关于 ref 与 $refs 对 dom 元素的操作</title>
     <link href="https://jwchan1996.github.io/2019/05/14/vue_$refs/"/>
     <id>https://jwchan1996.github.io/2019/05/14/vue_$refs/</id>
-    <published>2019-05-14T11:48:00.432Z</published>
-    <updated>2019-05-30T06:02:21.813Z</updated>
+    <published>2019-05-13T16:00:00.000Z</published>
+    <updated>2019-11-09T03:46:42.122Z</updated>
     
     <summary type="html">
     
@@ -276,8 +300,8 @@
     <title>关于 axios 请求出现 OPTIONS</title>
     <link href="https://jwchan1996.github.io/2019/05/06/axios_options/"/>
     <id>https://jwchan1996.github.io/2019/05/06/axios_options/</id>
-    <published>2019-05-06T03:06:00.547Z</published>
-    <updated>2019-05-06T03:34:47.130Z</updated>
+    <published>2019-05-05T16:00:00.000Z</published>
+    <updated>2019-11-09T03:46:53.604Z</updated>
     
     <summary type="html">
     
@@ -302,8 +326,8 @@
     <title>软件版本命名规则</title>
     <link href="https://jwchan1996.github.io/2019/04/17/version_number/"/>
     <id>https://jwchan1996.github.io/2019/04/17/version_number/</id>
-    <published>2019-04-17T09:11:06.085Z</published>
-    <updated>2019-04-17T12:15:18.830Z</updated>
+    <published>2019-04-16T16:00:00.000Z</published>
+    <updated>2019-11-09T03:47:03.819Z</updated>
     
     <summary type="html">
     
@@ -343,8 +367,8 @@
     <title>获取 v-html 渲染的富文本数据元素内容</title>
     <link href="https://jwchan1996.github.io/2019/03/20/vue_v-html/"/>
     <id>https://jwchan1996.github.io/2019/03/20/vue_v-html/</id>
-    <published>2019-03-20T06:32:08.461Z</published>
-    <updated>2019-03-20T07:24:34.272Z</updated>
+    <published>2019-03-19T16:00:00.000Z</published>
+    <updated>2019-11-09T03:47:15.739Z</updated>
     
     <summary type="html">
     
@@ -368,8 +392,8 @@
     <title>关于控制台打印点击事件目标元素的 currentTarget 为 null</title>
     <link href="https://jwchan1996.github.io/2019/02/20/currentTarget_console_log/"/>
     <id>https://jwchan1996.github.io/2019/02/20/currentTarget_console_log/</id>
-    <published>2019-02-20T11:41:49.730Z</published>
-    <updated>2019-02-20T11:47:45.678Z</updated>
+    <published>2019-02-19T16:00:00.000Z</published>
+    <updated>2019-11-09T03:47:28.491Z</updated>
     
     <summary type="html">
     
@@ -388,8 +412,8 @@
     <title>实现平滑滚动回到顶部</title>
     <link href="https://jwchan1996.github.io/2019/01/27/back_to_top/"/>
     <id>https://jwchan1996.github.io/2019/01/27/back_to_top/</id>
-    <published>2019-01-27T10:19:08.574Z</published>
-    <updated>2019-01-27T10:33:03.751Z</updated>
+    <published>2019-01-26T16:00:00.000Z</published>
+    <updated>2019-11-09T03:47:46.065Z</updated>
     
     <summary type="html">
     
@@ -409,8 +433,8 @@
     <title>使用 git 向开源项目提交 pull request</title>
     <link href="https://jwchan1996.github.io/2019/01/20/git_pull_request/"/>
     <id>https://jwchan1996.github.io/2019/01/20/git_pull_request/</id>
-    <published>2019-01-20T08:10:55.377Z</published>
-    <updated>2019-01-21T05:56:10.475Z</updated>
+    <published>2019-01-19T16:00:00.000Z</published>
+    <updated>2019-11-09T03:48:00.264Z</updated>
     
     <summary type="html">
     
@@ -431,8 +455,8 @@
     <title>解决 apicloud 下关闭 Win 页面失效问题</title>
     <link href="https://jwchan1996.github.io/2019/01/16/apicloud_closeWin/"/>
     <id>https://jwchan1996.github.io/2019/01/16/apicloud_closeWin/</id>
-    <published>2019-01-16T12:21:14.359Z</published>
-    <updated>2019-01-17T01:21:56.765Z</updated>
+    <published>2019-01-15T16:00:00.000Z</published>
+    <updated>2019-11-09T03:48:13.688Z</updated>
     
     <summary type="html">
     
@@ -454,8 +478,8 @@
     <title>非模块化下实现简单 vue-router 应用</title>
     <link href="https://jwchan1996.github.io/2019/01/10/vue_router_nomodular/"/>
     <id>https://jwchan1996.github.io/2019/01/10/vue_router_nomodular/</id>
-    <published>2019-01-10T05:56:32.419Z</published>
-    <updated>2019-01-11T03:03:29.006Z</updated>
+    <published>2019-01-09T16:00:00.000Z</published>
+    <updated>2019-11-09T03:48:23.568Z</updated>
     
     <summary type="html">
     
@@ -477,8 +501,8 @@
     <title>hover 伪类改变另一个元素的样式</title>
     <link href="https://jwchan1996.github.io/2019/01/06/css_hover/"/>
     <id>https://jwchan1996.github.io/2019/01/06/css_hover/</id>
-    <published>2019-01-06T03:47:14.007Z</published>
-    <updated>2019-01-06T08:05:39.279Z</updated>
+    <published>2019-01-05T16:00:00.000Z</published>
+    <updated>2019-11-09T03:48:34.953Z</updated>
     
     <summary type="html">
     
@@ -493,27 +517,6 @@
     
     
       <category term="css" scheme="https://jwchan1996.github.io/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue 实现 data 数据与视图更新</title>
-    <link href="https://jwchan1996.github.io/2019/01/02/vue_data_update/"/>
-    <id>https://jwchan1996.github.io/2019/01/02/vue_data_update/</id>
-    <published>2019-01-02T06:05:09.081Z</published>
-    <updated>2019-01-06T08:01:31.309Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;#场景&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688;&quot;&gt;#&lt;/span&gt;场景&lt;/h3&gt;&lt;p&gt;&lt;code&gt;vue&lt;/code&gt; 数据 &lt;code&gt;data&lt;/code&gt; 更新了，但是视图没有更新&lt;br&gt;其中缘由在于对 &lt;code&gt;vue&lt;/code&gt; 的响应式原理的理解&lt;/p&gt;
-&lt;h3 id=&quot;追踪变化&quot;&gt;&lt;a href=&quot;#追踪变化&quot; class=&quot;headerlink&quot; title=&quot;#追踪变化&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688;&quot;&gt;#&lt;/span&gt;追踪变化&lt;/h3&gt;&lt;p&gt;把一个普通的 &lt;code&gt;JavaScript&lt;/code&gt; 对象传给 &lt;code&gt;Vue&lt;/code&gt; 实例的 data 选项，&lt;code&gt;Vue&lt;/code&gt; 将遍历此对象所有的属性，并使用 &lt;code&gt;Object.defineProperty&lt;/code&gt; 把这些属性全部转为 &lt;code&gt;getter/setter&lt;/code&gt;。&lt;br&gt;这些 &lt;code&gt;getter/setter&lt;/code&gt; 对用户来说是不可见的，但是在内部它们让 &lt;code&gt;Vue&lt;/code&gt; 追踪依赖，在属性被访问和修改时通知变化。
-    
-    </summary>
-    
-      <category term="vue" scheme="https://jwchan1996.github.io/categories/vue/"/>
-    
-    
-      <category term="vue" scheme="https://jwchan1996.github.io/tags/vue/"/>
     
   </entry>
   
