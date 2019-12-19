@@ -68,7 +68,7 @@
     <link href="https://jwchan1996.github.io/2019/10/18/koa_jwt_unless/"/>
     <id>https://jwchan1996.github.io/2019/10/18/koa_jwt_unless/</id>
     <published>2019-10-17T16:00:00.000Z</published>
-    <updated>2019-11-09T03:43:06.290Z</updated>
+    <updated>2019-12-19T11:23:12.745Z</updated>
     
     <summary type="html">
     
@@ -83,11 +83,11 @@
       <category term="node" scheme="https://jwchan1996.github.io/categories/node/"/>
     
     
+      <category term="jwt鉴权" scheme="https://jwchan1996.github.io/tags/jwt%E9%89%B4%E6%9D%83/"/>
+    
       <category term="koa" scheme="https://jwchan1996.github.io/tags/koa/"/>
     
       <category term="token" scheme="https://jwchan1996.github.io/tags/token/"/>
-    
-      <category term="jwt鉴权" scheme="https://jwchan1996.github.io/tags/jwt%E9%89%B4%E6%9D%83/"/>
     
   </entry>
   
