@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="# 场景描述在 centos7 运行 docker 容器应用时，需要连接宿主机的 mysql 的 3306 端口，发现连接不上，docker 容器无法访问宿主机的 mysql 数据库。但是，在容器内访问外部网络是可以 ping 通的。   # 原因分析在 centos7 上部署 docker 容器，其网络模式采用的是 bridger 模式。启动 docker 时，docker 进程会创建一个名为">
+<meta name="keywords" content="docker,mysql,centos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker 容器访问宿主机 mysql">
+<meta property="og:url" content="https://jwchan1996.github.io/2020/04/28/docker容器访问宿主机mysql/index.html">
+<meta property="og:site_name" content="我爱盐酥鸡">
+<meta property="og:description" content="# 场景描述在 centos7 运行 docker 容器应用时，需要连接宿主机的 mysql 的 3306 端口，发现连接不上，docker 容器无法访问宿主机的 mysql 数据库。但是，在容器内访问外部网络是可以 ping 通的。   # 原因分析在 centos7 上部署 docker 容器，其网络模式采用的是 bridger 模式。启动 docker 时，docker 进程会创建一个名为">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-28T09:14:55.358Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker 容器访问宿主机 mysql">
+<meta name="twitter:description" content="# 场景描述在 centos7 运行 docker 容器应用时，需要连接宿主机的 mysql 的 3306 端口，发现连接不上，docker 容器无法访问宿主机的 mysql 数据库。但是，在容器内访问外部网络是可以 ping 通的。   # 原因分析在 centos7 上部署 docker 容器，其网络模式采用的是 bridger 模式。启动 docker 时，docker 进程会创建一个名为">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我爱盐酥鸡" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="https://jwchan1996.github.io/2020/04/28/docker容器访问宿主机mysql/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>docker 容器访问宿主机 mysql | 我爱盐酥鸡</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+
+  <!--引入动画css-->
+  <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One" rel="stylesheet">
+  <link rel="stylesheet" href="/css/animation_header.css">
+</head>
+<!--
+           ▄              ▄
+          ▌▒█           ▄▀▒▌
+          ▌▒▒▀▄        ▀▒▒▒▐
+         ▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐
+       ▄▄▀▒▒▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐
+     ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▐
+    ▐▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄▒▒▌
+    ▌▒▒▐▄█▀▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐
+   ▐▒▒▒▒▒▒▒▒▒▒▒▌██▀▒▒▒▒▒▒▒▒▀▄▌
+   ▌▒▀▄██▄▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
+   ▌▀▐▄█▄█▌▄▒▀▒▒▒▒▒▒░░░░░░▒▒▒▐
+  ▐▒▀▐▀▐▀▒▒▄▄▒▄▒▒▒▒░░░░░░░▒▒▒▒▌
+  ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒░░░░░░▒▒▒▐
+   ▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
+   ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+    ▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▒▒▒▒▌
+      ▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀
+     ▐▀▒▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀
+    ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀
+当_你看源码时_是否期待源码也同样注视(注释)着你
+_就像凝望深渊时_深渊也在凝望你
+你_害怕了吗
+-->
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+      <a href="https://github.com/jwchan1996" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 100;" src="/images/forkMeInGithub.png" alt="Fork me on GitHub"></a>
+    </div>
+
+    <canvas id="evanyou"></canvas>
+    <script>
+      document.addEventListener('touchmove', function (e) {
+          e.preventDefault()
+      })
+      var c = document.getElementById('evanyou'),
+          x = c.getContext('2d'),
+          pr = window.devicePixelRatio || 1,
+          w = window.innerWidth,
+          h = window.innerHeight,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
+      function i(){
+          x.clearRect(0,0,w,h)
+          q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+          while(q[1].x<w+f) d(q[0], q[1])
+      }
+      function d(i,j){   
+          x.beginPath()
+          x.moveTo(i.x, i.y)
+          x.lineTo(j.x, j.y)
+          var k = j.x + (z()*2-0.25)*f,
+              n = y(j.y)
+          x.lineTo(k, n)
+          x.closePath()
+          r-=u/-50
+          x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+          x.fill()
+          q[0] = q[1]
+          q[1] = {x:k,y:n}
+      }
+      function y(p){
+          var t = p + (z()*2-1.1)*f
+          return (t>h||t<0) ? y(p) : t
+      }
+      document.onclick = i
+      document.ontouchstart = i
+      i()
+    </script>
+
+    <!--动画-->
+      <p id="offscreen-text" class="offscreen-text"></p>
+      <p id="text" class="text"></p>
+      <svg id="svg"> </svg>
+      <input type="text" class="input", id="input" />
+      <script src='/js/animation_header/CSSPlugin.min.js'></script> 
+      <script src='/js/animation_header/EasePack.min.js'></script> 
+      <script src='/js/animation_header/TweenLite.min.js'></script> 
+      <script src="/js/animation_header/index.js"></script>
+    <!--动画-->
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+
+      
+
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我爱盐酥鸡</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">在现实断裂的地方 梦汇成了海</h1>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">31</span></a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类<span class="badge">14</span></a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签<span class="badge">31</span></a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-友链">
+    <a href="/links/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-link"></i> <br />友链</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main" style="padding-bottom:32px;">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://jwchan1996.github.io/2020/04/28/docker容器访问宿主机mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jwchan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我爱盐酥鸡">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">docker 容器访问宿主机 mysql
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-28 00:00:00 / 修改时间：17:14:55" itemprop="dateCreated datePublished" datetime="2020-04-28T00:00:00+08:00">2020-04-28</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+            </span>
+            <span id="busuanzi_value_page_pv"></span>次阅读
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">987</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="场景描述"><a href="#场景描述" class="headerlink" title="# 场景描述"></a><span style="color:#009688"># </span>场景描述</h3><p>在 <code>centos7</code> 运行 <code>docker</code> 容器应用时，需要连接宿主机的 <code>mysql</code> 的 <code>3306</code> 端口，发现连接不上，<code>docker</code> 容器无法访问宿主机的 <code>mysql</code> 数据库。但是，在容器内访问外部网络是可以 <code>ping</code> 通的。  </p>
+<h3 id="原因分析"><a href="#原因分析" class="headerlink" title="# 原因分析"></a><span style="color:#009688"># </span>原因分析</h3><p>在 <code>centos7</code> 上部署 <code>docker</code> 容器，其网络模式采用的是 <code>bridger</code> 模式。<br>启动 <code>docker</code> 时，<code>docker</code> 进程会创建一个名为 <code>docker0</code> 的虚拟网桥，用于宿主机与容器之间的通信。当启动一个 <code>docker</code> 容器时，<code>docker</code> 容器将会附加到虚拟网桥上，容器内的报文通过 <code>docker0</code> 向外转发。</p>
+<p>如果 <code>docker</code> 容器访问宿主机，那么 <code>docker0</code> 网桥将报文直接转发到本机，报文的源地址是 <code>docker0</code> 网段的地址。而如果 <code>docker</code> 容器访问宿主机以外的机器，<code>docker</code> 的 <code>SNAT</code> 网桥会将报文的源地址转换为宿主机的地址，通过宿主机的网卡向外发送。</p>
+<p>因此，当 <code>docker</code> 容器访问宿主机时，如果宿主机服务端口会被防火墙拦截，那么就无法连通宿主机，出现 <code>No route to host</code> 的错误。</p>
+<p>而访问宿主机所在局域网内的其他机器，由于报文的源地址是宿主机 <code>ip</code>，因此，不会被目的机器防火墙拦截，所以可以访问。<br><a id="more"></a></p>
+<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="# 解决问题"></a><span style="color:#009688"># </span>解决问题</h3><p>首先设置了 <code>mysql</code> 的配置文件，保证 <code>mysql</code> 可以被任何 <code>ip</code> 访问：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"><span class="built_in">bind</span>-address = 0.0.0.0</span><br></pre></td></tr></table></figure></p>
+<p>修改完配置文件重启生效。<br>但为了安全考虑，防火墙的 3306 端口仍然是不开放外网访问的。  </p>
+<h4 id="方式一"><a href="#方式一" class="headerlink" title="# 方式一"></a><span style="color:#009688"># </span>方式一</h4><p>容器访问宿主机的地址需要使用 <code>docker0</code> 的地址。<br>编辑防火墙文件 <code>/etc/firewalld/zones/public.xml</code>，添加下面配置：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">rule</span> <span class="attr">family</span>=<span class="string">"ipv4"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">address</span>=<span class="string">"172.18.0.0/16"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">accept</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>重启防火墙，<code>docker</code> 容器即可正常访问宿主机端口。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service firewalld restart</span><br></pre></td></tr></table></figure></p>
+<h4 id="方式二"><a href="#方式二" class="headerlink" title="# 方式二"></a><span style="color:#009688"># </span>方式二</h4><p>容器访问宿主机通过走内网的方式，可绕过防火墙限制。<br>需要使用的地址是宿主机 <code>eth0</code> 的地址。<br>运行 <code>ifconfig</code> 即可查看得到。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag"><i class="fa fa-tag"></i> docker</a>
+          
+            <a href="/tags/mysql/" rel="tag"><i class="fa fa-tag"></i> mysql</a>
+          
+            <a href="/tags/centos/" rel="tag"><i class="fa fa-tag"></i> centos</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/09/js_simulate_call_apply_bind/" rel="next" title="JS 模拟实现 call、apply、bind">
+                <i class="fa fa-chevron-left"></i> JS 模拟实现 call、apply、bind
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Jwchan" />
+            
+              <p class="site-author-name" itemprop="name">Jwchan</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/jwchan1996" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:741755613@qq.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/breakingxiao-bi" target="_blank" title="知乎" rel="external nofollow"><i class="fa fa-fw fa-graduation-cap"></i>知乎</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#场景描述"><span class="nav-text"># 场景描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原因分析"><span class="nav-text"># 原因分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决问题"><span class="nav-text"># 解决问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方式一"><span class="nav-text"># 方式一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方式二"><span class="nav-text"># 方式二</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+      <!--增加底部裙子图片-->
+      <style>
+        @media screen and (max-width: 1050px) {
+            #footer-petticoat{
+                display: none;
+            }
+            .main{
+                /*裙子图片隐藏了，所以内边距恢复原来*/
+                padding-bottom: 150px !important;
+            }
+        }
+      </style>
+      <img id="footer-petticoat" src="/images/footer.png">
+    </main>
+
+    <footer id="footer" class="footer" style="z-index:-10;background-color:#333;">
+      <div class="footer-inner">
+        <!--添加运行天数-->
+        <style>
+            #my-face{
+                animation: my-face 4s infinite ease-in-out;
+                display: inline-block;
+                color: #F2AA24;
+            }
+            @keyframes my-face{
+                2% {
+                    -webkit-transform: translateY(1.5px) rotate(1.5deg);
+                    transform: translateY(1.5px) rotate(1.5deg);
+                }
+                4% {
+                    -webkit-transform: translateY(-1.5px) rotate(-.5deg);
+                    transform: translateY(-1.5px) rotate(-.5deg);
+                }
+                6% {
+                    -webkit-transform: translateY(1.5px) rotate(-1.5deg);
+                    transform: translateY(1.5px) rotate(-1.5deg);
+                }
+                8% {
+                    -webkit-transform: translateY(-1.5px) rotate(-1.5deg);
+                    transform: translateY(-1.5px) rotate(-1.5deg);
+                }
+                10% {
+                    -webkit-transform: translateY(2.5px) rotate(1.5deg);
+                    transform: translateY(2.5px) rotate(1.5deg);
+                }
+                12% {
+                    -webkit-transform: translateY(-.5px) rotate(1.5deg);
+                    transform: translateY(-.5px) rotate(1.5deg);
+                }
+                14% {
+                    -webkit-transform: translateY(-1.5px) rotate(1.5deg);
+                    transform: translateY(-1.5px) rotate(1.5deg);
+                }
+                16% {
+                    -webkit-transform: translateY(-.5px) rotate(-1.5deg);
+                    transform: translateY(-.5px) rotate(-1.5deg);
+                }
+                18% {
+                    -webkit-transform: translateY(.5px) rotate(-1.5deg);
+                    transform: translateY(.5px) rotate(-1.5deg);
+                }
+                20% {
+                    -webkit-transform: translateY(-1.5px) rotate(2.5deg);
+                    transform: translateY(-1.5px) rotate(2.5deg);
+                }
+                22% {
+                    -webkit-transform: translateY(.5px) rotate(-1.5deg);
+                    transform: translateY(.5px) rotate(-1.5deg);
+                }
+                24% {
+                    -webkit-transform: translateY(1.5px) rotate(1.5deg);
+                    transform: translateY(1.5px) rotate(1.5deg);
+                }
+                26% {
+                    -webkit-transform: translateY(.5px) rotate(.5deg);
+                    transform: translateY(.5px) rotate(.5deg);
+                }
+                28% {
+                    -webkit-transform: translateY(.5px) rotate(1.5deg);
+                    transform: translateY(.5px) rotate(1.5deg);
+                }
+                30% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                32% {
+                    -webkit-transform: translateY(1.5px) rotate(-.5deg);
+                    transform: translateY(1.5px) rotate(-.5deg);
+                }
+                34% {
+                    -webkit-transform: translateY(1.5px) rotate(-.5deg);
+                    transform: translateY(1.5px) rotate(-.5deg);
+                }
+                36% {
+                    -webkit-transform: translateY(-1.5px) rotate(2.5deg);
+                    transform: translateY(-1.5px) rotate(2.5deg);
+                }
+                38% {
+                    -webkit-transform: translateY(1.5px) rotate(-1.5deg);
+                    transform: translateY(1.5px) rotate(-1.5deg);
+                }
+                40% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                42% {
+                    -webkit-transform: translateY(2.5px) rotate(-1.5deg);
+                    transform: translateY(2.5px) rotate(-1.5deg);
+                }
+                44% {
+                    -webkit-transform: translateY(1.5px) rotate(.5deg);
+                    transform: translateY(1.5px) rotate(.5deg);
+                }
+                46% {
+                    -webkit-transform: translateY(-1.5px) rotate(2.5deg);
+                    transform: translateY(-1.5px) rotate(2.5deg);
+                }
+                48% {
+                    -webkit-transform: translateY(-.5px) rotate(.5deg);
+                    transform: translateY(-.5px) rotate(.5deg);
+                }
+                50% {
+                    -webkit-transform: translateY(.5px) rotate(.5deg);
+                    transform: translateY(.5px) rotate(.5deg);
+                }
+                52% {
+                    -webkit-transform: translateY(2.5px) rotate(2.5deg);
+                    transform: translateY(2.5px) rotate(2.5deg);
+                }
+                54% {
+                    -webkit-transform: translateY(-1.5px) rotate(1.5deg);
+                    transform: translateY(-1.5px) rotate(1.5deg);
+                }
+                56% {
+                    -webkit-transform: translateY(2.5px) rotate(2.5deg);
+                    transform: translateY(2.5px) rotate(2.5deg);
+                }
+                58% {
+                    -webkit-transform: translateY(.5px) rotate(2.5deg);
+                    transform: translateY(.5px) rotate(2.5deg);
+                }
+                60% {
+                    -webkit-transform: translateY(2.5px) rotate(2.5deg);
+                    transform: translateY(2.5px) rotate(2.5deg);
+                }
+                62% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                64% {
+                    -webkit-transform: translateY(-.5px) rotate(1.5deg);
+                    transform: translateY(-.5px) rotate(1.5deg);
+                }
+                66% {
+                    -webkit-transform: translateY(1.5px) rotate(-.5deg);
+                    transform: translateY(1.5px) rotate(-.5deg);
+                }
+                68% {
+                    -webkit-transform: translateY(-1.5px) rotate(-.5deg);
+                    transform: translateY(-1.5px) rotate(-.5deg);
+                }
+                70% {
+                    -webkit-transform: translateY(1.5px) rotate(.5deg);
+                    transform: translateY(1.5px) rotate(.5deg);
+                }
+                72% {
+                    -webkit-transform: translateY(2.5px) rotate(1.5deg);
+                    transform: translateY(2.5px) rotate(1.5deg);
+                }
+                74% {
+                    -webkit-transform: translateY(-.5px) rotate(.5deg);
+                    transform: translateY(-.5px) rotate(.5deg);
+                }
+                76% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                78% {
+                    -webkit-transform: translateY(-.5px) rotate(1.5deg);
+                    transform: translateY(-.5px) rotate(1.5deg);
+                }
+                80% {
+                    -webkit-transform: translateY(1.5px) rotate(1.5deg);
+                    transform: translateY(1.5px) rotate(1.5deg);
+                }
+                82% {
+                    -webkit-transform: translateY(-.5px) rotate(.5deg);
+                    transform: translateY(-.5px) rotate(.5deg);
+                }
+                84% {
+                    -webkit-transform: translateY(1.5px) rotate(2.5deg);
+                    transform: translateY(1.5px) rotate(2.5deg);
+                }
+                86% {
+                    -webkit-transform: translateY(-1.5px) rotate(-1.5deg);
+                    transform: translateY(-1.5px) rotate(-1.5deg);
+                }
+                88% {
+                    -webkit-transform: translateY(-.5px) rotate(2.5deg);
+                    transform: translateY(-.5px) rotate(2.5deg);
+                }
+                90% {
+                    -webkit-transform: translateY(2.5px) rotate(-.5deg);
+                    transform: translateY(2.5px) rotate(-.5deg);
+                }
+                92% {
+                    -webkit-transform: translateY(.5px) rotate(-.5deg);
+                    transform: translateY(.5px) rotate(-.5deg);
+                }
+                94% {
+                    -webkit-transform: translateY(2.5px) rotate(.5deg);
+                    transform: translateY(2.5px) rotate(.5deg);
+                }
+                96% {
+                    -webkit-transform: translateY(-.5px) rotate(1.5deg);
+                    transform: translateY(-.5px) rotate(1.5deg);
+                }
+                98% {
+                    -webkit-transform: translateY(-1.5px) rotate(-.5deg);
+                    transform: translateY(-1.5px) rotate(-.5deg);
+                }
+                0%, 100% {
+                    -webkit-transform: translate(0) rotate(0);
+                    transform: translate(0) rotate(0);
+                }
+            }
+        </style>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><span id="my-face">(●'◡'●)ﾉ♥</span>
+        <script>
+            var now = new Date(); 
+            function createtime() { 
+                var grt= new Date("09/30/2018 12:00:00");//此处修改你的建站时间或者网站上线时间 
+                now.setTime(now.getTime()+250); 
+                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                document.getElementById("timeDate").innerHTML = "本站已萌萌哒运行 "+dnum+" 天 "; 
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒了 "; 
+            } 
+            setInterval("createtime()",250);
+        </script>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-fas fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jwchan</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">73k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">1:06</span>
+  
+</div>
+
+
+  
+
+
+
+  <!--隐藏了强力驱动说明-->
+  <!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+  -->
+
+
+
+  <!--
+  <span class="post-meta-divider">|</span>
+  -->
+
+
+
+  <!--隐藏了主题说明-->
+  <!--
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" rel="external nofollow" href="https://theme-next.org">NexT.Muse</a> v6.4.1</div>
+  -->
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        <div>
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+                <span class="post-meta-divider">|</span>
+            </span>
+            <span id="busuanzi_container_site_uv" style='display:none'>
+                有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+            </span>
+        </div>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<!--添加萌物返回顶部功能-->
+<style>
+    #kotori{
+        position: fixed;
+        bottom: -10px;
+        left: -10px;
+        height: 70px;
+        width: 70px;
+        cursor: pointer;
+        transition: 0.2s all;
+        display: none;
+        z-index: 100;
+    }
+    #kotori:hover{
+        transform: translate(10px,-10px)
+    }
+</style>
+<img id="kotori" src="/images/kotori.png" onclick="smoothscroll()">
+<script>
+    function smoothscroll(){
+        var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        if (currentScroll > 0) {
+            //告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画
+            window.requestAnimationFrame(smoothscroll);
+            window.scrollTo (0,currentScroll - (currentScroll/10));
+        }
+    }
+
+    window.addEventListener("scroll",handleScroll)
+    function handleScroll(){         //滚动条滚动事件
+        var obtn = document.getElementById('kotori');  //获取回到顶部按钮的ID
+        var clientHeight = document.documentElement.clientHeight;   //获取可视区域的高度
+        //获取滚动条的滚动高度
+        var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if(osTop >= 0.5*clientHeight){  //如果滚动高度大于可视区域高度，则显示回到顶部按钮
+            obtn.style.display = 'block';
+        }else{         //否则隐藏
+            obtn.style.display = 'none';
+        }
+    }
+
+    if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+        document.querySelector('#kotori').style.display = 'none'
+        window.removeEventListener("scroll",handleScroll,false)
+    }
+</script>
+
+<!--aplayer-->
+<link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
+<style>
+    /* 添加以下样式，则定位左上角 */
+    /*.aplayer-fixed{
+        top: 0 !important;
+        z-index: 99999 !important;
+        height: 0 !important;
+    }
+    .aplayer-body{
+        top: 0px !important;
+        max-height: 66px !important;
+    }
+    .aplayer-fixed .aplayer-list{
+        margin-top: 66px !important; 
+        margin-bottom: 0 !important;
+        background-color: #fff;
+    }*/
+    /* 添加以上样式，则定位左上角 */
+    /*以下样式定位在猫的头顶*/
+    
+    .aplayer-fixed{
+      bottom: 220px !important;
+      z-index: 99999 !important;
+    }
+    .aplayer-body{
+      bottom: 220px !important;
+    }
+    
+    /**/
+    .ap-hover{
+        left: -66px !important;
+    }
+    .ap-hover:hover{
+        left: 0 !important;
+    }
+    /* 调整歌词总高度 */
+    .aplayer-lrc{
+        height: 54px !important;
+        background-color: rgba(0,0,0,0) !important;
+        z-index: 99999 !important;
+        bottom: 0 !important;
+    }
+    /* 正在排队的歌词 */
+    .aplayer-lrc p{
+        color: #666 !important;
+    }
+    /* 正在唱歌的歌词 */
+    .aplayer-lrc p.aplayer-lrc-current{
+        color: #009688 !important;
+        font-size: 20px;
+        padding: 10px 0 !important;
+        /* line-height: 30px !important; */
+    }
+</style>
+<body>
+
+    <div id="aplayer">
+        <!-- 每个aplayer-lrc-content就是每一首歌的歌词 -->
+        <pre class="aplayer-lrc-content">
+            [00:06.59]呼んでいる 胸のどこか奥で
+            [00:12.06]いつも心踊る 夢を見たい
+            [00:18.09]かなしみは 数えきれないけれど
+            [00:23.87]その向こうできっと あなたに会える
+            [00:29.40]
+            [00:31.81]繰り返すあやまちの そのたび ひとは
+            [00:38.20]ただ青い空の 青さを知る
+            [00:43.33]果てしなく 道は続いて見えるけれど
+            [00:50.92]この両手は 光を抱ける
+            [00:54.89]
+            [00:57.26]さよならのときの 静かな胸
+            [01:02.80]ゼロになるからだが 耳をすませる
+            [01:08.60]生きている不思議 死んでいく不思議
+            [01:14.53]花も風も街も みんなおなじ
+            [01:20.50]
+            [01:22.40]nananan lalala lululu
+            [01:47.63]呼んでいる 胸のどこか奥で
+            [01:53.56]いつも何度でも 夢を描こう
+            [01:59.14]かなしみの数を 言い尽くすより
+            [02:05.16]同じくちびるで そっとうたおう
+            [02:11.48]
+            [02:12.96]閉じていく思い出の そのなかにいつも
+            [02:19.31]忘れたくない ささやきを聞く
+            [02:24.47]こなごなに砕かれた 鏡の上にも
+            [02:31.12]新しい景色が 映される
+            [02:35.89]
+            [02:38.27]はじまりの朝の静かな窓
+            [02:43.72]ゼロになるからだ 充たされてゆけ
+            [02:49.70]海の彼方には もう探さない
+            [02:55.66]輝くものは いつもここに
+            [03:01.66]わたしのなかに 見つけられたから
+            [03:08.20]
+            [03:14.13]nananan lalala lululu
+        </pre>
+        <pre class="aplayer-lrc-content">
+            [by:嘶哑音符]
+            [00:00.12]二人の間 通り過ぎた風は
+            [00:07.15]どこから寂しさを運んできたの
+            [00:13.66]泣いたりしたそのあとの空は
+            [00:19.82]やけに透き通っていたりしたんだ
+            [00:26.02]music
+            [00:37.03]いつもは尖ってた父の言葉が
+            [00:42.82]今日は暖かく感じました
+            [00:48.47]優しさも笑顔も夢の語り方も
+            [00:54.07]知らなくて全部 君を真似たよ
+            [00:59.48]もう少しだけでいい あと少しだけでいい
+            [01:05.39]もう少しだけでいいから
+            [01:11.20]もう少しだけでいい あと少しだけでいい
+            [01:16.97]もう少しだけ くっついていようか
+            [01:21.11]music
+            [01:25.69]僕らタイムフライヤー 時を駆け上がるクライマー
+            [01:30.74]時のかくれんぼ はぐれっこはもういやなんだ
+            [01:37.51]嬉しくて泣くのは 悲しくて笑うのは
+            [01:41.74]君の心が 君を追い越したんだよ
+            [01:46.78]music
+            [02:08.22]星にまで願って 手にいれたオモチャも
+            [02:14.10]部屋の隅っこに今 転がってる
+            [02:19.83]叶えたい夢も 今日で100個できたよ
+            [02:25.53]たった一つといつか 交換こしよう
+            [02:31.26]music
+            [02:37.14]いつもは喋らないあの子に今日は
+            [02:42.95]放課後「また明日」と声をかけた
+            [02:48.50]慣れないこともたまにならいいね
+            [02:54.25]特にあなたが 隣にいたら
+            [02:59.69]もう少しだけでいい あと少しだけでいい
+            [03:05.39]もう少しだけでいいから
+            [03:11.09]もう少しだけでいい あと少しだけでいい
+            [03:16.69]もう少しだけくっついていようよ
+            [03:21.02]music
+            [03:25.75]僕らタイムフライヤー 君を知っていたんだ
+            [03:30.42]僕が 僕の名前を 覚えるよりずっと前に
+            [03:43.62]君のいない 世界にも 何かの意味はきっとあって
+            [03:49.00]でも君のいない 世界など 夏休みのない 八月のよう
+            [03:55.15]君のいない 世界など 笑うことない サンタのよう
+            [04:00.60]君のいない 世界など
+            [04:08.70]music
+            [04:34.00]僕らタイムフライヤー 時を駆け上がるクライマー
+            [04:39.32]時のかくれんぼ はぐれっこはもういやなんだ
+            [04:46.03]なんでもないや やっぱりなんでもないや
+            [04:50.46]今から行くよ
+            [04:55.00]僕らタイムフライヤー 時を駆け上がるクライマー
+            [04:59.98]時のかくれんぼ はぐれっこ はもういいよ
+            [05:06.45]君は派手なクライヤー その涙 止めてみたいな
+            [05:11.34]だけど 君は拒んだ 零れるままの涙を見てわかった
+            [05:18.08]嬉しくて泣くのは 悲しくて 笑うのは
+            [05:22.51]僕の心が 僕を追い越したんだよ
+            [05:27.55]end
+        </pre>
+        <pre class="aplayer-lrc-content">
+            [ti:Down by the salley gardens]
+            [ar:藤田惠美]
+            [al:挪威甘菊]
+            [by:]
+            [00:12.00]Down by the salley gardens my love and I did meet
+            [00:25.00]She passed the salley gardens with little snow-white feet
+            [00:38.00]She did me take love easy, as the leaves grow on the tree
+            [00:50.00]But I, being young and foolish, with her would not agree
+            [01:04.00]
+            [01:15.00]In a filed by the river my love and I did stand
+            [01:28.00]And on my leaning shoulder she laid her snows-white hand
+            [01:40.00]She bid me take life easy, as the grass grows on the weirs
+            [01:52.00]But I was young and foolish, and now I am full of tears
+            [02:06.00]
+            [02:54.00]Down by the salley gardens my love and I did meet
+            [03:05.00]She passed the salley gardens with little snow-white feet
+            [03:18.00]She did me take love easy, as the leaves grow on the tree
+            [03:30.00]But I, being young and foolish, with her would not agree
+        </pre>
+        <pre class="aplayer-lrc-content">
+            [00:11.860]夜明けまであと一時間 もうそろそろ行こう
+            [00:23.120]聞こえるのは眠る君のかすかな寝息だけ
+            [00:34.240]
+            [00:37.710]目を閉じた君の横顔 とてもきれいだよ
+            [00:49.440]さよなら 君の耳元にそっと囁いた
+            [01:00.790]
+            [01:01.480]ああ、僕は君を置いて 今ここを出て行く
+            [01:12.970]外は雨 音もなく 僕の頬を濡らす
+            [01:24.330]
+            [01:36.410]君と出会ったのはたった半年前のこと
+            [01:48.080]もうずいぶん前のことのような気がする
+            [01:59.460]
+            [01:59.900]今思えば僕らろくに話もしなかった
+            [02:11.220]时间はいつも余るほどあったはずなのに
+            [02:22.640]
+            [02:23.090]ああ、僕は君を置いて 今ここを出て行く
+            [02:34.740]外の雨は僕の涙、静かに降り続く
+            [02:46.870]外の雨は僕の涙、静かに降り続く
+            [02:59.480]
+        </pre>
+        <pre class="aplayer-lrc-content">
+            [00:07.694]灯りを消したまま話を続けたら
+            [00:19.901]ガラスの向こう側で星がひとつ消えた
+            [00:26.559]からまわりしながら通りを駆け抜けて
+            [00:37.816]砕けるその時は君の名前だけ呼ぶよ
+            [00:45.374]広すぎる霊園のそばの このアパートは薄ぐもり
+            [00:56.155]暖かい幻を見てた
+            [01:04.441]猫になりたい 君の腕の中
+            [01:13.254]寂しい夜が終わるまでここにいたいよ
+            [01:22.621]猫になりたい 言葉ははかない
+            [01:31.369]消えないようにキズつけてあげるよ
+            [01:47.999]目を閉じて浮かべた密やかな逃げ場所は
+            [01:57.880]シチリアの浜辺の絵ハガキとよく似てた
+            [02:05.646]砂ぼこりにまみれて歩く 街は季節を嫌ってる
+            [02:15.629]つくられた安らぎを捨てて
+            [02:23.888]猫になりたい 君の腕の中
+            [02:32.579]寂しい夜が終わるまでここにいたいよ
+            [02:41.912]猫になりたい 言葉ははかない
+            [02:50.362]消えないようにキズつけてあげるよ
+        </pre>
+        <pre class="aplayer-lrc-content">
+            [by:最短距離]
+            [00:08.40]落し物をしたのね そんな曇りの日に
+            [00:15.78]プラネタリュウムに行って 重いドアを閉じましょうよ
+            [00:23.28]いつのまに落としたの それさえわからなくて
+            [00:30.55]涙をもう落とせない なら星見上げましょうよ
+            [00:38.12]何がほんと作り事 答えは欲しくないけど
+            [00:46.23]あなたが言う言葉は本当に したいよ
+            [00:57.77]落し物をしたのね そんな曇りの日に
+            [01:05.20]プラネタリュウムに行って 重いドアを閉じましょうよ
+            [01:12.71]魔法信じれないけど 魔法みたいな力を
+            [01:19.74]信じたくってこうして こんな星を見上げるんだ
+            [01:26.89]差しわされた あなたの手を
+            [01:30.27]私は今 ほら 握れなくて
+            [01:34.12]通り過ぎてく 遠い答えを
+            [01:37.72]言いたくても ほら言い出せない
+            [01:57.90]
+            [01:57.96]落し物をしたのね あなたを信じたことを
+            [02:05.25]プラネタリュウム出るから 私のドア開けましょうよ
+            [02:11.69]私のドア開けましょうよ
+            [02:15.29]私のドア開けましょうよ
+            [02:19.60]
+            [02:19.67]はい！
+            [02:21.60]はい！
+            [02:23.47]はい！
+            [02:24.89]はい！
+            [02:26.91]はい！
+            [02:28.74]はいはい！
+            [02:30.97]はい！
+            [02:32.40]はい！
+        </pre>
+    </div>
+
+    <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js"></script>
+    <script>
+        const ap = new APlayer({
+            container: document.getElementById('aplayer'),
+            listFolded: false,
+            listMaxHeight: 90,
+            // lrcType: 3,
+            lrcType: 2,
+            fixed: true,
+            order: 'random',
+            listFolded: true,
+            //音乐数据json数组
+            audio: [{
+                name: 'いつも何度でも',
+                artist: '伊藤サチコ',
+                url: 'http://music.163.com/song/media/outer/url?id=584155.mp3',
+                cover: 'http://p1.music.126.net/GYWkXtrnAawOWO2nfLg3PA==/109951163028865726.jpg?param=130y130',
+            },{
+                name: 'なんでもないや 没什么大不了的',
+                artist: 'Akie秋绘',
+                url: 'http://music.163.com/song/media/outer/url?id=450795499.mp3',
+                cover: 'http://p2.music.126.net/EizbSb-yKpjslyUOQjdsdA==/109951162822510988.jpg',
+            },
+            {
+                name: 'Down by the Salley Gardens',
+                artist: '藤田美惠',
+                url: 'http://music.163.com/song/media/outer/url?id=571257.mp3',
+                cover: 'http://p2.music.126.net/tA5SlJZOFHYOShGnmPqKqw==/109951163598030184.jpg',
+            },
+            {
+                name: '1时间',
+                artist: 'ハンバート ハンバート',
+                url: 'http://music.163.com/song/media/outer/url?id=740508.mp3',
+                cover: 'http://p2.music.126.net/RqP5ECFl5Qy-x-obsuudKQ==/938982930120740.jpg',
+            },
+            {
+                name: '猫になりたい',
+                artist: 'つじあやの',
+                url: 'http://music.163.com/song/media/outer/url?id=28461702.mp3',
+                cover: 'http://p2.music.126.net/cRCFlxZLkLHtEmRb9tCF-Q==/5825212604154216.jpg?param=130y130',
+            },
+            {
+                name: 'おとしもの',
+                artist: 'PoPoyans',
+                url: 'http://music.163.com/song/media/outer/url?id=796917.mp3',
+                cover: 'http://p1.music.126.net/JsUESB4wq7EN8BzB7iK85g==/923589767374694.jpg',
+            },]
+        });
+
+        ap.lrc.hide()
+        ap.on('play',()=>{
+            ap.lrc.show()
+        })
+        ap.on('pause',()=>{
+            ap.lrc.hide()
+        })
+
+        if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+            document.querySelector('#aplayer').style.display = 'none'
+        }else{
+            setTimeout(()=>{
+                ap.play()
+            },3000)
+        }
+
+        let aplayerBody = document.querySelector('.aplayer-body')
+        aplayerBody.className += " ap-hover";
+        document.querySelector('.aplayer-miniswitcher').onclick = () => {
+            if(aplayerBody.className.indexOf("ap-hover") >= 0 ){
+                aplayerBody.className = aplayerBody.className.replace("ap-hover","")
+            }else{
+                aplayerBody.className += " ap-hover"
+            }          
+        }
+
+    </script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"position":"left","width":100,"height":200,"hOffset":60,"vOffset":-100},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":1},"log":false,"tagMode":false});</script></body>
+</html>
