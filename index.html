@@ -1511,7 +1511,7 @@ _就像凝望深渊时_深渊也在凝望你
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-11-09 11:44:53" itemprop="dateModified" datetime="2019-11-09T11:44:53+08:00">2019-11-09</time>
+                <time title="修改时间：2020-04-28 17:38:38" itemprop="dateModified" datetime="2020-04-28T17:38:38+08:00">2020-04-28</time>
               
             
           </span>
@@ -1558,7 +1558,7 @@ _就像凝望深渊时_深渊也在凝望你
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.5k</span>
+                <span title="本文字数">4.6k</span>
               
 
               
@@ -1593,7 +1593,8 @@ _就像凝望深渊时_深渊也在凝望你
 
       
         
-          <h3 id="场景描述"><a href="#场景描述" class="headerlink" title="# 场景描述"></a><span style="color:#009688"># </span>场景描述</h3><p>上一篇 <code>electron</code> 踩坑(一) 说到 <code>electron</code> 加载 <code>flash</code> 的问题<br>采用的是加载系统安装好的 <code>flash</code> 插件，需要用户提前安装好 <code>flash</code> 才能正常工作<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.commandLine.appendSwitch(<span class="string">'ppapi-flash-path'</span>, app.getPath(<span class="string">'pepperFlashSystemPlugin'</span>));</span><br></pre></td></tr></table></figure></p>
+          <h3 id="场景描述"><a href="#场景描述" class="headerlink" title="# 场景描述"></a><span style="color:#009688"># </span>场景描述</h3><p>– <code>2020-04-28</code> 更新：由于 <code>flash 30</code> 版本以后会出现提示“未能正确加载必要组件”（其实是广告程序），导致失效，<code>flash</code> 版本应该替换为 <code>29</code> 版本。–  </p>
+<p>上一篇 <code>electron</code> 踩坑(一) 说到 <code>electron</code> 加载 <code>flash</code> 的问题<br>采用的是加载系统安装好的 <code>flash</code> 插件，需要用户提前安装好 <code>flash</code> 才能正常工作<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.commandLine.appendSwitch(<span class="string">'ppapi-flash-path'</span>, app.getPath(<span class="string">'pepperFlashSystemPlugin'</span>));</span><br></pre></td></tr></table></figure></p>
 <p>其中 <code>app.getPath(&#39;pepperFlashSystemPlugin&#39;)</code> 会自动找寻系统 <code>flash</code> 的所在路径<br>但是，如果用户没装 <code>flash</code> 就打开应用，就会提示报错，带来不好的用户体验<br>所以，我们需要将 <code>flash</code> 嵌入应用依赖，也就是插件跟着应用打包  </p>
 <p><code>win</code> 下面的软件有 <code>32</code> 位和 <code>64</code> 位的说法，而且安装位置会有不同。那么 <code>flash</code> 也不例外<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\Windows\System32\Macromed\Flash\pepflashplayer64_32_0_0_238.dll</span><br><span class="line">C:\Windows\SysWOW64\Macromed\Flash\pepflashplayer32_32_0_0_238.dll</span><br></pre></td></tr></table></figure></p>
 <p>当然，上面版本号会变化，但是 <code>dll</code> 所在路径基本是如上所示<br>找到 <code>flash</code> 所在路径后，我们就可以提取文件放到我们的应用目录下了<br>编译后就会成为应用安装包的一部分，这样就不需要用户手动安装 <code>flash</code> 了<br>🔥 那么，在 <code>electron</code> 目录下应该如何引入呢？<br>
