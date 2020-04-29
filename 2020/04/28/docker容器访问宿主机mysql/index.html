@@ -117,7 +117,7 @@
 <meta property="og:description" content="# 场景描述在 centos7 运行 docker 容器应用时，需要连接宿主机的 mysql 的 3306 端口，发现连接不上，docker 容器无法访问宿主机的 mysql 数据库。但是，在容器内访问外部网络是可以 ping 通的。   # 原因分析在 centos7 上部署 docker 容器，其网络模式采用的是 bridge 模式。启动 docker 时，docker 进程会创建一个名为 d">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://jwchan1996.github.io/images/docker/container_connect_host.png">
-<meta property="og:updated_time" content="2020-04-29T07:29:17.190Z">
+<meta property="og:updated_time" content="2020-04-29T07:47:12.015Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker 容器访问宿主机 mysql">
 <meta name="twitter:description" content="# 场景描述在 centos7 运行 docker 容器应用时，需要连接宿主机的 mysql 的 3306 端口，发现连接不上，docker 容器无法访问宿主机的 mysql 数据库。但是，在容器内访问外部网络是可以 ping 通的。   # 原因分析在 centos7 上部署 docker 容器，其网络模式采用的是 bridge 模式。启动 docker 时，docker 进程会创建一个名为 d">
@@ -502,7 +502,7 @@ _就像凝望深渊时_深渊也在凝望你
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-04-29 15:29:17" itemprop="dateModified" datetime="2020-04-29T15:29:17+08:00">2020-04-29</time>
+                <time title="修改时间：2020-04-29 15:47:12" itemprop="dateModified" datetime="2020-04-29T15:47:12+08:00">2020-04-29</time>
               
             
           </span>
@@ -595,7 +595,7 @@ _就像凝望深渊时_深渊也在凝望你
 <p>因此，当 <code>docker</code> 容器访问宿主机时，如果宿主机服务端口会被防火墙拦截，那么就无法连通宿主机，出现 <code>No route to host</code> 的错误。</p>
 <p>而访问宿主机所在局域网内的其他机器，由于报文的源地址是宿主机 <code>ip</code>，因此，不会被目的机器防火墙拦截，所以可以访问。<br><a id="more"></a></p>
 <h3 id="解决问题"><a href="#解决问题" class="headerlink" title="# 解决问题"></a><span style="color:#009688"># </span>解决问题</h3><p>首先设置了 <code>mysql</code> 的配置文件，保证 <code>mysql</code> 可以被任何 <code>ip</code> 访问：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"><span class="built_in">bind</span>-address = 0.0.0.0</span><br></pre></td></tr></table></figure></p>
-<p>修改完配置文件重启生效。<br>但为了安全考虑，防火墙的 3306 端口仍然是不开放外网访问的。  </p>
+<p>修改完配置文件重启生效。<br>但为了安全考虑，防火墙的 <code>3306</code> 端口仍然是不开放外网访问的。  </p>
 <p>容器访问宿主机的地址使用 <code>eth0</code> 的地址，即宿主机内网 <code>ip</code> 地址。<br>运行 <code>ipconfig</code> 命令，查看网络的虚拟网桥相关信息。  </p>
 <p>注意：宿主机会把容器 <code>ip</code> 地址段当成外网 <code>ip</code>。（当前说明是 <code>centos7</code> 环境）</p>
 <p>编辑防火墙文件 <code>/etc/firewalld/zones/public.xml</code>，添加下面 <code>docker0</code> 地址段到配置：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">rule</span> <span class="attr">family</span>=<span class="string">"ipv4"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">address</span>=<span class="string">"172.18.0.0/16"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">accept</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
