@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jwchan1996.github.io/"/>
-  <updated>2020-04-28T09:14:55.358Z</updated>
+  <updated>2020-04-29T07:29:17.190Z</updated>
   <id>https://jwchan1996.github.io/</id>
   
   <author>
@@ -21,12 +21,12 @@
     <link href="https://jwchan1996.github.io/2020/04/28/docker%E5%AE%B9%E5%99%A8%E8%AE%BF%E9%97%AE%E5%AE%BF%E4%B8%BB%E6%9C%BAmysql/"/>
     <id>https://jwchan1996.github.io/2020/04/28/docker容器访问宿主机mysql/</id>
     <published>2020-04-27T16:00:00.000Z</published>
-    <updated>2020-04-28T09:14:55.358Z</updated>
+    <updated>2020-04-29T07:29:17.190Z</updated>
     
     <summary type="html">
     
       &lt;h3 id=&quot;场景描述&quot;&gt;&lt;a href=&quot;#场景描述&quot; class=&quot;headerlink&quot; title=&quot;# 场景描述&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;场景描述&lt;/h3&gt;&lt;p&gt;在 &lt;code&gt;centos7&lt;/code&gt; 运行 &lt;code&gt;docker&lt;/code&gt; 容器应用时，需要连接宿主机的 &lt;code&gt;mysql&lt;/code&gt; 的 &lt;code&gt;3306&lt;/code&gt; 端口，发现连接不上，&lt;code&gt;docker&lt;/code&gt; 容器无法访问宿主机的 &lt;code&gt;mysql&lt;/code&gt; 数据库。但是，在容器内访问外部网络是可以 &lt;code&gt;ping&lt;/code&gt; 通的。  &lt;/p&gt;
-&lt;h3 id=&quot;原因分析&quot;&gt;&lt;a href=&quot;#原因分析&quot; class=&quot;headerlink&quot; title=&quot;# 原因分析&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;原因分析&lt;/h3&gt;&lt;p&gt;在 &lt;code&gt;centos7&lt;/code&gt; 上部署 &lt;code&gt;docker&lt;/code&gt; 容器，其网络模式采用的是 &lt;code&gt;bridger&lt;/code&gt; 模式。&lt;br&gt;启动 &lt;code&gt;docker&lt;/code&gt; 时，&lt;code&gt;docker&lt;/code&gt; 进程会创建一个名为 &lt;code&gt;docker0&lt;/code&gt; 的虚拟网桥，用于宿主机与容器之间的通信。当启动一个 &lt;code&gt;docker&lt;/code&gt; 容器时，&lt;code&gt;docker&lt;/code&gt; 容器将会附加到虚拟网桥上，容器内的报文通过 &lt;code&gt;docker0&lt;/code&gt; 向外转发。&lt;/p&gt;
+&lt;h3 id=&quot;原因分析&quot;&gt;&lt;a href=&quot;#原因分析&quot; class=&quot;headerlink&quot; title=&quot;# 原因分析&quot;&gt;&lt;/a&gt;&lt;span style=&quot;color:#009688&quot;&gt;# &lt;/span&gt;原因分析&lt;/h3&gt;&lt;p&gt;在 &lt;code&gt;centos7&lt;/code&gt; 上部署 &lt;code&gt;docker&lt;/code&gt; 容器，其网络模式采用的是 &lt;code&gt;bridge&lt;/code&gt; 模式。&lt;br&gt;启动 &lt;code&gt;docker&lt;/code&gt; 时，&lt;code&gt;docker&lt;/code&gt; 进程会创建一个名为 &lt;code&gt;docker0&lt;/code&gt; 的虚拟网桥，用于宿主机与容器之间的通信。当启动一个 &lt;code&gt;docker&lt;/code&gt; 容器时，&lt;code&gt;docker&lt;/code&gt; 容器将会附加到虚拟网桥上，容器内的报文通过 &lt;code&gt;docker0&lt;/code&gt; 向外转发。&lt;/p&gt;
 &lt;p&gt;如果 &lt;code&gt;docker&lt;/code&gt; 容器访问宿主机，那么 &lt;code&gt;docker0&lt;/code&gt; 网桥将报文直接转发到本机，报文的源地址是 &lt;code&gt;docker0&lt;/code&gt; 网段的地址。而如果 &lt;code&gt;docker&lt;/code&gt; 容器访问宿主机以外的机器，&lt;code&gt;docker&lt;/code&gt; 的 &lt;code&gt;SNAT&lt;/code&gt; 网桥会将报文的源地址转换为宿主机的地址，通过宿主机的网卡向外发送。&lt;/p&gt;
 &lt;p&gt;因此，当 &lt;code&gt;docker&lt;/code&gt; 容器访问宿主机时，如果宿主机服务端口会被防火墙拦截，那么就无法连通宿主机，出现 &lt;code&gt;No route to host&lt;/code&gt; 的错误。&lt;/p&gt;
 &lt;p&gt;而访问宿主机所在局域网内的其他机器，由于报文的源地址是宿主机 &lt;code&gt;ip&lt;/code&gt;，因此，不会被目的机器防火墙拦截，所以可以访问。&lt;br&gt;
