@@ -907,6 +907,18 @@ _就像凝望深渊时_深渊也在凝望你
       </div>
       <!--增加底部裙子图片-->
       <style>
+        .main-inner {
+            margin-bottom: 400px;
+        }
+        #footer-petticoat {
+            position: absolute;
+            width: 100%;
+            bottom: 54px;
+            z-index: 10;
+        }
+        #footer-petticoat img {
+            margin auto;
+        }
         @media screen and (max-width: 1050px) {
             #footer-petticoat{
                 display: none;
@@ -915,12 +927,24 @@ _就像凝望深渊时_深渊也在凝望你
                 /*裙子图片隐藏了，所以内边距恢复原来*/
                 padding-bottom: 150px !important;
             }
+            .main-inner {
+                margin-bottom: 20px;
+            }
+        }
+        .record-number {
+            color: #999 !important;
+            underline: none !important;
+        }
+        .record-number:hover {
+            color: #009688 !important;
         }
       </style>
-      <img id="footer-petticoat" src="/images/footer.png">
+      <div id="footer-petticoat">
+        <img src="/images/footer.png">
+      </div>
     </main>
 
-    <footer id="footer" class="footer" style="z-index:-10;background-color:#333;">
+    <footer id="footer" class="footer" style="z-index:0;background-color:#333;">
       <div class="footer-inner">
         <!--添加运行天数-->
         <style>
@@ -1223,6 +1247,9 @@ _就像凝望深渊时_深渊也在凝望你
             </span>
         </div>
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <div>
+            <a class="record-number" href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备17128781号</a>
+        </div>
         
       </div>
     </footer>
