@@ -43,9 +43,9 @@
         <category>node</category>
       </categories>
       <tags>
+        <tag>jwt鉴权</tag>
         <tag>koa</tag>
         <tag>token</tag>
-        <tag>jwt鉴权</tag>
       </tags>
   </entry>
   <entry>
